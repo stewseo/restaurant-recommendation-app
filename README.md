@@ -19,7 +19,12 @@
 - Forward data to be centralized to an Elasticsearch deployment
 - Searching the results from any previous request
 
-YelpFusionTransport transport = new RestClientTransport(
-    restClient, new JacksonJsonpMapper());
-    
-YelpFusionClient client = new YelpFusionClient(transport);
+- Create the http client
+  - RestClient restClient = RestClient.builder(
+      new HttpHost(host, port, protocol)).build();
+- Create the transport with a Jackson mapper
+  - YelpFusionTransport transport = new RestClientTransport(
+      restClient, new JacksonJsonpMapper());
+
+- Create the API client    
+  - YelpFusionClient client = new YelpFusionClient(transport);
