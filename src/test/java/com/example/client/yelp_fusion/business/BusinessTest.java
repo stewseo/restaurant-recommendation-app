@@ -1,19 +1,14 @@
 package com.example.client.yelp_fusion.business;
 
-import org.apache.http.*;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.*;
-import org.apache.http.impl.client.DefaultHttpClient;
+import jakarta.json.*;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
-import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
 import java.util.stream.*;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BusinessTest {
@@ -29,24 +24,38 @@ class BusinessTest {
     static int limit = 50;
     @BeforeAll
     static void beforeAll() {
+        initRequestParams();
+        initRequestUsingCurl();
+    }
+
+    private static void initRequestUsingCurl() {
+
+        String yelpFusionBearerToken = System.getenv("YELP_API_KEY");
+        requestUsingCurl = new StringBuilder(String.format("curl -H \"Authorization: Bearer %s\" ", yelpFusionBearerToken));
+        String httpMethod = "GET";
+        requestUsingCurl
+                .append(httpMethod)
+                .append(String.format(" %s://%s/%s",
+                        protocol,
+                        yelpFusionHost,
+                        businessSearchEndpoint));
+    }
+
+    private static void initRequestParams() {
         requestParams = new HashMap<>();
         requestParams.put("location", "SF");
         requestParams.put("latitude", "37.751586275");
         requestParams.put("longitude", "-122.447721511");
         requestParams.put("term", "restaurants");
         requestParams.put("limit", String.valueOf(limit));
-
-        requestUsingCurl = new StringBuilder(String.format("curl -H \"Authorization: Bearer %s\" ", System.getenv("YELP_API_KEY")));
-        String requestMethod = "GET";
-        requestUsingCurl.append(requestMethod).append(String.format(" %s://%s/%s", protocol, yelpFusionHost, businessSearchEndpoint));
-
     }
 
     @Test
-    void businessSearchTest() throws IOException {
+    void prepareRequestWithOffset() throws IOException {
+        int maxResults = 1000;
 
         requestParams.forEach((k,v) ->{
-            if(!requestUsingCurl.toString().contains("?")) {
+            if(requestUsingCurl.toString().endsWith("search")) {
                 requestUsingCurl.append("?")
                         .append(k)
                         .append("=")
@@ -61,6 +70,69 @@ class BusinessTest {
             }
         });
 
+        requestParams.put("offset", String.valueOf(limit));
+        requestUsingCurl
+                .append("&")
+                .append("offset")
+                .append("=");
+
+        int length = requestUsingCurl.toString().length();
+        List<Integer> cursors = List.of(50, 100, 150);
+        int i = 0;
+
+        // max results per page = 50
+        for(int offset = 0; offset <= 150; offset += limit) {
+            String request = requestUsingCurl.toString() + offset;
+            performRequest(request);
+        }
+    }
+
+    List<String> restaurantCategories = List.of("sushi", "american bbq", "korean bbq", "Italian", "steak", "seafood");
+
+    @Test
+    void prepareRequestWithRestaurantCategory() throws IOException {
+        requestParams.put("categories", "sushi,bbq,steak");
+        requestParams.forEach((k,v) ->{
+            if(requestUsingCurl.toString().endsWith("search")) {
+                requestUsingCurl.append("?")
+                        .append(k)
+                        .append("=")
+                        .append(v);
+
+            }else {
+                requestUsingCurl
+                        .append("&")
+                        .append(k)
+                        .append("=")
+                        .append(v);
+            }
+        });
+
+        performRequest(requestParams.toString());
+    }
+
+
+    private String performRequest(String request) throws IOException {
+        System.out.println(request);
+        Process process = Runtime.getRuntime().exec(request);
+
+        InputStream inputStream = process.getInputStream();
+
+        String response = new BufferedReader(
+                new InputStreamReader(inputStream, StandardCharsets.UTF_8))
+                .lines()
+                .collect(Collectors.joining("\n"));
+
+        var jsonReader = Json.createReader(new StringReader(response));
+        var messageAsJson = jsonReader.readObject();
+
+        assertThat(messageAsJson.get("total").toString()).isLessThanOrEqualTo("1000");
+
+        return response;
+    }
+
+    private String performRequest() throws IOException {
+        System.out.println(requestUsingCurl.toString());
         Process process = Runtime.getRuntime().exec(requestUsingCurl.toString());
 
         InputStream inputStream = process.getInputStream();
@@ -69,46 +141,8 @@ class BusinessTest {
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8))
                 .lines()
                 .collect(Collectors.joining("\n"));
-    }
 
-    @Test
-    void offsetIterationTest() throws IOException {
-
-        requestParams.forEach((k,v) ->{
-            if(!requestUsingCurl.toString().contains("?")) {
-                requestUsingCurl.append("?")
-                        .append(k)
-                        .append("=")
-                        .append(v);
-
-            }else {
-                requestUsingCurl
-                        .append("&")
-                        .append(k)
-                        .append("=")
-                        .append(v);
-            }
-        });
-
-        int maxResults = 1000;
-
-
-        int length = requestUsingCurl.toString().length();
-        for(int offset = limit; offset <= 100; offset += 50) {
-            if(!requestUsingCurl.toString().contains("offset")){
-                requestUsingCurl.append("&").append("offset").append("=").append(limit);
-            }
-            // max results per page = 50
-            requestUsingCurl.replace(length-2, length, String.valueOf(offset));
-            Process process = Runtime.getRuntime().exec(requestUsingCurl.toString());
-
-            InputStream inputStream = process.getInputStream();
-
-            String response = new BufferedReader(
-                    new InputStreamReader(inputStream, StandardCharsets.UTF_8))
-                    .lines()
-                    .collect(Collectors.joining("\n"));
-            System.out.println("" + response);
-        }
+        System.out.println("" + response);
+        return response;
     }
 }
