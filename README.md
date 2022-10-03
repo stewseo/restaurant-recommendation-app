@@ -21,15 +21,14 @@
   - Ship collected metrics and statistics to the specified output
     - Elasticsearch  
  
-Problem: Can't decide where to eat dinner
+### Problem: Can't decide where to eat dinner
 ### Get all restaurants in 10,000 meter radius of specified latitude and longitude(SF twin peaks):
 - request using cURL 
-      - curl -H "Authorization: Bearer $YELP_API_KEY" GET https://api.yelp.com/v3/businesses/search?location=SF&term=restaurants&longitude=-122.4477&latitude=37.7516 &radius=10000&sort_by=distance
-        - HTTP method: GET
-        - yelp fusion api base url: https//api.yelp.com
-        - endpoint on the server: v3/businesses/search
-        - request parameters: location, longitude, latitude, radius, sort_by, term
-          - if results > 1000 add categories
+- curl -H "Authorization: Bearer $YELP_API_KEY" GET https://api.yelp.com/v3/businesses/search?location=SF&term=restaurants&longitude=-122.4477&latitude=37.7516&radius=10000&sort_by=distance <br/>
+  - HTTP method: GET
+  - yelp fusion api base url: https//api.yelp.com
+  - endpoint on the server: v3/businesses/search
+  - request parameters: location, longitude, latitude, radius, sort_by, term
       
 
 ### Initializing a YelpFusionClient
