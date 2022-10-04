@@ -13,9 +13,9 @@ public class GetBusinessResponse {
         this.total = total;
     }
 
-    Categories[] categories;
-    Businesses[] businesses;
-    Object[] region;
+    public Categories[] categories;
+    public Businesses[] businesses;
+    public Object region;
 
     int total;
 
@@ -39,11 +39,12 @@ public class GetBusinessResponse {
         this.businesses = businesses;
     }
 
-    public Object[] getRegion() {
+    public Object getRegion() {
         return region;
     }
 
-    public void setRegion(Object[] region) {
+    public void setRegion(Object region) {
         this.region = region;
     }
+
 }
