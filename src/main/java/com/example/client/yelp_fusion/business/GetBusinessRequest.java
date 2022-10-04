@@ -3,14 +3,13 @@ package com.example.client.yelp_fusion.business;
 
 import com.example.client._types.*;
 import com.example.client._types.RequestBase;
+import com.example.client.yelp_fusion.category.*;
 
 // return businesses
-public class GetPipelineRequest extends RequestBase {
+public class GetBusinessRequest extends RequestBase {
+    Terms[] term;
+    Attributes[] attributes;
+    Categories[] categories;
 
-    private final String id;
-
-
-    private final Time masterTimeout;
-
-
-    private final Boolean summary;
+    Coordinates coordinates;
+}
