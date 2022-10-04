@@ -25,18 +25,18 @@ public class BusinessClient extends ApiClient<YelpFusionTransport, BusinessClien
         return new BusinessClient(this.transport, transportOptions);
     }
 
-    public GetBusinessResponse getPipeline(GetBusinessRequest request) throws IOException {
-        // create instance of SimpleEndpoint
-        JsonEndpoint<GetBusinessRequest, GetBusinessResponse, ErrorResponse> endpoint = (JsonEndpoint<GetBusinessRequest, GetBusinessResponse, ErrorResponse>) GetBusinessRequest._ENDPOINT;
-        return this.transport.performRequest(request, endpoint, this.transportOptions);
-    }
-
-    public final GetBusinessResponse getPipeline(Function<GetBusinessRequest.Builder, ObjectBuilder<GetBusinessRequest>> fn) throws IOException {
-        return getPipeline(fn.apply(new GetBusinessRequest.Builder()).build());
-    }
-
-    public GetBusinessResponse getPipeline() throws IOException {
-        return this.transport.performRequest(new GetBusinessRequest.Builder().build(), GetBusinessRequest._ENDPOINT,
-                this.transportOptions);
-    }
+//    public GetBusinessResponse getPipeline(GetBusinessRequest request) throws IOException {
+//        // create instance of SimpleEndpoint
+//        JsonEndpoint<GetBusinessRequest, GetBusinessResponse, ErrorResponse> endpoint = (JsonEndpoint<GetBusinessRequest, GetBusinessResponse, ErrorResponse>) GetBusinessRequest._ENDPOINT;
+//        return this.transport.performRequest(request, endpoint, this.transportOptions);
+//    }
+//
+//    public final GetBusinessResponse getPipeline(Function<GetBusinessRequest.Builder, ObjectBuilder<GetBusinessRequest>> fn) throws IOException {
+//        return getPipeline(fn.apply(new GetBusinessRequest.Builder()).build());
+//    }
+//
+//    public GetBusinessResponse getPipeline() throws IOException {
+//        return this.transport.performRequest(new GetBusinessRequest.Builder().build(), GetBusinessRequest._ENDPOINT,
+//                this.transportOptions);
+//    }
 }
