@@ -1,6 +1,7 @@
-## Index all results from Yelp Fusion Search Request
+## Provide business insights based on data-driven decisions
 
-### Get all restaurants in 10,000 meter radius of specified latitude and longitude(SF twin peaks):
+
+### Get all restaurants in 10,000 meter radius of specified latitude and longitude(SF twin peaks) by category, attribute, and term:
 - curl -H "Authorization: Bearer $YELP_API_KEY" GET https://api.yelp.com/v3/businesses/search?location=SF&term=restaurants&longitude=-122.4477&latitude=37.7516&radius=10000&sort_by=distance <br/>
   - yelp fusion api base url: https//api.yelp.com
   - endpoint on the server: v3/businesses/search
