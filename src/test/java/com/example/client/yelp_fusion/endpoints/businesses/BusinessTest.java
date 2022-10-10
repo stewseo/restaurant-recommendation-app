@@ -1,4 +1,4 @@
-package com.example.client.yelp_fusion.business;
+package com.example.client.yelp_fusion.endpoints.businesses;
 
 import jakarta.json.*;
 import org.junit.jupiter.api.*;
@@ -8,9 +8,9 @@ import java.nio.charset.*;
 import java.util.*;
 import java.util.stream.*;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.*;
 
+// test fields from business/search and business/{id} endpoints
 class BusinessTest {
 
     static String yelpFusionHost = "api.yelp.com/v3";
@@ -83,7 +83,7 @@ class BusinessTest {
         // max results per page = 50
         for(int offset = 0; offset <= 150; offset += limit) {
             String request = requestUsingCurl.toString() + offset;
-            performRequest(request);
+            String response = performYelpFusionRequest(request);
         }
     }
 
@@ -108,11 +108,11 @@ class BusinessTest {
             }
         });
 
-        performRequest(requestParams.toString());
+        performYelpFusionRequest(requestParams.toString());
     }
 
 
-    private String performRequest(String request) throws IOException {
+    private String performYelpFusionRequest(String request) throws IOException {
         System.out.println(request);
         Process process = Runtime.getRuntime().exec(request);
 
@@ -131,7 +131,7 @@ class BusinessTest {
         return response;
     }
 
-    private String performRequest() throws IOException {
+    private String performElasticsearchRequest() throws IOException {
         System.out.println(requestUsingCurl.toString());
         Process process = Runtime.getRuntime().exec(requestUsingCurl.toString());
 
