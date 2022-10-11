@@ -1,14 +1,16 @@
-## Provide business insights based on data-driven decisions
+## Restaurant Recommendation App
+
+- Load json file with all Yelp categories.
+- Testing the Response body of each restaurants sub-category. 
+- Verify that data is clean before searching business details by id.
+
+## real-time data 10/10/2022. all restaurants in sf by sub category
+![yelp_businesses_sf](https://user-images.githubusercontent.com/54422342/194987591-2679c0f1-3e7a-4204-9695-a03b3aefaf04.jpg)
 
 
-### Get all restaurants in 10,000 meter radius of specified latitude and longitude(SF twin peaks) by category, attribute, and term:
-- curl -H "Authorization: Bearer $YELP_API_KEY" GET https://api.yelp.com/v3/businesses/search?location=SF&term=restaurants&longitude=-122.4477&latitude=37.7516&radius=10000&sort_by=distance <br/>
-  - Add a JSON document to the specified data stream or index and makes it searchable
-    - Index restaurants by term, location, coordinates, radius and category
-      - index business details https://www.yelp.com/developers/documentation/v3/business
-    - Index all yelp categories to search and visualize
-      - https://www.yelp.com/developers/documentation/v3/category_list
-        
+- Index all yelp categories to search and visualize
+  - https://www.yelp.com/developers/documentation/v3/category_list
+      
 ![most_popular_yelp_categories](https://user-images.githubusercontent.com/54422342/193863560-83920614-5029-49f9-9ea5-fa541c9bf262.jpg)  
 
 ### Configure inputs and output of data shippers
