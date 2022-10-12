@@ -1,6 +1,6 @@
 package com.example.client._types;
 
-import co.elastic.clients.json.*;
+import com.example.client.json.*;
 import com.example.client.transport.*;
 import com.example.client.util.*;
 

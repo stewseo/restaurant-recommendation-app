@@ -22,11 +22,8 @@ public class TestBusinessSearchRequest extends RequestBase implements Serializab
     private final String sort_by;
     private final int limit;
     private final int offset;
-
     private final String price;
-
     private final String open_at;
-
     private final boolean open_now;
     private final List<String> categories;
     private final List<String> attributes;

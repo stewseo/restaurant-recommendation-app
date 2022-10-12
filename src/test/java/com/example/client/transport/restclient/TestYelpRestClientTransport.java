@@ -87,16 +87,6 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
         this.mapper = mapper;
         this.transportOptions = options == null ?
                 TestYelpRestClientOptions.initialOptions() : TestYelpRestClientOptions.of(options);
-
-        PrintUtils.titleGreen(String.format("" +
-                "Initializing TestYelpRestClientTransport instance with parameters: " +
-                "org.elasticsearch.client.RestClient restClient = %s%n" +
-                "co.elastic.clients.json.JsonpMapper mapper = %s%n" +
-                "ransportOptions options = %s%n",
-                restClient,
-                mapper,
-                transportOptions
-        ));
     }
     public TestYelpRestClientTransport(
             org.elasticsearch.client.RestClient restClient,
@@ -142,7 +132,7 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
         StringBuilder sb = new StringBuilder("curl ");
 
         restOptions.getHeaders().forEach(k -> {
-                    System.out.println(k.toString());
+
                     if (k.getName().contains("Authorization")) {
                         sb
                                 .append("-H \"")
@@ -186,7 +176,6 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
                 sb.append(key).append("=").append(value);
             }
         }
-        PrintUtils.println("Request String: " + sb.toString());
 
         return executeRequestUsingCurl(sb.toString());
     }
@@ -222,7 +211,7 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
     // TODO: use Apache HttpComponents: HttpClient, HttpResponse
     //  return ResponseT
     public BusinessEndpointResponse executeRequestUsingCurl(String request) throws IOException {
-        System.out.println("request = " + request);
+        System.out.println(request);
         Process process = Runtime.getRuntime().exec(request);
 
         InputStream inputStream = process.getInputStream();
@@ -232,7 +221,9 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
                 .lines()
                 .collect(Collectors.joining("\n"));
 
-        return (BusinessEndpointResponse) Json.createReader(new StringReader(response));
+        BusinessEndpointResponse businessSearchResponse =  new JacksonJsonpMapper().objectMapper().readValue(response, BusinessEndpointResponse.class);
+
+        return businessSearchResponse;
     }
 
 
@@ -370,13 +361,12 @@ public class TestYelpRestClientTransport implements YelpFusionTransport {
     //deserialize JSON content from given JSON content String.
     private TestBusinessEndpointResponse deserialize(JsonObject jsonObject) throws JsonProcessingException {
 
-        JsonValue businesses =  PrintUtils.println(jsonObject.get("businesses"));
+        JsonValue businesses =  jsonObject.get("businesses");
 
-        PrintUtils.titleCyan(businesses.asJsonArray().size());
 
         TestBusinessEndpointResponse businessResponse = PrintUtils.println(new JacksonJsonpMapper().objectMapper().readValue(jsonObject.toString(), TestBusinessEndpointResponse.class));
 
-        Business[] business = PrintUtils.println(new JacksonJsonpMapper().objectMapper().readValue(businesses.toString(),  Business[].class));
+        Business[] business = new JacksonJsonpMapper().objectMapper().readValue(businesses.toString(),  Business[].class);
 
         return new TestBusinessEndpointResponse();
     }

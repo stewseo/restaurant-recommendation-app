@@ -1,9 +1,6 @@
 package com.example.client;
 
-import co.elastic.clients.transport.*;
 import com.example.client.transport.*;
-import com.example.client.transport.Transport;
-import com.example.client.transport.TransportOptions;
 
 public abstract class ApiClient<T extends Transport, Self extends ApiClient<T, Self>> {
 
@@ -25,3 +22,4 @@ public abstract class ApiClient<T extends Transport, Self extends ApiClient<T, S
         return this.transportOptions == null ? transport.options() : transportOptions;
     }
 }
+

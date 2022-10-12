@@ -5,6 +5,7 @@ import org.slf4j.*;
 import java.util.*;
 
 public class ObjectBuilderBase {
+
     public static final String GREEN = "\u001B[32m";
     public static final String RESET = "\033[0m";
     private static final Logger logger = LoggerFactory.getLogger(ObjectBuilderBase.class);
@@ -13,10 +14,6 @@ public class ObjectBuilderBase {
         if (this._used) {
             throw new IllegalStateException("Object builders can only be used once");
         }
-        logger.info("{}ObjectBuilderBase._checkSingleUse(): {}{}%n",
-                GREEN,
-                RESET,
-                this._used);
         this._used = true;
     }
     static final class InternalList<T> extends ArrayList<T> {
@@ -36,7 +33,6 @@ public class ObjectBuilderBase {
         if (list == null) {
             return new InternalList<>();
         } else if (list instanceof InternalList) {
-            logger.info("{}static final class InternalList<T> extends ArrayList<T>(): {}{}%n", GREEN, RESET, list);
             return list;
         } else {
             // Adding to a list we don't own: make a defensive copy, also ensuring that
@@ -55,7 +51,18 @@ public class ObjectBuilderBase {
         if (values.length > 0) {
             list.addAll(Arrays.asList(values));
         }
-        logger.info("{}protected static <T> List<T> _listAdd(List<T> list, T value, T... values){}{}%n", GREEN, RESET, list);
         return list;
+    }
+
+    protected static <T> List<T> _listAddAll(List<T> list, List<T> values) {
+        if (list == null) {
+            // Keep the original list to avoid an unnecessary copy.
+            // It will be copied if we add more values.
+            return Objects.requireNonNull(values);
+        } else {
+            list = _mutableList(list);
+            list.addAll(values);
+            return list;
+        }
     }
 }

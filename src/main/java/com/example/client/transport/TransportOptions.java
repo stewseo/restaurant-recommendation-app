@@ -1,17 +1,13 @@
 package com.example.client.transport;
 
-import co.elastic.clients.transport.*;
-import co.elastic.clients.util.*;
-import org.slf4j.*;
+import com.example.client.util.*;
 
-import java.io.*;
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.function.*;
 
 public interface TransportOptions {
 
-    Map<String, String> headers();
+    Collection<Map.Entry<String, String>> headers();
 
     Map<String, String> queryParameters();
 

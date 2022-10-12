@@ -3,7 +3,6 @@ package com.example.client.yelp_fusion.endpoints;
 import co.elastic.clients.elasticsearch.*;
 import co.elastic.clients.json.jackson.*;
 import co.elastic.clients.transport.*;
-import co.elastic.clients.transport.rest_client.RestClientOptions;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
 import com.example.client.json.*;
 import com.example.client.transport.restclient.*;
@@ -63,20 +62,46 @@ public abstract class AbstractRequestTestCase {
     public static ElasticsearchClient esClient;
 
     private static void initElasticsearchClient() {
+
         String host = "my-deployment-170edf.es.us-west-1.aws.found.io";
         int port = 443;
 
         String apiKeyIdAndSecret = System.getenv("API_KEY_ID") + ":" + System.getenv("API_KEY_SECRET");
 
-        RestClient restClient = createRestClientWithDefaultHeaders(host, port, protocol, "ApiKey ", apiKeyIdAndSecret);
         String encodedApiKey = java.util.Base64.getEncoder() // The encoder maps the input to a set of characters in the A-Za-z0-9+/ character set
                 .encodeToString((apiKeyIdAndSecret) // Encodes the specified byte array into a String using the Base64 encoding scheme.
                         .getBytes(StandardCharsets.UTF_8));
-        RequestOptions.Builder options = RequestOptions.DEFAULT.toBuilder();
-        options.addHeader("Authorization", "ApiKey " + encodedApiKey);
+
+
+        RestClientBuilder builder = RestClient.builder(
+                new HttpHost(host, port, protocol));
+
+        Header[] defaultHeaders =
+                new Header[]{new BasicHeader("Authorization",
+                        "ApiKey " + encodedApiKey)};
+
+        builder.setDefaultHeaders(defaultHeaders);
+
+        RestClient restClient = builder.build();
+
         ElasticsearchTransport esTransport = new RestClientTransport(restClient, new JacksonJsonpMapper());
 
-        esClient = new ElasticsearchClient(esTransport, new RestClientOptions(options.build()));
+        esClient = new ElasticsearchClient(esTransport);
+    }
+
+    private static RestClient createESRestClient(String host, int port, String scheme, String authorizationType, String token) {
+        //Build a client for the Yelp Fusion API
+        RestClientBuilder restBuilder = RestClient.builder(
+                new HttpHost(host, port, scheme)); //Create HttpHost instance with the given scheme, hostname and port.
+
+        Header[] defaultHeaders =
+                new Header[]{new BasicHeader("Authorization",
+                        authorizationType + token)};
+
+
+        restBuilder.setDefaultHeaders(defaultHeaders); //Set default headers
+
+        return restBuilder.build(); // Create a new RestClient based on the provided configuration. All http handling is delegated to this RestClient
     }
 
     private static RestClient createRestClientWithDefaultHeaders(String host, int port, String scheme, String authorizationType, String token) {

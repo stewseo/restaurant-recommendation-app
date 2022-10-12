@@ -51,12 +51,12 @@ public class TestYelpClient extends com.example.client.ApiClient<YelpFusionTrans
 
 
 
-    public BusinessEndpointResponse businessDetails(TestBusinessSearchRequest request)
+    public BusinessEndpointResponse businessDetails(TestBusinessDetailsRequest request)
             throws IOException {
 
         @SuppressWarnings("unchecked")
-        JsonEndpoint<TestBusinessSearchRequest, TestBusinessEndpointResponse, com.example.client._types.ErrorResponse> endpoint =
-                (JsonEndpoint<TestBusinessSearchRequest, TestBusinessEndpointResponse, com.example.client._types.ErrorResponse>) TestBusinessSearchRequest._ENDPOINT;
+        JsonEndpoint<TestBusinessDetailsRequest, TestBusinessEndpointResponse, com.example.client._types.ErrorResponse> endpoint =
+                (JsonEndpoint<TestBusinessDetailsRequest, TestBusinessEndpointResponse, com.example.client._types.ErrorResponse>) TestBusinessDetailsRequest._ENDPOINT;
         try {
             return this.transport.performRequest(request, endpoint, this.transportOptions);
         } catch (URISyntaxException e) {
@@ -65,8 +65,8 @@ public class TestYelpClient extends com.example.client.ApiClient<YelpFusionTrans
     }
 
     public final BusinessEndpointResponse businessDetails(
-            Function<TestBusinessSearchRequest.Builder, com.example.client.util.ObjectBuilder<TestBusinessSearchRequest>> fn)
+            Function<TestBusinessDetailsRequest.Builder, com.example.client.util.ObjectBuilder<TestBusinessDetailsRequest>> fn)
             throws IOException {
-        return businessSearch(fn.apply(new TestBusinessSearchRequest.Builder()).build());
+        return businessDetails(fn.apply(new TestBusinessDetailsRequest.Builder()).build());
     }
 }
