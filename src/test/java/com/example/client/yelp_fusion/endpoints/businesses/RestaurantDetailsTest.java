@@ -1,6 +1,5 @@
 package com.example.client.yelp_fusion.endpoints.businesses;
 
-import co.elastic.clients.elasticsearch._types.query_dsl.*;
 import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.bulk.*;
 import co.elastic.clients.elasticsearch.core.search.*;
@@ -13,7 +12,6 @@ import org.junit.platform.commons.logging.*;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.*;
 
 public class RestaurantDetailsTest extends AbstractRequestTestCase {
 
@@ -21,7 +19,7 @@ public class RestaurantDetailsTest extends AbstractRequestTestCase {
 
     private static int limit = 50; // max businesses per page
 
-    private static List<Business> listOfBusinesses;
+    private static List<String> listOfBusinesses;
 
     private static Map<String, List<Business>> mapOfCategories; // group businesses by key
 
@@ -34,16 +32,11 @@ public class RestaurantDetailsTest extends AbstractRequestTestCase {
 
         // all documents with field: id value greater than or equal to 0
 
-        Query byPrice = MatchQuery.of(m -> m
-                .field("alias")
-                .query("alnico-san-francisco")
-        )._toQuery();
-
         List<String> priceList = List.of("$", "$$", "$$$", "$$$$");
 
         listOfBusinesses = new ArrayList<>();
 
-        Set<Business> setOfBusinesses = new HashSet<>();
+        Set<String> setOfBusinessesIds = new HashSet<>();
         // loop for each $
         for (String price : priceList) {
             SearchResponse<Business> response = esClient.search(s -> s
@@ -78,14 +71,11 @@ public class RestaurantDetailsTest extends AbstractRequestTestCase {
                 PrintUtils.titleRed("Doc id: " + hit.id() + "Total businesses: " + business.getId() + ", score " + hit.score());
                 Map<String, InnerHitsResult> innerHits = hit.innerHits();
 
-                setOfBusinesses.add(business);
+                setOfBusinessesIds.add(business.getId());
             }
         }
-        PrintUtils.titleGreen("number of business ids in set: " + setOfBusinesses.size());
-        listOfBusinesses = setOfBusinesses
-                .stream()
-                .distinct()
-                .collect(Collectors.toList());
+        PrintUtils.titleGreen("number of business ids in set: " + setOfBusinessesIds.size());
+        listOfBusinesses = new ArrayList<>(setOfBusinessesIds);
         PrintUtils.titleGreen("number of business ids in list: " + listOfBusinesses.size());
     }
 
@@ -94,14 +84,12 @@ public class RestaurantDetailsTest extends AbstractRequestTestCase {
     void requestBusinessDetailsTest() throws IOException {
         PrintUtils.titleCyan("Number of businesses added: " + listOfBusinesses.size());
 
-        for (Business business : listOfBusinesses) {
+        for (String businessId : listOfBusinesses) {
 
             // reset offset, total hits, and max offset
             int totalHits = 0;
             int offset = 0;
             int maxOffset = 0;
-
-            String businessId = business.getId();
 
             PrintUtils.titleGreen("Current business id: " + businessId);
 
@@ -123,13 +111,13 @@ public class RestaurantDetailsTest extends AbstractRequestTestCase {
 
                 String docId = String.format(
                         "yelp-business-details-%s", // yelp-businesses-restaurants-pizza-<business id>
-                        business.getId()); // yelp business id
+                        businessId); // yelp business id
 
                 br.operations(op -> op
                         .index(idx -> idx
                                 .index(index)
                                 .id(docId)
-                                .document(business)
+                                .document(businessDetailsResponse)
                         )
                 );
 

@@ -20,10 +20,6 @@ public class YelpFusionClient extends ApiClient<YelpFusionTransport, YelpFusionC
         super(transport, transportOptions);
     }
 
-    public YelpFusionClient(String host, YelpFusionTransport transport, TransportOptions transportOptions) {
-        super(transport, transportOptions);
-    }
-
     @Override
     public YelpFusionClient withTransportOptions(TransportOptions transportOptions) {
         return new YelpFusionClient(this.transport, transportOptions);

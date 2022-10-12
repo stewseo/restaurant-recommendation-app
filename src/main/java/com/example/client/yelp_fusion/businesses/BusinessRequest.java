@@ -26,7 +26,8 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
 
     public int offset;
     public String locale;
-    public Terms[] term;
+
+    public Object[] term;
 
     public Business[] businesses;
     public String sort_by;
@@ -84,7 +85,7 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
         return this.offset;
     }
 
-    public final Terms[] term(Terms[] term) {
+    public final Object[] term(Object[] term) {
         return this.term;
     }
 
@@ -131,7 +132,7 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
 
         private int offset;
 
-        private Terms[] term;
+        private Object[] term;
 
         private Business[] businesses;
 
@@ -141,7 +142,7 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
         private JsonpSerializer<TDocument> tDocumentSerializer;
 
 
-        public final Builder<TDocument> term(Terms[] term) {
+        public final Builder<TDocument> term(Object[] term) {
             this.term = term;
             return this;
         }
