@@ -28,18 +28,19 @@ public class BusinessClient extends ApiClient<YelpFusionTransport, BusinessClien
         return new BusinessClient(this.transport, transportOptions);
     }
 
-    public BusinessEndpointResponse getBusinesses(BusinessRequest<?> request) throws IOException, URISyntaxException {
+    public BusinessSearchResponse getBusinesses(BusinessSearchRequest request) throws IOException, URISyntaxException {
         // create instance of SimpleEndpoint
-        JsonEndpoint<BusinessRequest<?>, BusinessResponse, ErrorResponse> endpoint = (JsonEndpoint<BusinessRequest<?>, BusinessResponse, ErrorResponse>) BusinessRequest._ENDPOINT;
+        JsonEndpoint<BusinessSearchRequest, BusinessSearchResponse, ErrorResponse> endpoint
+                = (JsonEndpoint<BusinessSearchRequest, BusinessSearchResponse, ErrorResponse>) BusinessSearchRequest._ENDPOINT;
         return this.transport.performRequest(request, endpoint, this.transportOptions);
     }
 
-    public final BusinessEndpointResponse getBusinesses(Function<BusinessRequest.Builder<?>, ObjectBuilder<BusinessRequest<?>>> fn) throws IOException, URISyntaxException {
-        return getBusinesses(fn.apply(new BusinessRequest.Builder()).build());
+    public final BusinessSearchResponse getBusinesses(Function<BusinessSearchRequest.Builder, ObjectBuilder<BusinessSearchRequest>> fn) throws IOException, URISyntaxException {
+        return getBusinesses(fn.apply(new BusinessSearchRequest.Builder()).build());
     }
 
-    public BusinessEndpointResponse getBusinesses() throws IOException, URISyntaxException {
-        return this.transport.performRequest(new BusinessRequest.Builder().build(), BusinessRequest._ENDPOINT,
+    public BusinessSearchResponse getBusinesses() throws IOException, URISyntaxException {
+        return this.transport.performRequest(new BusinessSearchRequest.Builder().build(), BusinessSearchRequest._ENDPOINT,
                 this.transportOptions);
     }
 }

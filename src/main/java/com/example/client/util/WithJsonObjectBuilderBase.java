@@ -1,6 +1,8 @@
 package com.example.client.util;
 
-import co.elastic.clients.json.*;
+
+
+import com.example.client.json.*;
 import jakarta.json.stream.*;
 
 public abstract class WithJsonObjectBuilderBase<B> extends ObjectBuilderBase implements WithJson<B> {
@@ -15,12 +17,13 @@ public abstract class WithJsonObjectBuilderBase<B> extends ObjectBuilderBase imp
         }
 
         // Generic parameters are always deserialized to JsonData unless the parent mapper can provide a deserializer
-        mapper = new WithJsonMapper(mapper);
+        mapper = new WithJsonObjectBuilderBase.WithJsonMapper(mapper);
 
         @SuppressWarnings("unchecked")
         ObjectDeserializer<B> builderDeser = (ObjectDeserializer<B>) DelegatingDeserializer.unwrap(classDeser);
         return builderDeser.deserialize(self(), parser, mapper, parser.next());
     }
+
     private static class WithJsonMapper extends DelegatingJsonpMapper {
         WithJsonMapper(JsonpMapper parent) {
             super(parent);
@@ -31,7 +34,7 @@ public abstract class WithJsonObjectBuilderBase<B> extends ObjectBuilderBase imp
             T attr = mapper.attribute(name);
             if (attr == null && name.startsWith("co.elastic.clients:Deserializer")) {
                 @SuppressWarnings("unchecked")
-                T result = (T)JsonData._DESERIALIZER;
+                T result = (T) JsonData._DESERIALIZER;
                 return result;
             } else {
                 return attr;
@@ -40,7 +43,7 @@ public abstract class WithJsonObjectBuilderBase<B> extends ObjectBuilderBase imp
 
         @Override
         public <T> JsonpMapper withAttribute(String name, T value) {
-            return new WithJsonMapper(this.mapper.withAttribute(name, value));
+            return new WithJsonObjectBuilderBase.WithJsonMapper(this.mapper.withAttribute(name, value));
         }
     }
 }

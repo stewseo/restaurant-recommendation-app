@@ -240,7 +240,7 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
 
     // ---------------------------------------------------------------------------------------------
 
-    public static final Endpoint<BusinessRequest<?>, BusinessResponse, ErrorResponse> _ENDPOINT = new SimpleEndpoint<>(
+    public static final Endpoint<BusinessRequest<?>, BusinessSearchResponse, ErrorResponse> _ENDPOINT = new SimpleEndpoint<>(
             "v3/businesses",
 
             // Request method
@@ -315,5 +315,5 @@ public class BusinessRequest<TDocument> extends RequestBase implements JsonpSeri
                 }
                 return params;
 
-            }, SimpleEndpoint.emptyMap(), true, BusinessResponse._DESERIALIZER);
+            }, SimpleEndpoint.emptyMap(), true, BusinessSearchResponse._DESERIALIZER);
 }

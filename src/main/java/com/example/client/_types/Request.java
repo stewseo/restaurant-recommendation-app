@@ -4,7 +4,6 @@ package com.example.client._types;
 import org.apache.http.*;
 import org.apache.http.entity.*;
 import org.apache.http.nio.entity.*;
-import org.elasticsearch.client.RequestOptions;
 
 import java.util.*;
 

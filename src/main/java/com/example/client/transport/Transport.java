@@ -1,6 +1,6 @@
 package com.example.client.transport;
 
-import com.example.client.yelp_fusion.businesses.*;
+import com.example.client.json.*;
 import org.slf4j.*;
 
 import java.io.*;
@@ -11,7 +11,7 @@ public interface Transport extends Closeable {
 
     static final Logger logger = LoggerFactory.getLogger(Transport.class);
 
-    <RequestT, ResponseT, ErrorT> BusinessEndpointResponse performRequest(
+    <RequestT, ResponseT, ErrorT> ResponseT performRequest(
             RequestT request,
             Endpoint<RequestT, ResponseT, ErrorT> endpoint,
             TransportOptions options
@@ -23,7 +23,7 @@ public interface Transport extends Closeable {
             TransportOptions options
     );
 
-    co.elastic.clients.json.JsonpMapper jsonpMapper();
+    JsonpMapper jsonpMapper();
 
     TransportOptions options();
 }

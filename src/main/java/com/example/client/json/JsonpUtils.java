@@ -12,10 +12,7 @@ import java.util.stream.*;
 
 public class JsonpUtils {
 
-    /**
-     * Get a <code>JsonProvider</code> instance. This method first calls the standard `JsonProvider.provider()` that is based on
-     * the current thread's context classloader, and in case of failure tries to find a provider in other classloaders.
-     */
+
     @AllowForbiddenApis("Implementation of the JsonProvider lookup")
     public static JsonProvider provider() {
         RuntimeException exception;
@@ -43,16 +40,7 @@ public class JsonpUtils {
         throw new JsonException("Unable to get a JsonProvider. Check your classpath or thread context classloader.", exception);
     }
 
-    /**
-     * Advances the parser to the next event and checks that this even is the expected one.
-     *
-     * @return the expected event
-     *
-     * @throws jakarta.json.JsonException if an i/o error occurs (IOException would be cause of JsonException)
-     * @throws JsonParsingException if the event is not the expected one, or if the parser encounters invalid
-     *         JSON when advancing to next state.
-     * @throws java.util.NoSuchElementException if there are no more parsing states.
-     */
+
     public static JsonParser.Event expectNextEvent(JsonParser parser, JsonParser.Event expected) {
         JsonParser.Event event = parser.next();
         expectEvent(parser, expected, event);

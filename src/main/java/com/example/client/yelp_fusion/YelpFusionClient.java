@@ -1,6 +1,5 @@
 package com.example.client.yelp_fusion;
 
-import com.example.client.*;
 import com.example.client._types.*;
 import com.example.client.transport.*;
 import com.example.client.util.*;
@@ -10,7 +9,7 @@ import java.io.*;
 import java.net.*;
 import java.util.function.*;
 
-public class YelpFusionClient extends ApiClient<YelpFusionTransport, YelpFusionClient> {
+public class YelpFusionClient extends com.example.client.ApiClient<YelpFusionTransport, YelpFusionClient> {
 
     public YelpFusionClient(YelpFusionTransport transport) {
         super(transport, null);
@@ -20,41 +19,50 @@ public class YelpFusionClient extends ApiClient<YelpFusionTransport, YelpFusionC
         super(transport, transportOptions);
     }
 
+
     @Override
     public YelpFusionClient withTransportOptions(TransportOptions transportOptions) {
         return new YelpFusionClient(this.transport, transportOptions);
     }
 
-    public <TDocument> BusinessEndpointResponse index(BusinessRequest<TDocument> request) throws IOException, URISyntaxException {
-        // endpoint t=
-        JsonEndpoint<
-                BusinessRequest<?>,  // class that extends WriteBaseRequest.
-                BusinessResponse,  // class that extends WriteBaseResponse
-                ErrorResponse>  // Error code
-                endpoint = // JsonEndpoint responsibilities =
-                (JsonEndpoint<BusinessRequest<?>,
-                        BusinessResponse,
-                        ErrorResponse>)
-                        BusinessRequest._ENDPOINT;
-
-        return this.transport.performRequest(request, endpoint, this.transportOptions);
-        // send request fields are specified by input parameters ,
-        // endpoint fields are specified by BusinessRequest ,
-        // transportOptions fields are specified in the YelpClient input parameters, and by RestClient methods addHeader, setHeader. ApiClient subclasses inherit a transportOptions field.
-    }
-    
-    public final <TDocument> BusinessEndpointResponse index(
-            Function<BusinessRequest.Builder<TDocument>, ObjectBuilder<BusinessRequest<TDocument>>> fn)
+    public BusinessSearchResponse businessSearch(BusinessSearchRequest request)
             throws IOException {
+
+        @SuppressWarnings("unchecked")
+        JsonEndpoint<BusinessSearchRequest, BusinessSearchResponse, ErrorResponse> endpoint =
+                (JsonEndpoint<BusinessSearchRequest, BusinessSearchResponse, ErrorResponse>) BusinessSearchRequest._ENDPOINT;
+
         try {
-            return index(fn.apply(new BusinessRequest.Builder<TDocument>()).build());
+            return this.transport.performRequest(request, endpoint, this.transportOptions);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public BusinessClient business() {
-        return new BusinessClient(this.transport, this.transportOptions);
+    public final BusinessSearchResponse businessSearch(
+            Function<BusinessSearchRequest.Builder, com.example.client.util.ObjectBuilder<BusinessSearchRequest>> fn)
+            throws IOException {
+        return businessSearch(fn.apply(new BusinessSearchRequest.Builder()).build());
+    }
+
+
+
+    public BusinessDetailsResponse businessDetails(BusinessDetailsRequest request)
+            throws IOException {
+
+        @SuppressWarnings("unchecked")
+        JsonEndpoint<BusinessDetailsRequest, BusinessDetailsResponse, ErrorResponse> endpoint =
+                (JsonEndpoint<BusinessDetailsRequest, BusinessDetailsResponse, ErrorResponse>) BusinessDetailsRequest._ENDPOINT;
+        try {
+            return this.transport.performRequest(request, endpoint, this.transportOptions);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public final BusinessDetailsResponse businessDetails(
+            Function<BusinessDetailsRequest.Builder, ObjectBuilder<BusinessDetailsRequest>> fn)
+            throws IOException {
+        return businessDetails(fn.apply(new BusinessDetailsRequest.Builder()).build());
     }
 }
-

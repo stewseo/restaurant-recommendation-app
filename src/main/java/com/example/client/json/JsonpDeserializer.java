@@ -29,16 +29,6 @@ public interface JsonpDeserializer<V> {
         return deserialize(parser, mapper, event);
     }
 
-    default V deserialize(JsonParser parser, co.elastic.clients.json.JsonpMapper mapper) {
-        JsonParser.Event event = parser.next();
-        // JSON null: return null unless the deserializer can handle it
-        if (event == JsonParser.Event.VALUE_NULL && !accepts(JsonParser.Event.VALUE_NULL)) {
-            return null;
-        }
-        JsonpUtils.ensureAccepts(this, parser, event);
-        return null;
-    }
-
 
     V deserialize(JsonParser parser, JsonpMapper mapper, JsonParser.Event event);
 

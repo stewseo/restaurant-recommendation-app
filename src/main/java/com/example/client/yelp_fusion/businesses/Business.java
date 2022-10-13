@@ -1,15 +1,23 @@
 package com.example.client.yelp_fusion.businesses;
 
+
+import com.example.client.json.*;
+import com.example.client.util.*;
+import jakarta.json.stream.*;
+
 import java.util.*;
+import java.util.function.*;
 
-public class Business {
+@SuppressWarnings("unused")
+@JsonpDeserializable
+public class Business implements JsonpSerializable {
 
-    public Coordinates coordinates;
+    // ------------------------------------------------------- Fields
+    private final Coordinates coordinates;
 
-    public Location location; // The location of this business, including address, city, state, zip code and country.
+    private final Location location; // The location of this business, including address, city, state, zip code and country.
 
-    // optional
-    public String
+    private final String
             display_phone, // Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country.
             id, // Unique Yelp ID of this business.
             alias, // Unique Yelp alias of this business. Can contain unicode characters.
@@ -19,296 +27,452 @@ public class Business {
 
             phone, // Phone number of the business.
             price, // Price level of the business. Value is one of $, $$, $$$ and $$$$.
-            rating,  // Rating for this business (value ranges from 1, 1.5, ... 4.5, 5).
             url; // URL for business page on Yelp.
-
-    public int
+    private final int
             limit,
-
             offset,
             open_at,
             review_count,
             distance;
-
-    public double
+    private final double
             latitude,
-            longitude;
-    public boolean
+            longitude,
+            rating;
+    private final boolean
             is_claim,
             is_closed,
             open_now;
-    public Object[]
+    private final Object[]
             transactions,
             categories, // A list of category title and alias pairs associated with this business.
             photos,
             special_hours,
             attributes;
 
-    public Hours[] hours;
-    public Object messaging; // Contains Business Messaging / Request a Quote information for this business.
+    private final Hours[] hours;
+    private final Object messaging; // Contains Business Messaging / Request a Quote information for this business.
                             // This field only appears in the response for businesses that have messaging enabled.
 
 
-    public Business(){}
 
-
-    public Hours[] getHours() {
-        return hours;
+    // --------------------------------------------------------  Constructor
+    private Business(Builder builder) {
+        this.location = builder.location;
+        this.alias = builder.alias;
+        this.attributes = builder.attributes;
+        this.display_phone = builder.display_phone;
+        this.id = builder.id;
+        this.categories = builder.categories;
+        this.coordinates = builder.coordinates;
+        this.hours = builder.hours;
+        this.image_url = builder.image_url;
+        this.is_claim = builder.is_claim;
+        this.is_closed = builder.is_closed;
+        this.latitude = builder.latitude;
+        this.longitude = builder.longitude;
+        this.messaging= builder.messaging;
+        this.name = builder.name;
+        this.offset = builder.offset;
+        this.open_at = builder.open_at;
+        this.open_now = builder.open_now;
+        this.phone = builder.phone;
+        this.photos = builder.photos;
+        this.price = builder.price;
+        this.url = builder.url;
+        this.rating = builder.rating;
+        this.review_count = builder.review_count;
+        this.special_hours = builder.special_hours;
+        this.transactions = builder.transactions;
+        this.distance = builder.distance;
+        this.limit = builder.limit;
     }
 
-    public void setHours(Hours[] hours) {
-        this.hours = hours;
+    public static Business of(Function<Business.Builder, ObjectBuilder<Business>> fn) {
+        return fn.apply(new Business.Builder()).build();
     }
 
-    public int getOffset() {
-        return offset;
-    }
-
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    public Coordinates getCoordinates() {
+    public final Coordinates getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public Location getLocation() {
+    public final Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getDisplay_phone() {
+    public final String getDisplay_phone() {
         return display_phone;
     }
 
-    public void setDisplay_phone(String display_phone) {
-        this.display_phone = display_phone;
-    }
-
-    public String getId() {
+    public final String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAlias() {
+    public final String getAlias() {
         return alias;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public String getImage_url() {
+    public final String getImage_url() {
         return image_url;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
+    public final String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPrice() {
+    public final String getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getRating() {
+    public final Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getUrl() {
+    public final String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public int getLimit() {
+    public final int getLimit() {
         return limit;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public final int getOffset() {
+        return offset;
     }
 
-    public int getOpen_at() {
+    public final int getOpen_at() {
         return open_at;
     }
 
-    public void setOpen_at(int open_at) {
-        this.open_at = open_at;
-    }
-
-    public int getReview_count() {
+    public final int getReview_count() {
         return review_count;
     }
 
-    public void setReview_count(int review_count) {
-        this.review_count = review_count;
-    }
-
-    public int getDistance() {
+    public final int getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
-    public double getLatitude() {
+    public final double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
+    public final double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public boolean isIs_claim() {
+    public final boolean isIs_claim() {
         return is_claim;
     }
 
-    public void setIs_claim(boolean is_claim) {
-        this.is_claim = is_claim;
-    }
-
-    public boolean isIs_closed() {
+    public final boolean isIs_closed() {
         return is_closed;
     }
 
-    public void setIs_closed(boolean is_closed) {
-        this.is_closed = is_closed;
-    }
-
-    public boolean isOpen_now() {
+    public final boolean isOpen_now() {
         return open_now;
     }
 
-    public void setOpen_now(boolean open_now) {
-        this.open_now = open_now;
-    }
-
-    public Object[] getTransactions() {
+    public final Object[] getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Object[] transactions) {
-        this.transactions = transactions;
-    }
-
-    public Object[] getCategories() {
+    public final Object[] getCategories() {
         return categories;
     }
 
-    public void setCategories(Object[] categories) {
-        this.categories = categories;
-    }
-
-    public Object[] getPhotos() {
+    public final Object[] getPhotos() {
         return photos;
     }
 
-    public void setPhotos(Object[] photos) {
-        this.photos = photos;
-    }
-
-    public Object[] getSpecial_hours() {
+    public final Object[] getSpecial_hours() {
         return special_hours;
     }
 
-    public void setSpecial_hours(Object[] special_hours) {
-        this.special_hours = special_hours;
-    }
-
-    public Object[] getAttributes() {
+    public final Object[] getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Object[] attributes) {
-        this.attributes = attributes;
+    public final Hours[] getHours() {
+        return hours;
     }
 
-    public Object getMessaging() {
+    public final Object getMessaging() {
         return messaging;
     }
 
-    public void setMessaging(Object messaging) {
-        this.messaging = messaging;
+    public void serialize(JsonGenerator generator, JsonpMapper mapper) {
+        generator.writeStartObject();
+        serializeInternal(generator, mapper);
+        generator.writeEnd();
+    }
+
+    protected void serializeInternal(JsonGenerator generator, JsonpMapper mapper) {
+
+        if (this.is_claim) {
+            generator.writeKey("is_claim");
+            generator.write(this.is_claim);
+
+        }
+        if (is_closed) {
+            generator.writeKey("is_closed");
+            generator.write(this.is_closed);
+        }
+        if (this.display_phone != null) {
+            generator.writeKey("display_phone");
+            generator.write(this.display_phone);
+
+        }
+        if (this.id != null) {
+            generator.writeKey("id");
+            generator.write(this.id);
+
+        }
+        if (this.alias != null) {
+            generator.writeKey("alias");
+            generator.write(this.alias);
+
+        }
+        if (this.image_url != null) {
+            generator.writeKey("image_url");
+            generator.write(this.image_url);
+
+        }
+        if (this.name != null) {
+            generator.writeKey("name");
+            generator.write(this.name);
+        }
+        if (this.phone != null) {
+            generator.writeKey("phone");
+            generator.write(this.phone);
+        }
+        if (this.offset != 0) {
+            generator.writeKey("offset");
+            generator.write(this.offset);
+        }
+        if (this.limit != 0) {
+            generator.writeKey("limit");
+            generator.write(this.limit);
+        }
+        if (this.url != null) {
+            generator.writeKey("url");
+            generator.write(this.url);
+        }
+        if (this.rating != 0) {
+            generator.writeKey("rating");
+            generator.write(this.rating);
+        }
+        if (this.open_at != 0) {
+            generator.writeKey("open_at");
+            generator.write(this.open_at);
+        }
+        if (this.price != null) {
+            generator.writeKey("price");
+            generator.write(this.price);
+        }
+        if (this.review_count != 0) {
+            generator.writeKey("review_count");
+            generator.write(this.review_count);
+        }
+        if (this.longitude != 0) {
+            generator.writeKey("longitude");
+            generator.write(this.longitude);
+        }
+        if (this.latitude != 0) {
+            generator.writeKey("latitude");
+            generator.write(this.latitude);
+        }
+        if (this.distance != 0) {
+            generator.writeKey("distance");
+            generator.write(this.distance);
+        }
     }
 
     @Override
     public String toString() {
-        return "Business{" +
-                "coordinates=" + coordinates +
-                ", location=" + location +
-                ", display_phone='" + display_phone + '\'' +
-                ", id='" + id + '\'' +
-                ", alias='" + alias + '\'' +
-                ", image_url='" + image_url + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", price='" + price + '\'' +
-                ", rating='" + rating + '\'' +
-                ", url='" + url + '\'' +
-                ", limit=" + limit +
-                ", open_at=" + open_at +
-                ", review_count=" + review_count +
-                ", distance=" + distance +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", is_claim=" + is_claim +
-                ", is_closed=" + is_closed +
-                ", open_now=" + open_now +
-                ", transactions=" + Arrays.toString(transactions) +
-                ", categories=" + Arrays.toString(categories) +
-                ", hours=" + Arrays.toString(hours) +
-                ", photos=" + Arrays.toString(photos) +
-                ", special_hours=" + Arrays.toString(special_hours) +
-                ", attributes=" + Arrays.toString(attributes) +
-                ", messaging=" + messaging +
-                '}';
+        return JsonpUtils.toString(this);
     }
 
+    // ----------------------------------------------------------------- Builder
+    public static class Builder extends WithJsonObjectBuilderBase<Builder> implements ObjectBuilder<Business> {
+        private String
+                display_phone, // Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country.
+                id, // Unique Yelp ID of this business.
+                alias, // Unique Yelp alias of this business. Can contain unicode characters.
+                image_url, // URL of photo for this business.
+                name, // name of business
+                phone, // Phone number of the business.
+                price, // Price level of the business. Value is one of $, $$, $$$ and $$$$.
+                url; // URL for business page on Yelp.;
+        private int
+                limit,
+                offset,
+                open_at,
+                review_count,
+                distance;
+        private double
+                latitude,
+                longitude,
+                rating;
+        private boolean
+                is_claim,
+                is_closed,
+                open_now;
+        private Object[]
+                transactions,
+                categories, // A list of category title and alias pairs associated with this business.
+                photos,
+                special_hours,
+                attributes;
+
+        private Coordinates coordinates;
+        private Location location; // The location of this business, including address, city, state, zip code and country.
+        private Hours[] hours;
+        private Object messaging; // Contains Business Messaging / Request a Quote information for this business.
+        // This field only appears in the response for businesses that have messaging enabled.
+
+        public final Business.Builder display_phone(String value) {
+            this.display_phone = value;
+            return this;
+        }
+        public final Business.Builder id(String value) {
+            this.id = value;
+            return this;
+        }
+        public final Business.Builder price(String value) {
+            this.price = value;
+            return this;
+        }
+        public final Business.Builder phone(String value) {
+            this.phone = value;
+            return this;
+        }
+        public final Business.Builder name(String value) {
+            this.name = value;
+            return this;
+        }
+        public final Business.Builder image_url(String value) {
+            this.image_url = value;
+            return this;
+        }
+        public final Business.Builder alias(String value) {
+            this.alias = value;
+            return this;
+        }
+        public final Business.Builder url(String value) {
+            this.url = value;
+            return this;
+        }
+        public final Business.Builder rating(Double value) {
+            this.rating = value;
+            return this;
+        }
+        public final Business.Builder messaging(Object value) {
+            this.messaging = value;
+            return this;
+        }
+        public final Business.Builder hours(Hours[] value) {
+            this.hours = value;
+            return this;
+        }
+        public final Business.Builder location(Location value) {
+            this.location = value;
+            return this;
+        }
+        public final Business.Builder coordinates(Coordinates value) {
+            this.coordinates = value;
+            return this;
+        }
+        public final Business.Builder attributes(Object[] value) {
+            this.special_hours = value;
+            return this;
+        }
+        public final Business.Builder categories(Object[] value) {
+            this.categories = value;
+            return this;
+        }
+        public final Business.Builder transactions(Object[] value) {
+            this.transactions = value;
+            return this;
+        }
+        public final Business.Builder special_hours(Object[] value) {
+            this.special_hours = value;
+            return this;
+        }
+
+        public final Business.Builder limit(int value) {
+            this.limit = value;
+            return this;
+        }
+        public final Business.Builder review_count(int value) {
+            this.review_count = value;
+            return this;
+        }
+        public final Business.Builder open_at(int value) {
+            this.open_at = value;
+            return this;
+        }
+        public final Business.Builder offset(int value) {
+            this.offset = value;
+            return this;
+        }
+        public final Business.Builder distance(int value) {
+            this.distance = value;
+            return this;
+        }
+        public final Business.Builder longitude(double value) {
+            this.longitude = value;
+            return this;
+        }
+        public final Business.Builder latitude(double value) {
+            this.latitude = value;
+            return this;
+        }
+        public final Business.Builder is_closed(boolean value) {
+            this.is_closed = value;
+            return this;
+        }
+        public final Business.Builder is_claim(boolean value) {
+            this.is_claim = value;
+            return this;
+        }
+
+        @Override
+        protected Business.Builder self() {
+            return this;
+        }
+
+        public Business build() {
+            _checkSingleUse();
+
+            return new Business(this);
+        }
+    }
+
+
+    public static final JsonpDeserializer<Business> _DESERIALIZER = ObjectBuilderDeserializer.lazy(Business.Builder::new,
+            Business::setUpBusinessDeserializer);
+
+    protected static void setUpBusinessDeserializer(ObjectDeserializer<Business.Builder> op) {
+
+        op.add(Business.Builder::id, JsonpDeserializer.stringDeserializer(), "id");
+        op.add(Business.Builder::display_phone,  JsonpDeserializer.stringDeserializer(), "display_phone");
+        op.add(Business.Builder::alias, JsonpDeserializer.stringDeserializer(), "alias");
+        op.add(Business.Builder::url, JsonpDeserializer.stringDeserializer(), "url");
+        op.add(Business.Builder::alias, JsonpDeserializer.stringDeserializer(), "alias");
+        op.add(Business.Builder::image_url, JsonpDeserializer.stringDeserializer(), "image_url");
+        op.add(Business.Builder::price, JsonpDeserializer.stringDeserializer(), "price");
+        op.add(Business.Builder::phone, JsonpDeserializer.stringDeserializer(), "phone");
+        op.add(Business.Builder::latitude, JsonpDeserializer.doubleDeserializer(), "latitude");
+        op.add(Business.Builder::longitude, JsonpDeserializer.doubleDeserializer(), "longitude");
+        op.add(Business.Builder::limit, JsonpDeserializer.integerDeserializer(), "limit");
+        op.add(Business.Builder::offset, JsonpDeserializer.integerDeserializer(), "offset");
+        op.add(Business.Builder::rating, JsonpDeserializer.doubleDeserializer(), "rating");
+        op.add(Business.Builder::price, JsonpDeserializer.stringDeserializer(), "price");
+
+    }
     static class Hours {
         public Object[] open;
         public String hours_type;

@@ -1,0 +1,3627 @@
+{
+  "took": 10,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 328,
+      "relation": "eq"
+    },
+    "max_score": 2.9966977,
+    "hits": [
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-burgers-ClL-QEflsWyrUA9ybj5vSg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ClL-QEflsWyrUA9ybj5vSg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-Y43L1WlyrpDWVwAj6NF-VA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Y43L1WlyrpDWVwAj6NF-VA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-6LfqlrbkpjZt83bEMZWq7A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "6LfqlrbkpjZt83bEMZWq7A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-basque-eG5VcB6XuSp-C1mAggD_Cg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "eG5VcB6XuSp-C1mAggD_Cg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-bbq-c6aMZg8kxlNC5fQ49ZcBQA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "c6aMZg8kxlNC5fQ49ZcBQA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-V5djfyrGoC65ZAmixE0dWg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "V5djfyrGoC65ZAmixE0dWg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-UF0x4DBvHfHK4dgQC8Vs3w",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "UF0x4DBvHfHK4dgQC8Vs3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-ANUZQxjO3ZWH1UdA7DRKBw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ANUZQxjO3ZWH1UdA7DRKBw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-f1Abz4dxfkkgh7UVP3RYHw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f1Abz4dxfkkgh7UVP3RYHw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-british-_RkG6ao09nTYczVfLG-Zrw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_RkG6ao09nTYczVfLG-Zrw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-delis-H3LVKSUbbUFqlTuxDKerAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "H3LVKSUbbUFqlTuxDKerAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-9yM20-7fj4LMrOO30nqkBw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9yM20-7fj4LMrOO30nqkBw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-eG5VcB6XuSp-C1mAggD_Cg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "eG5VcB6XuSp-C1mAggD_Cg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-SG2-29u7Uw1VR9e1xCAT5w",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "SG2-29u7Uw1VR9e1xCAT5w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-_ZC_Zvq5DqaPVXIqFzPkBQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_ZC_Zvq5DqaPVXIqFzPkBQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-gastropubs-4-pWX0F9mi_VlN1IAxweSQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4-pWX0F9mi_VlN1IAxweSQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-georgian-ZzKhW3E6XcwSHfHbFnfZ9g",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ZzKhW3E6XcwSHfHbFnfZ9g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-9f3lRfxFZa2FLejsadqoTg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9f3lRfxFZa2FLejsadqoTg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-iberian-zig5nN3bR8zgq-oz8hoLzA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zig5nN3bR8zgq-oz8hoLzA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-1toCkhuD0b57iFotMu3XEQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "1toCkhuD0b57iFotMu3XEQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-W97siDhQbWIVa0MEpcq9iA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "W97siDhQbWIVa0MEpcq9iA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-ZtFGuS4Z3rZ-J3Abw4V-oA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ZtFGuS4Z3rZ-J3Abw4V-oA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-HVJdo4f_6MxkM_1aCAK3NA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "HVJdo4f_6MxkM_1aCAK3NA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-rbOIWC-Wx5qIHgFebtAQqA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rbOIWC-Wx5qIHgFebtAQqA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-scOW_lrWRh0dPb5aFS8pmg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "scOW_lrWRh0dPb5aFS8pmg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-rj3zIk7t9ySGMxVGGTA8gg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rj3zIk7t9ySGMxVGGTA8gg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-YqvoyaNvtoC8N5dA8pD2JA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "YqvoyaNvtoC8N5dA8pD2JA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-RRcRzlyM3YL10XubBNKHFQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "RRcRzlyM3YL10XubBNKHFQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-xZIar7Wc8YCUiAz7S_0Gdg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xZIar7Wc8YCUiAz7S_0Gdg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-v1aUahwzM8CTeLA0O7J8ww",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "v1aUahwzM8CTeLA0O7J8ww"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-yQ5_zQbdfiexfvDe90__KQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "yQ5_zQbdfiexfvDe90__KQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-qvGED1YA1lt_wrbP92RVZA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qvGED1YA1lt_wrbP92RVZA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-6TL8udi-vy_5rH-wikMSoA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "6TL8udi-vy_5rH-wikMSoA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-FjH84fORpMlG0kQWEBKgaw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "FjH84fORpMlG0kQWEBKgaw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-c6aMZg8kxlNC5fQ49ZcBQA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "c6aMZg8kxlNC5fQ49ZcBQA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-czbXSfezN_DK8Ws0vcFqhg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "czbXSfezN_DK8Ws0vcFqhg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-f_xCKwGnx5FY0yVWJjxW4A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f_xCKwGnx5FY0yVWJjxW4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-BLcV0Z4nzKLkCjneKrTclA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "BLcV0Z4nzKLkCjneKrTclA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-NBdAqG4Kdqy0BrCrWa0xUg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "NBdAqG4Kdqy0BrCrWa0xUg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-7iiWJyo_N5rGz4agqe9EbA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7iiWJyo_N5rGz4agqe9EbA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-u2qFhVAiH3kQIGhEW6PmMA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u2qFhVAiH3kQIGhEW6PmMA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-latin-Qbr2JG96K6d31NqqAUxf9g",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Qbr2JG96K6d31NqqAUxf9g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-PsY5DMHxa5iNX_nX0T-qPA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "PsY5DMHxa5iNX_nX0T-qPA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-xdAgbLBQcffIxI8mYgjT1Q",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xdAgbLBQcffIxI8mYgjT1Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-mpuhp2b83qNAKcE19-dSjQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mpuhp2b83qNAKcE19-dSjQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-moroccan-gXXBZQ4ajiKpzSG_gbNQaw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gXXBZQ4ajiKpzSG_gbNQaw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-ttarnopezxmp2ROB1N2PaA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ttarnopezxmp2ROB1N2PaA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-QZQGRJZ4bZCmNoXjs3z1XQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "QZQGRJZ4bZCmNoXjs3z1XQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-Xdx2_n3nk9Td_aSe7E5ARQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Xdx2_n3nk9Td_aSe7E5ARQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-x24zCTZhA-LiVgYMWs6Wqw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "x24zCTZhA-LiVgYMWs6Wqw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-1KbZaqEdZkn6LHlA55M64g",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "1KbZaqEdZkn6LHlA55M64g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-8aqzfjnuT5LhuveW3e6CoA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "8aqzfjnuT5LhuveW3e6CoA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-Rjnb7WKAS_TbU4ymr-8V8Q",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Rjnb7WKAS_TbU4ymr-8V8Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-bvqcwnYisSiyvaRvobBJLA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "bvqcwnYisSiyvaRvobBJLA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-KkAVX3Wb7E3lP5F_f_8pXg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "KkAVX3Wb7E3lP5F_f_8pXg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-7Q3QIZz5UX-JSTSKKkRqDg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7Q3QIZz5UX-JSTSKKkRqDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-QhXJqmPoR6jyCf44ck7Sxg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "QhXJqmPoR6jyCf44ck7Sxg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-bHSeqavEfBI1ehg6Oyn8uA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "bHSeqavEfBI1ehg6Oyn8uA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-dglMkHYfCycYX3MX92oFxg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dglMkHYfCycYX3MX92oFxg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-iXjbvsGyhGttLRaV6shP1g",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "iXjbvsGyhGttLRaV6shP1g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-dhTrfvdlpFE33USafJ3cjQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dhTrfvdlpFE33USafJ3cjQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-5FEdwp5a285TrIW2hmKtWA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5FEdwp5a285TrIW2hmKtWA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-Tyn-UqOTpVHtZAgrB0lWyQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Tyn-UqOTpVHtZAgrB0lWyQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-noodles-dY0Mc_PHH6nLENvWmVtwxQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dY0Mc_PHH6nLENvWmVtwxQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-0wqsFH-Z_Chg3O6N-d0PAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0wqsFH-Z_Chg3O6N-d0PAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-rj3zIk7t9ySGMxVGGTA8gg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rj3zIk7t9ySGMxVGGTA8gg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-portuguese-J-mZZ_Yrng_XhPtx5x403Q",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "J-mZZ_Yrng_XhPtx5x403Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-salad-u2qFhVAiH3kQIGhEW6PmMA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u2qFhVAiH3kQIGhEW6PmMA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-zkVm2lMNdKWfbE4Uo1tMeA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zkVm2lMNdKWfbE4Uo1tMeA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-1toCkhuD0b57iFotMu3XEQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "1toCkhuD0b57iFotMu3XEQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-kWrVV4mS-SLy-Ph_DeJSAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "kWrVV4mS-SLy-Ph_DeJSAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-7Q3QIZz5UX-JSTSKKkRqDg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7Q3QIZz5UX-JSTSKKkRqDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-M4hrvI7_NwJ9igOgQBsCiw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "M4hrvI7_NwJ9igOgQBsCiw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-z9CN58fSrA46ggyb6OnCnQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "z9CN58fSrA46ggyb6OnCnQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-BahDyzswTsdaSa8jnOaK-A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "BahDyzswTsdaSa8jnOaK-A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-soup-dY0Mc_PHH6nLENvWmVtwxQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dY0Mc_PHH6nLENvWmVtwxQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-spanish-zkVm2lMNdKWfbE4Uo1tMeA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zkVm2lMNdKWfbE4Uo1tMeA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-spanish-xv8dq_jBNfQkHeX2wJGlAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xv8dq_jBNfQkHeX2wJGlAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-spanish-2H4HtGBwT8KRfUuWmE3uAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2H4HtGBwT8KRfUuWmE3uAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-srilankan-do1T-8_w5HaLHBgMYLw2Xw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "do1T-8_w5HaLHBgMYLw2Xw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-wEpiKz--Z2b1q_FSCCNiow",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "wEpiKz--Z2b1q_FSCCNiow"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-yNU6sPRWzVl0ngCRqat1TQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "yNU6sPRWzVl0ngCRqat1TQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-9-TPmOn6AbW2fLMiugQCiA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9-TPmOn6AbW2fLMiugQCiA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-SEuHSFDOoux4MqusTQPNMw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "SEuHSFDOoux4MqusTQPNMw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-Q8cYhJGa9pwlu63f-KMV-A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Q8cYhJGa9pwlu63f-KMV-A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-qvGED1YA1lt_wrbP92RVZA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qvGED1YA1lt_wrbP92RVZA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-IRD_9JUjR-06zztisuTdAA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "IRD_9JUjR-06zztisuTdAA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-4GAsfSjaB1XewzS3TKOtTg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4GAsfSjaB1XewzS3TKOtTg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-czbXSfezN_DK8Ws0vcFqhg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "czbXSfezN_DK8Ws0vcFqhg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-PNxwbgtfdpldd3CyJFIw3w",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "PNxwbgtfdpldd3CyJFIw3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-f_xCKwGnx5FY0yVWJjxW4A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f_xCKwGnx5FY0yVWJjxW4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-xv8dq_jBNfQkHeX2wJGlAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xv8dq_jBNfQkHeX2wJGlAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-2H4HtGBwT8KRfUuWmE3uAg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2H4HtGBwT8KRfUuWmE3uAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-3smNIoQZ7wc-_rgcNBHy4A",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3smNIoQZ7wc-_rgcNBHy4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-thai-IOQE1WdjzYs4PL5YSOh6xg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "IOQE1WdjzYs4PL5YSOh6xg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-oT08T3Vpn1I7jDmrBBRMTw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oT08T3Vpn1I7jDmrBBRMTw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-ykvr3ib1gHQHI4tznSn8iA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ykvr3ib1gHQHI4tznSn8iA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-9Irn4OeTU8mj_BQ2HFQaww",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9Irn4OeTU8mj_BQ2HFQaww"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-3NZbb5yjscOLpMKfjYxrYA",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3NZbb5yjscOLpMKfjYxrYA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-turkish-Wcd6K6APT-yWVCSi4oq-kg",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Wcd6K6APT-yWVCSi4oq-kg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-turkish-0T1Kc6tUWaG3cPnyiD40Hw",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0T1Kc6tUWaG3cPnyiD40Hw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vietnamese-VjXSJdgy7wnlbMqwRWEgqQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "VjXSJdgy7wnlbMqwRWEgqQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vietnamese-z9CN58fSrA46ggyb6OnCnQ",
+        "_score": 2.9966977,
+        "_source": {},
+        "fields": {
+          "id": [
+            "z9CN58fSrA46ggyb6OnCnQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-buffets-Y43L1WlyrpDWVwAj6NF-VA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Y43L1WlyrpDWVwAj6NF-VA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-cheesesteaks-WvSdDLdeNRcgNH7kgAIEsQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "WvSdDLdeNRcgNH7kgAIEsQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-tWjWAyRbodjg3YPuvdzVdg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "tWjWAyRbodjg3YPuvdzVdg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-OoNhXN0PzwIyrqG9dF6t2Q",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "OoNhXN0PzwIyrqG9dF6t2Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-3oiMUFH3mqaCqCLJuknILQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3oiMUFH3mqaCqCLJuknILQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-gXY-VdMpB3Fh4WXyulc9kQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gXY-VdMpB3Fh4WXyulc9kQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-3oiMUFH3mqaCqCLJuknILQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3oiMUFH3mqaCqCLJuknILQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-VjXSJdgy7wnlbMqwRWEgqQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "VjXSJdgy7wnlbMqwRWEgqQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-c6aMZg8kxlNC5fQ49ZcBQA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "c6aMZg8kxlNC5fQ49ZcBQA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-Z3gYoBTTXniIBOLU_6haMQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Z3gYoBTTXniIBOLU_6haMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-do1T-8_w5HaLHBgMYLw2Xw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "do1T-8_w5HaLHBgMYLw2Xw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-458NXhlB0ZtEaJUPI3PPcA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "458NXhlB0ZtEaJUPI3PPcA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-rL4lT_POv49OBik57uCsXw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rL4lT_POv49OBik57uCsXw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-asianfusion-BahDyzswTsdaSa8jnOaK-A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "BahDyzswTsdaSa8jnOaK-A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-bbq-Ncdi3ruiudpD06_a6s3xqg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Ncdi3ruiudpD06_a6s3xqg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-bbq-pgJUJIRqxn4pF9BTo1wChw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "pgJUJIRqxn4pF9BTo1wChw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-brasseries-Kvwf1slwuEOVwxoaElWf0A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Kvwf1slwuEOVwxoaElWf0A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-brasseries-7lmzuo16-guDouA-6nj6eg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7lmzuo16-guDouA-6nj6eg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-delis-sPUkCbbBBuEa5bSQE3BR-A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "sPUkCbbBBuEa5bSQE3BR-A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-delis-n-6o-ylamawkWq_fvA2lZA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "n-6o-ylamawkWq_fvA2lZA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-dinnertheater-XnXzf4Co2QVPxocnD0-Tbw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "XnXzf4Co2QVPxocnD0-Tbw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-tpuKzQh5d6veDB-M9qU6Fw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "tpuKzQh5d6veDB-M9qU6Fw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-9e2UrZrwbWsTyN3hWyS6Ig",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9e2UrZrwbWsTyN3hWyS6Ig"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-L5vSeC_sa3TUQW_lticqyA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "L5vSeC_sa3TUQW_lticqyA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-353bun0151fMbR3ut2d-nw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "353bun0151fMbR3ut2d-nw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-WWekv34vniav2trhbb2DaA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "WWekv34vniav2trhbb2DaA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-xO2V0wkXP3Na-mWhLo1ZxQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xO2V0wkXP3Na-mWhLo1ZxQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-mNFQuOA_hhrqmJeHg-AzKA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mNFQuOA_hhrqmJeHg-AzKA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-QINiEjMRGA7pKfvhPQtfBg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "QINiEjMRGA7pKfvhPQtfBg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-ohWlEV89ljnbDXAHJM6_GQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ohWlEV89ljnbDXAHJM6_GQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-gsf5yf5HS3h8Z8MHpJ4t3w",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gsf5yf5HS3h8Z8MHpJ4t3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-greek-PsY5DMHxa5iNX_nX0T-qPA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "PsY5DMHxa5iNX_nX0T-qPA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-LpzREKhZ2dGKiIUnxX03Gg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "LpzREKhZ2dGKiIUnxX03Gg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-Z3gYoBTTXniIBOLU_6haMQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Z3gYoBTTXniIBOLU_6haMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-xErl0-LbQO9n-5e6ZQQ-Uw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xErl0-LbQO9n-5e6ZQQ-Uw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-dTWMVRcMVC4zynbFQC7A2A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dTWMVRcMVC4zynbFQC7A2A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-1FZM1wOnjMYg0KPSD9qTjg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "1FZM1wOnjMYg0KPSD9qTjg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-e2aA95s3lbjHu4jza-l-eA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "e2aA95s3lbjHu4jza-l-eA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-qs7FgJ-UXgpbAMass0Oojg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qs7FgJ-UXgpbAMass0Oojg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-oqsu3pKpgRMGHj9QItsx0A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oqsu3pKpgRMGHj9QItsx0A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-P8MAfhqk1DTzyLiWZ-uPIA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "P8MAfhqk1DTzyLiWZ-uPIA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-e3WDNQMYpLdMEmM2UV13rA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "e3WDNQMYpLdMEmM2UV13rA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-IRD_9JUjR-06zztisuTdAA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "IRD_9JUjR-06zztisuTdAA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-NH1tpRk-TypznNFACTTDuw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "NH1tpRk-TypznNFACTTDuw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-2V36BGuNFyrnzYIdsvsehw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2V36BGuNFyrnzYIdsvsehw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-5ugE5Qh_N90PfTzmU_msag",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5ugE5Qh_N90PfTzmU_msag"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-9jciOppXj7bEOtLyL3I2HQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9jciOppXj7bEOtLyL3I2HQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-Qg212xDjeaClPSI9Rlfh-g",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Qg212xDjeaClPSI9Rlfh-g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-korean-Ncdi3ruiudpD06_a6s3xqg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Ncdi3ruiudpD06_a6s3xqg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-korean-pgJUJIRqxn4pF9BTo1wChw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "pgJUJIRqxn4pF9BTo1wChw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mideastern-2KpVYd8WcRj11xEpryOL6Q",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2KpVYd8WcRj11xEpryOL6Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-i_OkjtKWm02Upc-PlcUrrg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "i_OkjtKWm02Upc-PlcUrrg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-KqGOvG1m5jgDL-pKGXEoNQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "KqGOvG1m5jgDL-pKGXEoNQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-W97siDhQbWIVa0MEpcq9iA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "W97siDhQbWIVa0MEpcq9iA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-p6bLw7PS63Kbge_wyIOP8w",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "p6bLw7PS63Kbge_wyIOP8w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-Tttm1r5Dw1sRMCfc3EQWPw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Tttm1r5Dw1sRMCfc3EQWPw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-M4hrvI7_NwJ9igOgQBsCiw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "M4hrvI7_NwJ9igOgQBsCiw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican--xQAb45T80lyMIjmUYHs6A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "-xQAb45T80lyMIjmUYHs6A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-_RkG6ao09nTYczVfLG-Zrw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_RkG6ao09nTYczVfLG-Zrw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-gwuCZV_4nIwevDenicG8tw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gwuCZV_4nIwevDenicG8tw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-zvIbFkcZwqhTuDF7t7eQsQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zvIbFkcZwqhTuDF7t7eQsQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-3smNIoQZ7wc-_rgcNBHy4A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3smNIoQZ7wc-_rgcNBHy4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-Qg212xDjeaClPSI9Rlfh-g",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Qg212xDjeaClPSI9Rlfh-g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-UF0x4DBvHfHK4dgQC8Vs3w",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "UF0x4DBvHfHK4dgQC8Vs3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-aNfG4yqETNKXNQgc2qTToA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "aNfG4yqETNKXNQgc2qTToA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-ryyWzRqe2uvkmx0rz72SCQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ryyWzRqe2uvkmx0rz72SCQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-iXjbvsGyhGttLRaV6shP1g",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "iXjbvsGyhGttLRaV6shP1g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-e3WDNQMYpLdMEmM2UV13rA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "e3WDNQMYpLdMEmM2UV13rA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-popuprestaurants-0T1Kc6tUWaG3cPnyiD40Hw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0T1Kc6tUWaG3cPnyiD40Hw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-popuprestaurants-70s4-8eBKEGkY7gqB0Q33A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "70s4-8eBKEGkY7gqB0Q33A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-raw_food-7Q3QIZz5UX-JSTSKKkRqDg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7Q3QIZz5UX-JSTSKKkRqDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sandwiches-_X3OobCjbcs3S_pnql_PsA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_X3OobCjbcs3S_pnql_PsA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sandwiches-WvSdDLdeNRcgNH7kgAIEsQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "WvSdDLdeNRcgNH7kgAIEsQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-x24zCTZhA-LiVgYMWs6Wqw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "x24zCTZhA-LiVgYMWs6Wqw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-eCRpZzBx5NNHVncFzRwcmg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "eCRpZzBx5NNHVncFzRwcmg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-VjXSJdgy7wnlbMqwRWEgqQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "VjXSJdgy7wnlbMqwRWEgqQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-jqEpBbf_qNfWuz_GBkwCjw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "jqEpBbf_qNfWuz_GBkwCjw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-9e2UrZrwbWsTyN3hWyS6Ig",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9e2UrZrwbWsTyN3hWyS6Ig"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-GjIO1jUDyaRwV0nS7WfQ7Q",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "GjIO1jUDyaRwV0nS7WfQ7Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-CTE5lnXUYp4xidmh35knNg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "CTE5lnXUYp4xidmh35knNg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-WxxE5kE8omgQhJE8sWIvmA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "WxxE5kE8omgQhJE8sWIvmA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-P8MAfhqk1DTzyLiWZ-uPIA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "P8MAfhqk1DTzyLiWZ-uPIA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-9-TPmOn6AbW2fLMiugQCiA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9-TPmOn6AbW2fLMiugQCiA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-RE_lzglBQ17C7c97HVKEkg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "RE_lzglBQ17C7c97HVKEkg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-DeGdhZKXoTnyyFc8GC2BHg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "DeGdhZKXoTnyyFc8GC2BHg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-gXY-VdMpB3Fh4WXyulc9kQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gXY-VdMpB3Fh4WXyulc9kQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-2H4HtGBwT8KRfUuWmE3uAg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2H4HtGBwT8KRfUuWmE3uAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-9jciOppXj7bEOtLyL3I2HQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9jciOppXj7bEOtLyL3I2HQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-EMeAddngUQSn3vG4wX7LeQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "EMeAddngUQSn3vG4wX7LeQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-rae5BYOri8Def-VVYZzpSg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rae5BYOri8Def-VVYZzpSg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-spanish-GjIO1jUDyaRwV0nS7WfQ7Q",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "GjIO1jUDyaRwV0nS7WfQ7Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-oT08T3Vpn1I7jDmrBBRMTw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oT08T3Vpn1I7jDmrBBRMTw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-PNxwbgtfdpldd3CyJFIw3w",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "PNxwbgtfdpldd3CyJFIw3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-hf8PN964j-XRe13Wu0UQDg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "hf8PN964j-XRe13Wu0UQDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-afBjDUDJ29UEz96uZD27mA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "afBjDUDJ29UEz96uZD27mA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-2V36BGuNFyrnzYIdsvsehw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2V36BGuNFyrnzYIdsvsehw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-oi-jTQzuKRG_7q3u70LHDg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oi-jTQzuKRG_7q3u70LHDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-FkmficKyZxewFcG5H2FcNg",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "FkmficKyZxewFcG5H2FcNg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-wEpiKz--Z2b1q_FSCCNiow",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "wEpiKz--Z2b1q_FSCCNiow"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-mLAg6fPXuO2_QV-IEfGsYA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mLAg6fPXuO2_QV-IEfGsYA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-nn3rNXvy7pt9Tg62_RoPFQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "nn3rNXvy7pt9Tg62_RoPFQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-f1Abz4dxfkkgh7UVP3RYHw",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f1Abz4dxfkkgh7UVP3RYHw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vegan-ssI9ivccrDBT-RH_52fPBQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ssI9ivccrDBT-RH_52fPBQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vegan-XE6h7N3HZnVX0uLzET1ATA",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "XE6h7N3HZnVX0uLzET1ATA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vegetarian-ssI9ivccrDBT-RH_52fPBQ",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ssI9ivccrDBT-RH_52fPBQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vietnamese-BahDyzswTsdaSa8jnOaK-A",
+        "_score": 2.9796407,
+        "_source": {},
+        "fields": {
+          "id": [
+            "BahDyzswTsdaSa8jnOaK-A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-bbq-OA0z9GHU34MDxCSwqUOdRQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "OA0z9GHU34MDxCSwqUOdRQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-bbq-8bJr4G9QtbJ_tmEbVX6X4A",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "8bJr4G9QtbJ_tmEbVX6X4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-OA0z9GHU34MDxCSwqUOdRQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "OA0z9GHU34MDxCSwqUOdRQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-n6L5VIGunR51-D55C-eYeQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "n6L5VIGunR51-D55C-eYeQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-c0WpyZFR3EoEBKcoY2LZ3Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "c0WpyZFR3EoEBKcoY2LZ3Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-XjViuoOVtkQQtPfqdaIHVA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "XjViuoOVtkQQtPfqdaIHVA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-dglMkHYfCycYX3MX92oFxg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dglMkHYfCycYX3MX92oFxg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-f0c44sTsuLDmJO7tPCJ-tQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f0c44sTsuLDmJO7tPCJ-tQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-5FEdwp5a285TrIW2hmKtWA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5FEdwp5a285TrIW2hmKtWA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-4-pWX0F9mi_VlN1IAxweSQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4-pWX0F9mi_VlN1IAxweSQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-4qm1k0WytiIJZ3WO4lyPMQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4qm1k0WytiIJZ3WO4lyPMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-qPL6FZ8ckmzH5Dw1XSiq7w",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qPL6FZ8ckmzH5Dw1XSiq7w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-breakfast_brunch-aNfG4yqETNKXNQgc2qTToA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "aNfG4yqETNKXNQgc2qTToA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-LpzREKhZ2dGKiIUnxX03Gg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "LpzREKhZ2dGKiIUnxX03Gg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-chinese-SAFRM460dH7LHqYVAdoWgA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "SAFRM460dH7LHqYVAdoWgA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-comfortfood-rxY7canIJeXtICb6lprUcQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rxY7canIJeXtICb6lprUcQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-delis-dyFA3mioZBBRO2B_VP7IJg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dyFA3mioZBBRO2B_VP7IJg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-diners-c0WpyZFR3EoEBKcoY2LZ3Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "c0WpyZFR3EoEBKcoY2LZ3Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-filipino-u2KkG0ucvooOdwgIgZPSlA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u2KkG0ucvooOdwgIgZPSlA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-fondue-Rx1jsWM0Ja8DIBTJhL0hNQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Rx1jsWM0Ja8DIBTJhL0hNQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-mfD5wlWS6tY92FJHDcBwJA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mfD5wlWS6tY92FJHDcBwJA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-oqsu3pKpgRMGHj9QItsx0A",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oqsu3pKpgRMGHj9QItsx0A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-gwuCZV_4nIwevDenicG8tw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gwuCZV_4nIwevDenicG8tw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-xZIar7Wc8YCUiAz7S_0Gdg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xZIar7Wc8YCUiAz7S_0Gdg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-french-13mL2ubsel9-BB4oxa6MBw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "13mL2ubsel9-BB4oxa6MBw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-gluten_free-ssI9ivccrDBT-RH_52fPBQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ssI9ivccrDBT-RH_52fPBQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-greek-Wcd6K6APT-yWVCSi4oq-kg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Wcd6K6APT-yWVCSi4oq-kg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-guamanian-OA0z9GHU34MDxCSwqUOdRQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "OA0z9GHU34MDxCSwqUOdRQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-halal-2KpVYd8WcRj11xEpryOL6Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "2KpVYd8WcRj11xEpryOL6Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-3oiMUFH3mqaCqCLJuknILQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "3oiMUFH3mqaCqCLJuknILQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-FjH84fORpMlG0kQWEBKgaw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "FjH84fORpMlG0kQWEBKgaw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-Y43L1WlyrpDWVwAj6NF-VA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Y43L1WlyrpDWVwAj6NF-VA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-gXY-VdMpB3Fh4WXyulc9kQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "gXY-VdMpB3Fh4WXyulc9kQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-hotpot-5ugE5Qh_N90PfTzmU_msag",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5ugE5Qh_N90PfTzmU_msag"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-indpak-msn4HQum3OTOgJ7fXH-74Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "msn4HQum3OTOgJ7fXH-74Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-u1SfgyXufKvyFLbYZGGI_g",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u1SfgyXufKvyFLbYZGGI_g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-0wqsFH-Z_Chg3O6N-d0PAg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0wqsFH-Z_Chg3O6N-d0PAg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-ryyWzRqe2uvkmx0rz72SCQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ryyWzRqe2uvkmx0rz72SCQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-xdAgbLBQcffIxI8mYgjT1Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xdAgbLBQcffIxI8mYgjT1Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-ztL8KI0ed0snCiK88ZUfNw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ztL8KI0ed0snCiK88ZUfNw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-EziYeY5tc3CVRLPXF-_McA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "EziYeY5tc3CVRLPXF-_McA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-italian-VxAdoIGlwAl1285TcLFxUA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "VxAdoIGlwAl1285TcLFxUA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-d40PbnRah7AWH_dclw1h_Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "d40PbnRah7AWH_dclw1h_Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-4GAsfSjaB1XewzS3TKOtTg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4GAsfSjaB1XewzS3TKOtTg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-oi-jTQzuKRG_7q3u70LHDg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "oi-jTQzuKRG_7q3u70LHDg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-mLAg6fPXuO2_QV-IEfGsYA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mLAg6fPXuO2_QV-IEfGsYA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-PNxwbgtfdpldd3CyJFIw3w",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "PNxwbgtfdpldd3CyJFIw3w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-FkmficKyZxewFcG5H2FcNg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "FkmficKyZxewFcG5H2FcNg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-japanese-xErl0-LbQO9n-5e6ZQQ-Uw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xErl0-LbQO9n-5e6ZQQ-Uw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-korean-dY0Mc_PHH6nLENvWmVtwxQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dY0Mc_PHH6nLENvWmVtwxQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-latin-wEpiKz--Z2b1q_FSCCNiow",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "wEpiKz--Z2b1q_FSCCNiow"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-latin-eCRpZzBx5NNHVncFzRwcmg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "eCRpZzBx5NNHVncFzRwcmg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-latin-vsiJDU-0_cdYrf1Otawtbw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "vsiJDU-0_cdYrf1Otawtbw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-Wcd6K6APT-yWVCSi4oq-kg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Wcd6K6APT-yWVCSi4oq-kg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-n6L5VIGunR51-D55C-eYeQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "n6L5VIGunR51-D55C-eYeQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mediterranean-5D--FJXQHdC3kZWYm2GREg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5D--FJXQHdC3kZWYm2GREg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mexican-H8VFFVTT0gLG70i2okdeOQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "H8VFFVTT0gLG70i2okdeOQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-mideastern-0T1Kc6tUWaG3cPnyiD40Hw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0T1Kc6tUWaG3cPnyiD40Hw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-modern_european-Rx1jsWM0Ja8DIBTJhL0hNQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Rx1jsWM0Ja8DIBTJhL0hNQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-zkVm2lMNdKWfbE4Uo1tMeA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zkVm2lMNdKWfbE4Uo1tMeA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-dMlsQsPU8Y_oiPYC5hHi2A",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dMlsQsPU8Y_oiPYC5hHi2A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-XZi5rsUdnXeDdhRdgsRVpw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "XZi5rsUdnXeDdhRdgsRVpw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-muX0aRES6vsp5DEuJaW_uw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "muX0aRES6vsp5DEuJaW_uw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-fgKSL3J20Mild1EXRdNQLg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "fgKSL3J20Mild1EXRdNQLg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-xdAgbLBQcffIxI8mYgjT1Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "xdAgbLBQcffIxI8mYgjT1Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-rbOIWC-Wx5qIHgFebtAQqA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rbOIWC-Wx5qIHgFebtAQqA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-jcFf2ZnJYL0nWCdIpqiA-g",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "jcFf2ZnJYL0nWCdIpqiA-g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-8bJr4G9QtbJ_tmEbVX6X4A",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "8bJr4G9QtbJ_tmEbVX6X4A"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-0Sh-XNVgGDRwiN4K3UEQJA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "0Sh-XNVgGDRwiN4K3UEQJA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-_D1Ev_zTZs5ijHkleK6C2w",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_D1Ev_zTZs5ijHkleK6C2w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-fX2Thpjym4Aik62zK2S2iw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "fX2Thpjym4Aik62zK2S2iw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-V5djfyrGoC65ZAmixE0dWg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "V5djfyrGoC65ZAmixE0dWg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-8wGfkHlQyS-tfZYwdQNuMQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "8wGfkHlQyS-tfZYwdQNuMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-4-pWX0F9mi_VlN1IAxweSQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4-pWX0F9mi_VlN1IAxweSQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-iBmV2ylAPbipMNf49yOIfw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "iBmV2ylAPbipMNf49yOIfw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-ohWlEV89ljnbDXAHJM6_GQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ohWlEV89ljnbDXAHJM6_GQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-zE3jcx4vIhtq-Qlv2UiQXQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zE3jcx4vIhtq-Qlv2UiQXQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-u-pywNLq06dgqR48kbFR9w",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u-pywNLq06dgqR48kbFR9w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-4qm1k0WytiIJZ3WO4lyPMQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "4qm1k0WytiIJZ3WO4lyPMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-newamerican-qxQ2OSOZgruD0q2QI2WeKA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qxQ2OSOZgruD0q2QI2WeKA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-peruvian-Qbr2JG96K6d31NqqAUxf9g",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Qbr2JG96K6d31NqqAUxf9g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-peruvian-eCRpZzBx5NNHVncFzRwcmg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "eCRpZzBx5NNHVncFzRwcmg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-peruvian-vsiJDU-0_cdYrf1Otawtbw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "vsiJDU-0_cdYrf1Otawtbw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-wuxvOs0wgew-aKt-K9yQVg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "wuxvOs0wgew-aKt-K9yQVg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-pizza-qs7FgJ-UXgpbAMass0Oojg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qs7FgJ-UXgpbAMass0Oojg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-salad-WWekv34vniav2trhbb2DaA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "WWekv34vniav2trhbb2DaA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sandwiches-THL1Np6xuxXQZrSdGA1aFg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "THL1Np6xuxXQZrSdGA1aFg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-XZi5rsUdnXeDdhRdgsRVpw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "XZi5rsUdnXeDdhRdgsRVpw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-Qbr2JG96K6d31NqqAUxf9g",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "Qbr2JG96K6d31NqqAUxf9g"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-6TL8udi-vy_5rH-wikMSoA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "6TL8udi-vy_5rH-wikMSoA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-KkAVX3Wb7E3lP5F_f_8pXg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "KkAVX3Wb7E3lP5F_f_8pXg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-dhTrfvdlpFE33USafJ3cjQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "dhTrfvdlpFE33USafJ3cjQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-yNU6sPRWzVl0ngCRqat1TQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "yNU6sPRWzVl0ngCRqat1TQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-afBjDUDJ29UEz96uZD27mA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "afBjDUDJ29UEz96uZD27mA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-EKLjQC4LH_WPFJPubtPfMQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "EKLjQC4LH_WPFJPubtPfMQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-SEuHSFDOoux4MqusTQPNMw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "SEuHSFDOoux4MqusTQPNMw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-seafood-OoNhXN0PzwIyrqG9dF6t2Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "OoNhXN0PzwIyrqG9dF6t2Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-soup-i_OkjtKWm02Upc-PlcUrrg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "i_OkjtKWm02Upc-PlcUrrg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-spanish-zK9-A4cIZwOUMpGBDz25DA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zK9-A4cIZwOUMpGBDz25DA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-steak-ClL-QEflsWyrUA9ybj5vSg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "ClL-QEflsWyrUA9ybj5vSg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-NH1tpRk-TypznNFACTTDuw",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "NH1tpRk-TypznNFACTTDuw"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-6TL8udi-vy_5rH-wikMSoA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "6TL8udi-vy_5rH-wikMSoA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-BLcV0Z4nzKLkCjneKrTclA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "BLcV0Z4nzKLkCjneKrTclA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-NBdAqG4Kdqy0BrCrWa0xUg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "NBdAqG4Kdqy0BrCrWa0xUg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-7iiWJyo_N5rGz4agqe9EbA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "7iiWJyo_N5rGz4agqe9EbA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-u2qFhVAiH3kQIGhEW6PmMA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "u2qFhVAiH3kQIGhEW6PmMA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-sushi-9jciOppXj7bEOtLyL3I2HQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "9jciOppXj7bEOtLyL3I2HQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapas-zK9-A4cIZwOUMpGBDz25DA",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "zK9-A4cIZwOUMpGBDz25DA"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapas-GjIO1jUDyaRwV0nS7WfQ7Q",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "GjIO1jUDyaRwV0nS7WfQ7Q"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-QZQGRJZ4bZCmNoXjs3z1XQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "QZQGRJZ4bZCmNoXjs3z1XQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-5D--FJXQHdC3kZWYm2GREg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "5D--FJXQHdC3kZWYm2GREg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-mpuhp2b83qNAKcE19-dSjQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "mpuhp2b83qNAKcE19-dSjQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-f0c44sTsuLDmJO7tPCJ-tQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "f0c44sTsuLDmJO7tPCJ-tQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tapasmallplates-FkmficKyZxewFcG5H2FcNg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "FkmficKyZxewFcG5H2FcNg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-rxY7canIJeXtICb6lprUcQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rxY7canIJeXtICb6lprUcQ"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-DeGdhZKXoTnyyFc8GC2BHg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "DeGdhZKXoTnyyFc8GC2BHg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-rae5BYOri8Def-VVYZzpSg",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "rae5BYOri8Def-VVYZzpSg"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-tradamerican-qPL6FZ8ckmzH5Dw1XSiq7w",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "qPL6FZ8ckmzH5Dw1XSiq7w"
+          ]
+        }
+      },
+      {
+        "_index": "yelp-businesses-sf-restaurants",
+        "_id": "yelp-business-restaurants-vietnamese-_ZC_Zvq5DqaPVXIqFzPkBQ",
+        "_score": 2.8225734,
+        "_source": {},
+        "fields": {
+          "id": [
+            "_ZC_Zvq5DqaPVXIqFzPkBQ"
+          ]
+        }
+      }
+    ]
+  }
+}

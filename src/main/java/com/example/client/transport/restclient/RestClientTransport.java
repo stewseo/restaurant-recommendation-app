@@ -6,12 +6,11 @@ import com.example.client._types.ResponseException;
 import com.example.client.json.*;
 import com.example.client.transport.*;
 import com.example.client.util.*;
-import com.example.client.yelp_fusion.businesses.*;
+import com.example.ll_restclient.RestClient;
 import jakarta.json.stream.*;
 import org.apache.http.concurrent.Cancellable;
 import org.apache.http.entity.*;
 import org.apache.http.message.*;
-import org.elasticsearch.client.*;
 
 import java.io.*;
 import java.util.*;
@@ -21,173 +20,148 @@ import java.util.concurrent.*;
 @SuppressWarnings({"RedundantThrows", "unused"})
 public class RestClientTransport implements YelpFusionTransport {
 
-        static final ContentType JsonContentType;
+    static final ContentType JsonContentType;
 
-        static {
+    static {
 
-            if (Version.VERSION == null) {
-                JsonContentType = ContentType.APPLICATION_JSON;
-            } else {
-                JsonContentType = ContentType.create(
-                        "application/vnd.elasticsearch+json",
-                        new BasicNameValuePair("compatible-with", String.valueOf(Version.VERSION.major()))
-                );
-            }
+        if (Version.VERSION == null) {
+            JsonContentType = ContentType.APPLICATION_JSON;
+        } else {
+            JsonContentType = ContentType.create(
+                    "application/vnd.elasticsearch+json",
+                    new BasicNameValuePair("compatible-with", String.valueOf(Version.VERSION.major()))
+            );
         }
-
-        private static class RequestFuture<T> extends CompletableFuture<T> {
-            private volatile Cancellable cancellable;
-
-            @Override
-            public boolean cancel(boolean mayInterruptIfRunning) {
-                boolean cancelled = super.cancel(mayInterruptIfRunning);
-                if (cancelled && cancellable != null) {
-                    cancellable.cancel();
-                }
-                return cancelled;
-            }
-        }
-
-        private final RestClient restClient;
-        private final co.elastic.clients.json.JsonpMapper mapper;
-        private final RestClientOptions transportOptions;
-
-    public RestClientTransport(RestClient restClient, co.elastic.clients.json.JsonpMapper mapper,  TransportOptions options) {
-            this.restClient = restClient;
-            this.mapper = mapper;
-            this.transportOptions = options == null ? RestClientOptions.initialOptions() : RestClientOptions.of(options);
-        }
-
-    public RestClientTransport(RestClient restClient, co.elastic.clients.json.JsonpMapper mapper) {
-            this(restClient, mapper, null);
-        }
-
-        /**
-         * Returns the underlying low level Rest Client used by this transport.
-         */
-        public RestClient restClient() {
-            return this.restClient;
-        }
-
-        /**
-         * Copies this {@link #RestClientTransport} with specific request options.
-         */
-        public RestClientTransport withRequestOptions( TransportOptions options) {
-            return new RestClientTransport(this.restClient, this.mapper, options);
-        }
-
-        @Override
-        public co.elastic.clients.json.JsonpMapper jsonpMapper() {
-            return mapper;
-        }
-
-        @Override
-        public TransportOptions options() {
-            return transportOptions;
-        }
-
-        @Override
-        public void close() throws IOException {
-            this.restClient.close();
-        }
-
-        public <RequestT, ResponseT, ErrorT> BusinessEndpointResponse performRequest(
-                RequestT request,
-                Endpoint<RequestT, ResponseT, ErrorT> endpoint,
-                TransportOptions options
-        ) throws IOException {
-
-            Request clientReq = prepareLowLevelRequest(request, endpoint, options); // build the client Request
-            Response clientResp = performRequest(clientReq); // build the client Response
-            return null; // get the high level response
-        }
-
-    private Response performRequest(Request clientReq) {
-            return null;
     }
 
-    public <RequestT, ResponseT, ErrorT> CompletableFuture<ResponseT> performRequestAsync(
-                RequestT request,
-                Endpoint<RequestT, ResponseT, ErrorT> endpoint,
-                TransportOptions options
-        ) {
-            Request clientReq = prepareLowLevelRequest(request, endpoint, options);
+    private static class RequestFuture<T> extends CompletableFuture<T> {
+        private volatile Cancellable cancellable;
 
-            RequestFuture<ResponseT> future = new RequestFuture<>();
-
-            // Propagate required property checks to the thread that will decode the response
-            boolean disableRequiredChecks = ApiTypeHelper.requiredPropertiesCheckDisabled();
-
-//            future.cancellable = restClient.performRequestAsync(clientReq, new ResponseListener() {
-//
-//                @Override
-//                public void onSuccess(Response clientResp) {
-//                    try (ApiTypeHelper.DisabledChecksHandle h =
-//                                 ApiTypeHelper.DANGEROUS_disableRequiredPropertiesCheck(disableRequiredChecks)) {
-//
-//                        ResponseT response = getHighLevelResponse(clientResp, endpoint);
-//                        future.complete(response);
-//
-//                    } catch (Exception e) {
-//                        future.completeExceptionally(e);
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Exception e) {
-//                    future.completeExceptionally(e);
-//                }
-//            });
-
-            return future;
-        }
-
-        private <RequestT> Request prepareLowLevelRequest(
-                RequestT request,
-                Endpoint<RequestT, ?, ?> endpoint,
-                TransportOptions options
-    ) {
-            String method = endpoint.method(request);
-            String path = endpoint.requestUrl(request);
-            Map<String, String> params = endpoint.queryParameters(request);
-
-            Request clientReq = new Request(method, path);
-
-            clientReq.addParameters(params);
-
-            if (endpoint.hasRequestBody()) {
-                // Request has a body and must implement JsonpSerializable or NdJsonpSerializable
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-                if (request instanceof NdJsonpSerializable) {
-                    writeNdJson((NdJsonpSerializable) request, baos);
-                } else {
-                    JsonGenerator generator = mapper.jsonProvider().createGenerator(baos);
-                    mapper.serialize(request, generator);
-                    generator.close();
-                }
-
-                clientReq.setEntity(new ByteArrayEntity(baos.toByteArray(), JsonContentType));
+        @Override
+        public boolean cancel(boolean mayInterruptIfRunning) {
+            boolean cancelled = super.cancel(mayInterruptIfRunning);
+            if (cancelled && cancellable != null) {
+                cancellable.cancel();
             }
-            // Request parameter intercepted by LLRC
-            clientReq.addParameter("ignore", "400,401,403,404,405");
-            return clientReq;
+            return cancelled;
         }
+    }
+
+    private final com.example.ll_restclient.RestClient restClient;
+    private final JsonpMapper mapper;
+    private final RestClientOptions transportOptions;
+
+    public RestClientTransport(com.example.ll_restclient.RestClient restClient, JsonpMapper mapper, TransportOptions options) {
+        this.restClient = restClient;
+        this.mapper = mapper;
+        this.transportOptions = options == null ? RestClientOptions.initialOptions() : RestClientOptions.of(options);
+    }
+
+    public RestClientTransport(com.example.ll_restclient.RestClient restClient, JsonpMapper mapper) {
+        this(restClient, mapper, null);
+    }
+
+    public RestClient restClient() {
+        return this.restClient;
+    }
+
+    public RestClientTransport withRequestOptions(TransportOptions options) {
+        return new RestClientTransport(this.restClient, this.mapper, options);
+    }
+
+    @Override
+    public JsonpMapper jsonpMapper() {
+        return mapper;
+    }
+
+    @Override
+    public TransportOptions options() {
+        return PrintUtils.println("Transport Options: " ,  transportOptions);
+    }
+
+    @Override
+    public void close() throws IOException {
+        this.restClient.close();
+    }
+
+    public <RequestT, ResponseT, ErrorT> ResponseT performRequest(
+            RequestT request,
+            Endpoint<RequestT, ResponseT, ErrorT> endpoint,
+            TransportOptions options
+    ) throws IOException {
+
+        Request clientReq = prepareLowLevelRequest(request, endpoint, options); // build the client Request
+        Response clientResp = performRequest(clientReq); // build the client Response
+        return null; // get the high level response
+    }
+
+    private Response performRequest(Request clientReq) {
+        return null;
+    }
+
+
+    private <RequestT> Request prepareLowLevelRequest(
+            RequestT request,
+            Endpoint<RequestT, ?, ?> endpoint,
+            TransportOptions options
+    ) {
+        String method = endpoint.method(request);
+        String path = endpoint.requestUrl(request);
+        Map<String, String> params = endpoint.queryParameters(request);
+
+        Request clientReq = new Request(method, path);
+
+        clientReq.addParameters(params);
+
+        if (endpoint.hasRequestBody()) {
+            // Request has a body and must implement JsonpSerializable or NdJsonpSerializable
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+            if (request instanceof NdJsonpSerializable) {
+                writeNdJson((NdJsonpSerializable) request, baos);
+            } else {
+                JsonGenerator generator = mapper.jsonProvider().createGenerator(baos);
+                mapper.serialize(request, generator);
+                generator.close();
+            }
+
+            clientReq.setEntity(new ByteArrayEntity(baos.toByteArray(), JsonContentType));
+        }
+        // Request parameter intercepted by LLRC
+        clientReq.addParameter("ignore", "400,401,403,404,405");
+        return clientReq;
+    }
+
+
+    public <RequestT, ResponseT, ErrorT> CompletableFuture<ResponseT> performRequestAsync(
+            RequestT request,
+            Endpoint<RequestT, ResponseT, ErrorT> endpoint,
+            TransportOptions options
+    ) {
+        Request clientReq = prepareLowLevelRequest(request, endpoint, options);
+
+        RequestFuture<ResponseT> future = new RequestFuture<>();
+
+        // Propagate required property checks to the thread that will decode the response
+        boolean disableRequiredChecks = ApiTypeHelper.requiredPropertiesCheckDisabled();
+
+        return future;
+    }
 
     private void writeNdJson(NdJsonpSerializable value, ByteArrayOutputStream baos) {
-            Iterator<?> values = value._serializables();
-            while(values.hasNext()) {
-                Object item = values.next();
-                if (item instanceof NdJsonpSerializable && item != value) { // do not recurse on the item itself
-                    writeNdJson((NdJsonpSerializable) item, baos);
-                } else {
-                    JsonGenerator generator = mapper.jsonProvider().createGenerator(baos);
-                    mapper.serialize(item, generator);
-                    generator.close();
-                    baos.write('\n');
-                }
+        Iterator<?> values = value._serializables();
+        while (values.hasNext()) {
+            Object item = values.next();
+            if (item instanceof NdJsonpSerializable && item != value) { // do not recurse on the item itself
+                writeNdJson((NdJsonpSerializable) item, baos);
+            } else {
+                JsonGenerator generator = mapper.jsonProvider().createGenerator(baos);
+                mapper.serialize(item, generator);
+                generator.close();
+                baos.write('\n');
             }
         }
+    }
 
 //        private <ResponseT, ErrorT> JsonObject getHighLevelResponse(
 //                Response clientResp,
@@ -282,30 +256,30 @@ public class RestClientTransport implements YelpFusionTransport {
 //            }
 //        }
 
-        // Endpoints that (incorrectly) do not return the Elastic product header
-        private static final Set<String> endpointsMissingProductHeader = new HashSet<>(Arrays.asList(
-                "es/snapshot.create" // #74 / elastic/elasticsearch#82358
-        ));
+    // Endpoints that (incorrectly) do not return the Elastic product header
+    private static final Set<String> endpointsMissingProductHeader = new HashSet<>(Arrays.asList(
+            "es/snapshot.create" // #74 / elastic/elasticsearch#82358
+    ));
 
-        private void checkProductHeader(Response clientResp, Endpoint<?, ?, ?> endpoint) throws IOException {
-            String header = clientResp.getHeader("X-Elastic-Product");
-            if (header == null) {
-                if (endpointsMissingProductHeader.contains(endpoint.id())) {
-                    return;
-                }
-                throw new TransportException(
-                        "Missing [X-Elastic-Product] header. Please check that you are connecting to an Elasticsearch "
-                                + "instance, and that any networking filters are preserving that header.",
-                        endpoint.id(),
-                        new ResponseException(clientResp)
-                );
+    private void checkProductHeader(Response clientResp, Endpoint<?, ?, ?> endpoint) throws IOException {
+        String header = clientResp.getHeader("X-Elastic-Product");
+        if (header == null) {
+            if (endpointsMissingProductHeader.contains(endpoint.id())) {
+                return;
             }
-
-            if (!"Elasticsearch".equals(header)) {
-                throw new TransportException("Invalid value '" + header + "' for 'X-Elastic-Product' header.",
-                        endpoint.id(),
-                        new ResponseException(clientResp)
-                );
-            }
+            throw new TransportException(
+                    "Missing [X-Elastic-Product] header. Please check that you are connecting to an Elasticsearch "
+                            + "instance, and that any networking filters are preserving that header.",
+                    endpoint.id(),
+                    new ResponseException(clientResp)
+            );
         }
+
+        if (!"Elasticsearch".equals(header)) {
+            throw new TransportException("Invalid value '" + header + "' for 'X-Elastic-Product' header.",
+                    endpoint.id(),
+                    new ResponseException(clientResp)
+            );
+        }
+    }
     }

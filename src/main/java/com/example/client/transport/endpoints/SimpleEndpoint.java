@@ -44,6 +44,7 @@ public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<Request
         this.responseParser = responseParser;
     }
 
+
     @Override
     public String id() {
         return this.id;

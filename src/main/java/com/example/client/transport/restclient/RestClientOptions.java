@@ -3,15 +3,22 @@ package com.example.client.transport.restclient;
 import co.elastic.clients.transport.Version;
 import com.example.client._types.*;
 import com.example.client.transport.TransportOptions;
+import com.example.client.util.*;
 import org.apache.http.impl.nio.client.*;
 import org.apache.http.util.*;
 
 import java.nio.charset.*;
 import java.util.*;
 import java.util.function.*;
+import java.util.stream.*;
+
+import static com.example.client.transport.restclient.RestClientTransport.*;
 
 public class RestClientOptions implements TransportOptions {
-    private RequestOptions options;
+    static{
+        PrintUtils.titleGreen("YelpRestTransportOptions");
+    }
+    private final RequestOptions options;
     private static final String CLIENT_META_HEADER = "X-Elastic-Client-Meta";
     private static final String USER_AGENT_HEADER = "User-Agent";
     static final String CLIENT_META_VALUE = getClientMeta();
@@ -23,7 +30,7 @@ public class RestClientOptions implements TransportOptions {
 
         } else {
             final Builder builder = new Builder(RequestOptions.DEFAULT.toBuilder());
-//            options.headers().forEach(builder::addHeader);
+            options.headers().forEach(h -> builder.addHeader(h.getKey(), h.getValue()));
             options.queryParameters().forEach(builder::setParameter);
             builder.onWarnings(options.onWarnings());
             return builder.build();
@@ -50,11 +57,9 @@ public class RestClientOptions implements TransportOptions {
 
     @Override
     public Collection<Map.Entry<String, String>> headers() {
-//        return options.getHeaders().stream()
-//                .map(h -> new AbstractMap.SimpleImmutableEntry<>(h.getName(), h.getValue()))
-//                .collect(Collectors.toList());
-
-        return null;
+        return options.getHeaders().stream()
+                .map(h -> new AbstractMap.SimpleImmutableEntry<>(h.getName(), h.getValue()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -71,6 +76,7 @@ public class RestClientOptions implements TransportOptions {
     public Builder toBuilder() {
         return new Builder(options.toBuilder());
     }
+
 
     @Override
     public TransportOptions with(Consumer<TransportOptions.Builder> fn) {
@@ -116,17 +122,18 @@ public class RestClientOptions implements TransportOptions {
         return new RestClientOptions(RequestOptions.DEFAULT);
     }
 
+
     private static RequestOptions.Builder addBuiltInHeaders(RequestOptions.Builder builder) {
 
-        if (builder.getHeaders().get(CLIENT_META_HEADER) == null) {
-            builder.addHeader(CLIENT_META_HEADER, CLIENT_META_VALUE);
-            System.out.println("\n" + CLIENT_META_HEADER + "\n" + CLIENT_META_VALUE);
-        }
-
-        if (builder.getHeaders().get(USER_AGENT_HEADER) == null) {
-            System.out.println("\n"+USER_AGENT_HEADER + "\n" + USER_AGENT_VALUE);
+        builder.removeHeader(CLIENT_META_HEADER);
+        builder.addHeader(CLIENT_META_HEADER, CLIENT_META_VALUE);
+        if (builder.getHeaders().stream().noneMatch(h -> h.getName().equalsIgnoreCase(USER_AGENT_HEADER))) {
             builder.addHeader(USER_AGENT_HEADER, USER_AGENT_VALUE);
         }
+        if (builder.getHeaders().stream().noneMatch(h -> h.getName().equalsIgnoreCase("Accept"))) {
+            builder.addHeader("Accept", JsonContentType.toString());
+        }
+
 
 //        if (builder.getHeaders().get("Accept") == null) {
 //            System.out.println("\n"+USER_AGENT_HEADER + "\n" + RestClientTransport.jsonContentType.toString());

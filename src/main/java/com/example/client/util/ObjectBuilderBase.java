@@ -10,6 +10,7 @@ public class ObjectBuilderBase {
     public static final String RESET = "\033[0m";
     private static final Logger logger = LoggerFactory.getLogger(ObjectBuilderBase.class);
     private boolean _used = false;
+
     protected void _checkSingleUse() {
         if (this._used) {
             throw new IllegalStateException("Object builders can only be used once");
@@ -63,6 +64,44 @@ public class ObjectBuilderBase {
             list = _mutableList(list);
             list.addAll(values);
             return list;
+        }
+    }
+
+    private static final class InternalMap<K, V> extends HashMap<K, V> {
+        InternalMap() {
+        }
+
+        InternalMap(Map<? extends K, ? extends V> m) {
+            super(m);
+        }
+    }
+    
+    private static <K, V> Map<K, V> _mutableMap(Map<K, V> map) {
+        if (map == null) {
+            return new ObjectBuilderBase.InternalMap<>();
+        } else if (map instanceof ObjectBuilderBase.InternalMap) {
+            return map;
+        } else {
+            // Adding to a map we don't own: make a defensive copy, also ensuring it is mutable.
+            return new ObjectBuilderBase.InternalMap<>(map);
+        }
+    }
+    
+    protected static <K, V> Map<K, V> _mapPut(Map<K, V> map, K key, V value) {
+        map = _mutableMap(map);
+        map.put(key, value);
+        return map;
+    }
+    
+    protected static <K, V> Map<K, V> _mapPutAll(Map<K, V> map, Map<K, V> entries) {
+        if (map == null) {
+            // Keep the original map to avoid an unnecessary copy.
+            // It will be copied if we add more entries.
+            return Objects.requireNonNull(entries);
+        } else {
+            map = _mutableMap(map);
+            map.putAll(entries);
+            return map;
         }
     }
 }
