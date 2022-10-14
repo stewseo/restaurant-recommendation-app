@@ -44,9 +44,13 @@ public final class RequestOptions {
     ).build();
 
     private final List<Header> headers;
+
     private final Map<String, String> parameters;
+
     private final HttpAsyncResponseConsumerFactory httpAsyncResponseConsumerFactory;
+
     private final WarningsHandler warningsHandler;
+
     private final RequestConfig requestConfig;
 
     private RequestOptions(Builder builder) {
@@ -57,12 +61,14 @@ public final class RequestOptions {
         this.requestConfig = builder.requestConfig;
     }
 
+
     /**
      * Create a builder that contains these options but can be modified.
      */
     public Builder toBuilder() {
         return new Builder(headers, parameters, httpAsyncResponseConsumerFactory, warningsHandler, requestConfig);
     }
+
 
     /**
      * Headers to attach to the request.
@@ -71,6 +77,7 @@ public final class RequestOptions {
         return headers;
     }
 
+
     /**
      * Return true if the options contain the given header
      */
@@ -78,40 +85,19 @@ public final class RequestOptions {
         return headers.stream().anyMatch(h -> name.equalsIgnoreCase(h.getName()));
     }
 
+
     public Map<String, String> getParameters() {
         return parameters;
     }
 
-    /**
-     * The {@link HttpAsyncResponseConsumerFactory} used to create one
-     * {@link HttpAsyncResponseConsumer} callback per retry. Controls how the
-     * response body gets streamed from a non-blocking HTTP connection on the
-     * client side.
-     */
     public HttpAsyncResponseConsumerFactory getHttpAsyncResponseConsumerFactory() {
         return httpAsyncResponseConsumerFactory;
     }
 
-    /**
-     * How this request should handle warnings. If null (the default) then
-     * this request will default to the behavior dictacted by
-     * {@link RestClientBuilder#setStrictDeprecationMode}.
-     * <p>
-     * This can be set to {@link WarningsHandler#PERMISSIVE} if the client
-     * should ignore all warnings which is the same behavior as setting
-     * strictDeprecationMode to true. It can be set to
-     * {@link WarningsHandler#STRICT} if the client should fail if there are
-     * any warnings which is the same behavior as settings
-     * strictDeprecationMode to false.
-     * <p>
-     * It can also be set to a custom implementation of
-     * {@linkplain WarningsHandler} to permit only certain warnings or to
-     * fail the request if the warnings returned don't
-     * <strong>exactly</strong> match some set.
-     */
     public WarningsHandler getWarningsHandler() {
         return warningsHandler;
     }
+
 
     /**
      * get RequestConfig, which can set socketTimeout, connectTimeout
@@ -121,6 +107,7 @@ public final class RequestOptions {
     public RequestConfig getRequestConfig() {
         return requestConfig;
     }
+
 
     @Override
     public String toString() {
@@ -150,6 +137,7 @@ public final class RequestOptions {
         return b.append('}').toString();
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null || (obj.getClass() != getClass())) {
@@ -165,10 +153,12 @@ public final class RequestOptions {
                 && Objects.equals(warningsHandler, other.warningsHandler);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(headers, httpAsyncResponseConsumerFactory, warningsHandler);
     }
+
 
     /**
      * Builds {@link RequestOptions}. Get one by calling

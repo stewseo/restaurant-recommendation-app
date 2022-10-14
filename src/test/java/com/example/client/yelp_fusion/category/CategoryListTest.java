@@ -19,7 +19,6 @@ public class CategoryListTest extends AbstractRequestTestCase {
 
     @Test
     void testets() throws IOException {
-
     }
 
     @Test
@@ -29,7 +28,7 @@ public class CategoryListTest extends AbstractRequestTestCase {
         JsonReader jsonReader = Json.createReader(new FileReader("src\\test\\resources\\categories.json"));
         JsonObject jsonObject = jsonReader.readObject();
 
-        Business businesses = mapper.readValue(jsonObject.toString(), Business.class);
+        Business_ businesses = mapper.readValue(jsonObject.toString(), Business_.class);
 
         IndexResponse response = esClient.index(i -> i // Creates or updates a document in an index.
                 .index("restaurants-index-000001") // restaurants-index-000001 alias

@@ -14,9 +14,9 @@ import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-public class RestaurantsByCategoryTest extends AbstractRequestTestCase {
+public class RestaurantsByCategoriesTest extends AbstractRequestTestCase {
 
-    private static final Logger logger = LoggerFactory.getLogger(RestaurantsByCategoryTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RestaurantsByCategoriesTest.class);
 
     private static int limit = 50; // max businesses per page
 
@@ -28,8 +28,11 @@ public class RestaurantsByCategoryTest extends AbstractRequestTestCase {
     // create Category map, by parent category
     @BeforeAll
     static void setup() throws IOException {
+        String price = "$";
 
-        FileReader file = new FileReader(new File("C:\\Users\\seost\\repositories\\yelp-fusion-java\\src\\test\\resources\\categories.json"));
+        FileReader file = new FileReader(new File(String.format(
+                "C:\\Users\\seost\\repositories\\yelp-fusion-java\\src\\test\\resources\\sf-%s.json", price
+        )));
 
         // parse categories to list
         List<Category> categories = Arrays.asList(new JacksonJsonpMapper().objectMapper().readValue(file, Category[].class));

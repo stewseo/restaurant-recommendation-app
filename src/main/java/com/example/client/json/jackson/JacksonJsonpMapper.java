@@ -1,6 +1,5 @@
 package com.example.client.json.jackson;
 
-import co.elastic.clients.json.jackson.*;
 import com.example.client.json.*;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.*;

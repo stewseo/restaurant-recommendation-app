@@ -19,7 +19,6 @@ public class YelpFusionClient extends com.example.client.ApiClient<YelpFusionTra
         super(transport, transportOptions);
     }
 
-
     @Override
     public YelpFusionClient withTransportOptions(TransportOptions transportOptions) {
         return new YelpFusionClient(this.transport, transportOptions);
@@ -44,7 +43,6 @@ public class YelpFusionClient extends com.example.client.ApiClient<YelpFusionTra
             throws IOException {
         return businessSearch(fn.apply(new BusinessSearchRequest.Builder()).build());
     }
-
 
 
     public BusinessDetailsResponse businessDetails(BusinessDetailsRequest request)

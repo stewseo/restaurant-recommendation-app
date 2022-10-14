@@ -1,4 +1,5 @@
 {
+  "description" : "time stamp and geo ip pipeline",
   "processors": [
     {
       "grok": {

@@ -13,6 +13,7 @@ import org.apache.http.entity.*;
 import org.apache.http.impl.nio.client.*;
 import org.apache.http.message.*;
 import org.apache.http.util.*;
+import org.slf4j.*;
 
 import java.io.*;
 import java.net.*;
@@ -28,6 +29,8 @@ import java.util.stream.*;
 // prepares an object of type RequestT
 @SuppressWarnings({"unused", "RedundantThrows", "UnnecessaryLocalVariable"})
 public class YelpRestTransport implements YelpFusionTransport {
+
+    private static final Logger logger = LoggerFactory.getLogger(YelpRestTransport.class);
     static final ContentType JsonContentType;
 
     static CloseableHttpAsyncClient client;
@@ -73,8 +76,17 @@ public class YelpRestTransport implements YelpFusionTransport {
     public YelpRestTransport(RestClient restClient, JsonpMapper mapper, TransportOptions options) throws IOException { // TransportOptions
         this.restClient = restClient;
         this.mapper = mapper;
-        this.transportOptions = options == null ?
-                YelpRestTransportOptions.initialOptions() : YelpRestTransportOptions.of(options);
+        String optionsString = null;
+        if(options == null){
+            transportOptions = YelpRestTransportOptions.initialOptions();
+            optionsString = String.format("setting yelp transport options field to YelpRestTransportOptions.initialOptions() = %s", transportOptions);
+        }else{
+            transportOptions = YelpRestTransportOptions.of(options);
+            optionsString = String.format("setting yelp transport options field to YelpRestTransportOptions.of(options) = %s", transportOptions);
+        }
+
+        PrintUtils.titleGreen(String.format("Initializing YelpRestTransport with: RestClient = %s%n JsonpMapper = %s%n %s", restClient, mapper, optionsString));
+        logger.info("Initializing YelpRestTransport with: RestClient = {}%n JsonpMapper = {}%n {}", restClient, mapper, optionsString);
     }
 
     public YelpRestTransport(RestClient restClient, JsonpMapper mapper) throws IOException {

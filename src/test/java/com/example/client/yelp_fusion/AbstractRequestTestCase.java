@@ -8,6 +8,7 @@ import com.example.ll_restclient.*;
 import org.apache.http.*;
 import org.apache.http.message.*;
 import org.junit.jupiter.api.*;
+import org.slf4j.*;
 
 import java.io.*;
 import java.nio.charset.*;
@@ -15,40 +16,41 @@ import java.nio.charset.*;
 // build all requests before transporting
 public abstract class AbstractRequestTestCase {
 
+    private static final Logger logger = LoggerFactory.getLogger(AbstractRequestTestCase.class);
+
     @BeforeAll
     static void beforeAll() throws IOException {
-
         initYelpFusionClient();
-        initElasticsearchClient();
+//        initElasticsearchClient();
     }
-//    private static final com.example.client._types.RequestOptions AUTHORIZATION_HEADER;
-    static {
-//         Holds parts of the request that should be shared between many requests in the same application.
-//         Create a singleton instance and share it between all requests:
-//        RequestOptions.Builder builder = RequestOptions.DEFAULT.toBuilder();
-//        builder.addHeader("Authorization", "Bearer " + System.getenv("YELP_API_KEY"));
-//        AUTHORIZATION_HEADER = builder.build();
-    }
-
-    static String protocol = "https";
+    static String scheme = "https";
     private static JacksonJsonpMapper mapper;
-
     protected static YelpFusionClient yelpClient;
-
     private static void initYelpFusionClient() throws IOException {
-
-        String yelpFusionHost = "api.yelp.com/v3";
+        mapper = new JacksonJsonpMapper();
+        String yelpFusionHost = "api.yelp.com";
         int port = 9243;
-        com.example.ll_restclient.RestClient restClient = createRestClientWithDefaultHeaders(yelpFusionHost, port, protocol, "Bearer ", System.getenv("YELP_API_KEY"));
-        //Build a client for the Yelp Fusion API
+        String requestHeader = "Authorization";
+        String bearerAndToken = String.format("Bearer %s", System.getenv("YELP_API_KEY"));
 
+        // create rest client
+        com.example.ll_restclient.RestClientBuilder restClientBuilder =
+                createRestClientBuilder(yelpFusionHost, port, scheme, requestHeader, bearerAndToken);
 
-        YelpRestTransport yelpTransport = new YelpRestTransport(
-                restClient, // Client that connects to an Elasticsearch cluster through HTTP.
-                mapper); // A partial implementation of JSONP's SPI on top of Jackson.
+        try (RestClient restClient = restClientBuilder.build()) {
 
-        yelpClient = new YelpFusionClient(yelpTransport);
+            // initialize Transport with a rest client and object mapper
+            YelpRestTransport yelpTransport = new YelpRestTransport(
+                    restClient,
+                    mapper);
+
+            yelpClient = new YelpFusionClient(yelpTransport);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     public static ElasticsearchClient esClient;
 
@@ -65,7 +67,7 @@ public abstract class AbstractRequestTestCase {
 
 
         org.elasticsearch.client.RestClientBuilder builder =  org.elasticsearch.client.RestClient.builder(
-                new HttpHost(host, port, protocol));
+                new HttpHost(host, port, scheme));
 
         Header[] defaultHeaders =
                 new Header[]{new BasicHeader("Authorization",
@@ -78,6 +80,26 @@ public abstract class AbstractRequestTestCase {
         ElasticsearchTransport esTransport = new co.elastic.clients.transport.rest_client.RestClientTransport(restClient, new co.elastic.clients.json.jackson.JacksonJsonpMapper());
 
         esClient = new ElasticsearchClient(esTransport);
+    }
+
+    private static  com.example.ll_restclient.RestClientBuilder createRestClientBuilder(String host, int port, String scheme) {
+        return createRestClientBuilder(host, port, scheme, null, null);
+    }
+    private static  com.example.ll_restclient.RestClientBuilder createRestClientBuilder(String host, int port, String scheme, String requestHeader, String value) {
+
+        // set the base URL: scheme, hostname and port.
+        com.example.ll_restclient.RestClientBuilder restBuilder =  com.example.ll_restclient.RestClient.builder(
+                new HttpHost(host, port, scheme)); //Create HttpHost instance with the given scheme, hostname and port.
+
+        // set a default header
+        if(requestHeader != null && requestHeader.equalsIgnoreCase("authorization")) {
+            Header[] defaultHeaders =
+                    new Header[]{new BasicHeader(requestHeader, value)};
+
+            restBuilder.setDefaultHeaders(defaultHeaders); //Set default headers
+        }
+
+        return restBuilder; // Create a new RestClient based on the provided configuration. All http handling is delegated to this RestClient
     }
 
     private static RestClient createESRestClient(String host, int port, String scheme, String authorizationType, String token) {
@@ -93,21 +115,6 @@ public abstract class AbstractRequestTestCase {
         restBuilder.setDefaultHeaders(defaultHeaders); //Set default headers
 
         return restBuilder.build(); // Create a new RestClient based on the provided configuration. All http handling is delegated to this RestClient
-    }
-
-    private static  com.example.ll_restclient.RestClient createRestClientWithDefaultHeaders(String host, int port, String scheme, String authorizationType, String token) {
-        //Build a client for the Yelp Fusion API
-        com.example.ll_restclient.RestClientBuilder restBuilder =  com.example.ll_restclient.RestClient.builder(
-                new HttpHost(host, port, scheme)); //Create HttpHost instance with the given scheme, hostname and port.
-
-        Header[] defaultHeaders =
-                new Header[]{new BasicHeader("Authorization",
-                        authorizationType + token)};
-
-
-        restBuilder.setDefaultHeaders(defaultHeaders); //Set default headers
-
-       return restBuilder.build(); // Create a new RestClient based on the provided configuration. All http handling is delegated to this RestClient
     }
 
 

@@ -1,10 +1,11 @@
 package com.example.ll_restclient;
 
+import com.example.client.util.*;
 import org.apache.http.*;
 import org.apache.http.client.config.*;
 import org.apache.http.impl.nio.client.*;
 import org.apache.http.util.*;
-
+import org.slf4j.*;
 
 import javax.net.ssl.*;
 import java.io.*;
@@ -13,6 +14,8 @@ import java.util.*;
 
 
 public final class RestClientBuilder {
+
+    private static final Logger logger = LoggerFactory.getLogger(RestClientBuilder.class);
     public static final int DEFAULT_CONNECT_TIMEOUT_MILLIS = 1000;
     public static final int DEFAULT_SOCKET_TIMEOUT_MILLIS = 30000;
     public static final int DEFAULT_MAX_CONN_PER_ROUTE = 10;
@@ -109,6 +112,8 @@ public final class RestClientBuilder {
                 throw new IllegalArgumentException("node cannot be null");
             }
         }
+        PrintUtils.titleGreen(String.format("Initializing RestClientBuilder. class field List<Node> node = %s", nodes));
+        logger.info("Initializing RestClientBuilder. class field List<Node> node = {}", nodes);
         this.nodes = nodes;
     }
 

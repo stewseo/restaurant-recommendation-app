@@ -115,7 +115,12 @@ public class RestClient implements Closeable {
         if (hosts == null || hosts.length == 0) {
             throw new IllegalArgumentException("hosts must not be null nor empty");
         }
-        List<Node> nodes = Arrays.stream(hosts).map(Node::new).collect(Collectors.toList());
+        List<Node> nodes = Arrays.stream(hosts) // stream all input parameter hosts
+                .map(Node::new) //Returns a stream consisting of the results of applying the given function to the elements of this stream.
+                .collect(Collectors.toList());   // Performs a mutable reduction operation on the elements of this stream using a Collector.
+                                                // A Collector encapsulates the functions used as arguments to collect(Supplier, BiConsumer, BiConsumer),
+                                               // allowing for reuse of collection strategies and composition of collect operations such as multiple-level grouping or partitioning.
+
         return new RestClientBuilder(nodes);
     }
 
