@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'java-conventions'
+}
+
+repositories {
+    mavenCentral()
+}
+
+

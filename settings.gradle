@@ -1,1 +1,3 @@
-rootProject.name = 'yelp-fusion-java'
+rootProject.name = 'restaurant-recommendation'
+
+include 'lowlevel-restclient', 'elasticsearch-client', 'yelp-fusion-client'

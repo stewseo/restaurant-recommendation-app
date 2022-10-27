@@ -1,0 +1,52 @@
+// Java conventions for my-org.
+// Projects need to use the Java, Checkstyle and Spotbugs plugins.
+plugins {
+    id 'java'
+}
+
+ext {
+    logbackVersion = '1.4.0'
+    elasticSearchVersion  = "8.4.3"
+    jUnitVersion = "5.9.0"
+    jacksonVersion = "2.13.3"
+}
+
+
+// All projects will use maven Central for external dependencies
+repositories {
+    mavenCentral()
+}
+
+
+project.logger.lifecycle('my message visible by default')
+
+
+dependencies {
+//    implementation 'io.github.classgraph:classgraph:4.8.149'
+//    implementation "ch.qos.logback:logback-core:${logbackVersion}",
+//            "ch.qos.logback:logback-classic:${logbackVersion}",
+//            "ch.qos.logback:logback-access:${logbackVersion}",
+//            "net.logstash.logback:logstash-logback-encoder:7.2",
+//            "co.elastic.logging:logback-ecs-encoder:1.5.0"
+//    implementation 'jakarta.json.bind:jakarta.json.bind-api:2.0.0'
+
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+//    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+
+    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+
+// Enable deprecation messages when compiling Java code
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
+test {
+    useJUnitPlatform()
+}

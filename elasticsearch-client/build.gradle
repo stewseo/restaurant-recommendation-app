@@ -1,0 +1,17 @@
+plugins {
+    id 'library-conventions'
+    id 'java-library'
+}
+
+group = 'org.example'
+
+
+dependencies {
+    api project(":lowlevel-restclient")
+    
+    implementation 'co.elastic.clients:elasticsearch-java:8.4.3'
+    implementation 'jakarta.json:jakarta.json-api:2.1.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    implementation 'jakarta.json.bind:jakarta.json.bind-api:3.0.0'
+}
+
