@@ -1,50 +1,49 @@
-## API
-public API description
-
-## Changelog
-- change 1
-- change 2
-
-## Restaurant Recommendation App
-
-- use case: 
-- build data set
-#### Get business details for each restaurant in San Francisco.
-1. Data source: https://www.yelp.com/developers/documentation/v3/businesses/{id}
-
-2. Create mappings for query parameters:
-  - all yelp categories:  https://blog.yelp.com/businesses/yelp_category_list/
-  - all yelp categories where "parents" = "restaurants"  (afghani, african, asian fusion, baguettes . . .)
-  - distinct business ids: Set<String> setOfBusinessIds
-
-3.  Build and perform a Request for each
-  - "id" in setOfBusinessIds
-  - BusinessResponse that contains a null error class field.
-    - index: yelp-businesses-restaurants-sf
-    - document id: yelp-businesses-restaurants-sf-{id}
-![yelp-business-details-sf-restaurants](https://user-images.githubusercontent.com/54422342/195266154-0d005df5-9bdb-48f5-a354-4c57164acd63.jpg)
-
-- Provide insights on restaurant's ratings, reviews, and more through different visualizations
-
-### Searching for a restaurant by alias using the Kibana console
-![console_tests](https://user-images.githubusercontent.com/54422342/195264846-55b812b5-437a-41b9-ad37-1aa23742fcd9.jpg)
-
-### Ingestion Pipelines to manipulate data
-- Sanitize
-  - secure and permanent erasure of sensitive data from datasets and media to guarantee that no residual data can be recovered even
-  through extensive forensic analysis
-- Normalize
-  - organize data to appear similar across all records and fields. 
-- Transform
-  - change the format, structure, or values of data.
-- Enrich
-  - add fields: timestamp and geo ip to each document.
+### Restaurant Recommendation System using Data extracted from https://www.yelp.com/developers/documentation/v3/business through Elasticsearch
 
 
-### Forward and centralize log data
-- https://github.com/stewseo/filebeat-demo
+#### Get all business id's in a city using request params:
+  - location=SF&categories={child-restaurant}
+  - latitude=&longitude=&price=$$&limit=50&offset+=limit 
+- Create, structure, process and index business details documents.
 
-### Collect system and service metrics
+
+### Data Cleaning
+
+<pre>
+POST yelp-businesses-restaurants-sf/_update_by_query?conflicts=proceed
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "exists": {
+            "field": "messaging.url"
+          }
+        },
+        {
+          "exists": {
+            "field": "special_hours"
+          }
+        }
+      ]
+    }
+  },
+  "script": {
+    "source": "ctx._source.remove('messaging.url'); ctx._source.remove('special_hours');",
+    "lang": "painless"
+  }
+}
+</pre>
+
+![308834780_631296281762118_2177015024900733153_n](https://user-images.githubusercontent.com/54422342/197595491-48fc484e-b677-4797-848e-14c30757270d.png)
+
+### Data Processing
+- add fields to documents: timestamp, geo_point, geo_shape
+- configuring Filebeat: https://github.com/stewseo/filebeat-demo
+
+
+### Collecting system and service metrics
 - https://github.com/stewseo/metricbeat-demo
+  
 
 
