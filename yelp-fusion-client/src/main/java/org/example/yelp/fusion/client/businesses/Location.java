@@ -1,5 +1,13 @@
 package org.example.yelp.fusion.client.businesses;
 
+
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.annotation.*;
+
+import java.io.*;
+
+@JsonDeserialize(using = Location.LocationDeserializer.class)
 public class Location {
 
     String address1, address2, address3, city, county, cross_streets, state, zip_code, country;
@@ -86,5 +94,13 @@ public class Location {
 
     public void setZip_code(String zip_code) {
         this.zip_code = zip_code;
+    }
+
+    public static class LocationDeserializer extends JsonDeserializer<Location> {
+
+        @Override
+        public Location deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+            return null;
+        }
     }
 }

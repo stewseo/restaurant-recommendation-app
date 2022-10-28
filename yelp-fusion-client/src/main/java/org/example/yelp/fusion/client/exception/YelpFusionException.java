@@ -1,4 +1,4 @@
-package org.example.yelp.fusion.client.model;
+package org.example.yelp.fusion.client.exception;
 
 import org.example.elasticsearch.client._types.*;
 

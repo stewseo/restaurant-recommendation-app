@@ -1,10 +1,8 @@
 ### Restaurant Recommendation System using Data extracted from https://www.yelp.com/developers/documentation/v3/business through Elasticsearch
 
 
-#### Get all business id's in a city using request params:
-  - location=SF&categories={child-restaurant}
-  - latitude=&longitude=&price=$$&limit=50&offset+=limit 
-- Create, structure, process and index business details documents.
+#### Data Extraction example: Get all fields from the Yelp Fusion Business Details Endpoint
+
 
 
 ### Data Cleaning
@@ -38,7 +36,7 @@ POST yelp-businesses-restaurants-sf/_update_by_query?conflicts=proceed
 ![308834780_631296281762118_2177015024900733153_n](https://user-images.githubusercontent.com/54422342/197595491-48fc484e-b677-4797-848e-14c30757270d.png)
 
 ### Data Processing
-- add fields to documents: timestamp, geo_point, geo_shape
+- add fields to documents: timestamp, geo_location
 - configuring Filebeat: https://github.com/stewseo/filebeat-demo
 
 

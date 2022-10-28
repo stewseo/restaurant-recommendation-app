@@ -14,7 +14,7 @@ import java.util.function.*;
 public class Business implements JsonpSerializable {
 
     // ------------------------------------------------------- Fields
-    private final Coordinates coordinates;
+    private final Business_.Coordinates coordinates;
 
     private final Location location; // The location of this business, including address, city, state, zip code and country.
 
@@ -30,8 +30,6 @@ public class Business implements JsonpSerializable {
             price, // Price level of the business. Value is one of $, $$, $$$ and $$$$.
             url; // URL for business page on Yelp.
     private final int
-            limit,
-            offset,
             open_at,
             review_count,
             distance;
@@ -73,7 +71,6 @@ public class Business implements JsonpSerializable {
         this.longitude = builder.longitude;
         this.messaging= builder.messaging;
         this.name = builder.name;
-        this.offset = builder.offset;
         this.open_at = builder.open_at;
         this.open_now = builder.open_now;
         this.phone = builder.phone;
@@ -85,14 +82,13 @@ public class Business implements JsonpSerializable {
         this.special_hours = builder.special_hours;
         this.transactions = builder.transactions;
         this.distance = builder.distance;
-        this.limit = builder.limit;
     }
 
     public static Business of(Function<Business.Builder, ObjectBuilder<Business>> fn) {
         return fn.apply(new Business.Builder()).build();
     }
 
-    public final Coordinates getCoordinates() {
+    public final Business_.Coordinates getCoordinates() {
         return coordinates;
     }
 
@@ -134,14 +130,6 @@ public class Business implements JsonpSerializable {
 
     public final String getUrl() {
         return url;
-    }
-
-    public final int getLimit() {
-        return limit;
-    }
-
-    public final int getOffset() {
-        return offset;
     }
 
     public final int getOpen_at() {
@@ -249,14 +237,6 @@ public class Business implements JsonpSerializable {
             generator.writeKey("phone");
             generator.write(this.phone);
         }
-        if (this.offset != 0) {
-            generator.writeKey("offset");
-            generator.write(this.offset);
-        }
-        if (this.limit != 0) {
-            generator.writeKey("limit");
-            generator.write(this.limit);
-        }
         if (this.url != null) {
             generator.writeKey("url");
             generator.write(this.url);
@@ -300,8 +280,6 @@ public class Business implements JsonpSerializable {
     public static class Builder extends WithJsonObjectBuilderBase<Builder> implements ObjectBuilder<Business> {
         private String display_phone, id, alias, image_url, name, phone, price, url;
         private int
-                limit,
-                offset,
                 open_at,
                 review_count,
                 distance;
@@ -320,7 +298,7 @@ public class Business implements JsonpSerializable {
                 special_hours,
                 attributes;
 
-        private Coordinates coordinates;
+        private Business_.Coordinates coordinates;
         private Location location; // The location of this business, including address, city, state, zip code and country.
         private Hours[] hours;
         private Object messaging; // Contains Business Messaging / Request a Quote information for this business.
@@ -374,7 +352,7 @@ public class Business implements JsonpSerializable {
             this.location = value;
             return this;
         }
-        public final Business.Builder coordinates(Coordinates value) {
+        public final Business.Builder coordinates(Business_.Coordinates value) {
             this.coordinates = value;
             return this;
         }
@@ -395,10 +373,7 @@ public class Business implements JsonpSerializable {
             return this;
         }
 
-        public final Business.Builder limit(int value) {
-            this.limit = value;
-            return this;
-        }
+
         public final Business.Builder review_count(int value) {
             this.review_count = value;
             return this;
@@ -407,10 +382,7 @@ public class Business implements JsonpSerializable {
             this.open_at = value;
             return this;
         }
-        public final Business.Builder offset(int value) {
-            this.offset = value;
-            return this;
-        }
+
         public final Business.Builder distance(int value) {
             this.distance = value;
             return this;
@@ -460,8 +432,6 @@ public class Business implements JsonpSerializable {
         op.add(Business.Builder::phone, JsonpDeserializer.stringDeserializer(), "phone");
         op.add(Business.Builder::latitude, JsonpDeserializer.doubleDeserializer(), "latitude");
         op.add(Business.Builder::longitude, JsonpDeserializer.doubleDeserializer(), "longitude");
-        op.add(Business.Builder::limit, JsonpDeserializer.integerDeserializer(), "limit");
-        op.add(Business.Builder::offset, JsonpDeserializer.integerDeserializer(), "offset");
         op.add(Business.Builder::rating, JsonpDeserializer.doubleDeserializer(), "rating");
         op.add(Business.Builder::price, JsonpDeserializer.stringDeserializer(), "price");
 
