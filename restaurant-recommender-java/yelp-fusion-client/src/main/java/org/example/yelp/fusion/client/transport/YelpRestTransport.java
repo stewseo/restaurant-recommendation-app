@@ -189,18 +189,7 @@ public class YelpRestTransport implements YelpFusionTransport {
         Map<String, String> params = endpoint.queryParameters(request);
 
         Request clientReq = new Request(method, path);
-<<<<<<< HEAD
 
-        RequestOptions restOptions = options == null ?
-                transportOptions.restClientRequestOptions() :
-                RestClientOptions.of(options).restClientRequestOptions();
-
-        if (restOptions != null) {
-            clientReq.setOptions(restOptions);
-        }
-
-=======
-        
         PrintUtils.green("Request initialized with " + clientReq.getMethod() + " " + clientReq.getEndpoint());
 
         if(options != null) {
@@ -212,7 +201,6 @@ public class YelpRestTransport implements YelpFusionTransport {
 
         }
         
->>>>>>> python
         clientReq.addParameters(params);
 
         if (endpoint.hasRequestBody()) {
@@ -221,12 +209,9 @@ public class YelpRestTransport implements YelpFusionTransport {
 
             if (request instanceof NdJsonpSerializable) {
                 writeNdJson((NdJsonpSerializable) request, baos);
-<<<<<<< HEAD
-            } else {
-=======
+
             }
             else {
->>>>>>> python
                 JsonGenerator generator = mapper.jsonProvider().createGenerator(baos);
                 mapper.serialize(request, generator);
                 generator.close();

@@ -8,16 +8,14 @@ import org.example.elasticsearch.client.util.*;
 import java.util.*;
 import java.util.function.*;
 
-@JsonDeserialize
+@JsonpDeserializable
 public class HitsMetadata<T> implements JsonpSerializable {
 
     private final TotalHits total;
 
     private final List<Hit<T>> hits;
 
-
     private final Double maxScore;
-
 
     private final JsonpSerializer<T> tSerializer;
 

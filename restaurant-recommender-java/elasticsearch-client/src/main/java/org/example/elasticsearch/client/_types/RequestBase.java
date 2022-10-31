@@ -7,6 +7,7 @@ import org.example.elasticsearch.client.util.*;
 
 import java.io.*;
 import java.net.*;
+import java.nio.charset.*;
 import java.util.*;
 
 public abstract class RequestBase {
@@ -30,13 +31,10 @@ public abstract class RequestBase {
             for (Map.Entry<String, String> param : params.entrySet()) {
                 sb.append(delim);
                 delim = "&";
-                sb.append(param.getKey()).append("=").append(URLEncoder.encode(param.getValue(), "UTF-8"));
+                sb.append(param.getKey()).append("=").append(URLEncoder.encode(param.getValue(), StandardCharsets.UTF_8));
             }
-
         } catch (NoSuchFieldException | IllegalAccessException e) {
             // No endpoint, ignore
-        } catch (UnsupportedEncodingException e) {
-            // Should not happen (UTF-8 is builtin)
         }
 
         if (this instanceof JsonpSerializable) {

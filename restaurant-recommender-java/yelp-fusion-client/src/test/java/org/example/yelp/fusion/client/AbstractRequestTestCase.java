@@ -3,8 +3,6 @@ package org.example.yelp.fusion.client;
 import co.elastic.clients.elasticsearch.*;
 import co.elastic.clients.elasticsearch.indices.*;
 import co.elastic.clients.transport.*;
-import com.fasterxml.jackson.databind.node.*;
-import jakarta.json.*;
 
 import jakarta.json.spi.*;
 import jakarta.json.stream.*;
@@ -15,8 +13,6 @@ import org.example.elasticsearch.client.json.jackson.*;
 import org.example.elasticsearch.client.json.jsonb.*;
 import org.example.elasticsearch.client.util.*;
 import org.example.lowlevel.restclient.*;
-
-import org.example.yelp.fusion.client.businesses.*;
 
 import org.example.yelp.fusion.client.category.*;
 import org.example.yelp.fusion.client.transport.*;
@@ -37,7 +33,7 @@ public abstract class AbstractRequestTestCase extends Assertions {
     static void beforeAll() throws IOException {
 
         setOfValidBusinessIds = new HashSet<>();
-        mapOfCategoriesToRestaurants = new HashMap<>();
+        restaurantsPerCategory = new HashMap<>();
         mapper = new JacksonJsonpMapper();
 
         initElasticsearchClient();
@@ -85,6 +81,7 @@ public abstract class AbstractRequestTestCase extends Assertions {
             throw new RuntimeException(e);
         }
     }
+
 
     public static ElasticsearchClient esClient;
 
@@ -153,7 +150,7 @@ public abstract class AbstractRequestTestCase extends Assertions {
 
     public static Set<String> setOfValidBusinessIds;
 
-    public static Map<String, List<String>> mapOfCategoriesToRestaurants;
+    public static Map<String, List<String>> restaurantsPerCategory;
 
     public static Set<String> setOfNewBusinessIds;
 

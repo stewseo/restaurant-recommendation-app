@@ -1,7 +1,6 @@
 package org.example.yelp.fusion.client.businesses;
 
 import co.elastic.clients.elasticsearch.core.*;
-import co.elastic.clients.json.jackson.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 import org.example.elasticsearch.client.elasticsearch.core.*;
@@ -19,9 +18,9 @@ import java.util.stream.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-public class RestaurantCategoriesTest extends AbstractRequestTestCase {
+public class ExtractSFRestaurantsTest extends AbstractRequestTestCase {
 
-    private static final Logger logger = LoggerFactory.getLogger(RestaurantCategoriesTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExtractSFRestaurantsTest.class);
 
     static String index = "yelp-businesses-restaurants-sf";
 
@@ -33,7 +32,7 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
 
     @BeforeAll
     static <T> void setup() throws IOException {
-        String pathToCategoriesJson = Objects.requireNonNull(RestaurantCategoriesTest.class.getResource("map-of-restaurant-categories.json")).getPath();
+        String pathToCategoriesJson = Objects.requireNonNull(ExtractSFRestaurantsTest.class.getResource("map-of-restaurant-categories.json")).getPath();
 
         JsonNode jsonNode = mapper
                 .objectMapper
@@ -68,7 +67,7 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
 
 
                 categoryNode.forEach(alias -> {
-                    mapOfCategoriesToRestaurants.computeIfAbsent(
+                    restaurantsPerCategory.computeIfAbsent(
                             alias.get("alias").asText(),
                             k -> new ArrayList<>()).add(id);
                 });
@@ -77,26 +76,18 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
             }
         }
 
-//        mapOfCategoriesToRestaurants.forEach((category, list) -> {
-//
-//            PrintUtils.cyan(String.format("Category: %s has %d restaurants ",
-//                    category,
-//                    mapOfCategoriesToRestaurants.get(category).size()
-//            ));
-//        });
-
         int yelpRestaurantsSfTotal = 4410;
 
         int yelpSubCatsOfRestaurants = 244; // remove "restaurants" category
 
         assertThat(setOfValidBusinessIds.size()).isEqualTo(yelpRestaurantsSfTotal);
 
-        assertThat(mapOfCategoriesToRestaurants.keySet().size()).isEqualTo(yelpSubCatsOfRestaurants);
+        assertThat(restaurantsPerCategory.keySet().size()).isEqualTo(yelpSubCatsOfRestaurants);
 
 
         PrintUtils.green("setOfNewBusinessIds.size = " + setOfValidBusinessIds.size());
-        PrintUtils.green("map of categories.size = " + mapOfCategoriesToRestaurants.keySet().size());
-        PrintUtils.green("map of categories keyset = " + mapOfCategoriesToRestaurants.keySet());
+        PrintUtils.green("map of categories.size = " + restaurantsPerCategory.keySet().size());
+        PrintUtils.green("map of categories keyset = " + restaurantsPerCategory.keySet());
 
 
         String header = String.format("-H \"%s: %s\" ", "Authorization", "Bearer " + System.getenv("YELP_API_KEY"));
@@ -111,15 +102,11 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
                 .append("/v3");
     }
 
-    @Test
-    void emptyTest() {
-        
-    }
 
     @Test
     void restaurantsByCategoryTest() throws IOException, URISyntaxException {
-        PrintUtils.green(mapOfCategoriesToRestaurants.get("restaurants").size());
-        PrintUtils.green(mapOfCategoriesToRestaurants.remove("restaurants"));
+        PrintUtils.green(restaurantsPerCategory.get("restaurants").size());
+        PrintUtils.green(restaurantsPerCategory.remove("restaurants"));
 
         String businessSearchEndpoint = "/businesses/search";
         String businessDetailsEndpoint = "/businesses";
@@ -132,7 +119,7 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
         String location = "SF";
 
         // reset offset, total hits, and max offset
-        for (String category : mapOfCategoriesToRestaurants.keySet()) {
+        for (String category : restaurantsPerCategory.keySet()) {
 
             // reset parameters
             int totalHits = 0;
@@ -148,14 +135,8 @@ public class RestaurantCategoriesTest extends AbstractRequestTestCase {
 
                 BusinessSearchResponse<Business> businessSearchResponse = yelpClient.search(s -> s
                                 .location(location)
-                                .sort_by(sort_by)
-                                .categories(category)
-                                .limit(limit)
-                                .offset(testOffset)
-                        
                                 .terms(term)
                                 .categories(category)
-                                .terms(term)
                                 .limit(limit)
                                 .offset(testOffset)
                                 .sort_by(sort_by)
