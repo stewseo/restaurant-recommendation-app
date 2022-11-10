@@ -2,6 +2,7 @@ package org.example.lowlevel.restclient;
 
 import org.apache.commons.logging.*;
 import org.apache.http.*;
+import org.apache.http.auth.*;
 import org.apache.http.client.*;
 import org.apache.http.client.config.*;
 import org.apache.http.client.entity.*;
@@ -21,9 +22,11 @@ import org.apache.http.protocol.*;
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.*;
+import java.nio.charset.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
+import java.util.function.*;
 import java.util.stream.*;
 import java.util.zip.*;
 
@@ -33,6 +36,7 @@ import static java.util.Collections.*;
 public class RestClient implements Closeable {
     private static final Log logger = LogFactory.getLog(RestClient.class);
 
+    public static RequestOptions COMMON_OPTIONS;
     private final CloseableHttpAsyncClient client;
     // We don't rely on default headers supported by HttpAsyncClient as those cannot be replaced.
 // These are package private for tests.
@@ -123,16 +127,10 @@ public class RestClient implements Closeable {
         return new RestClientBuilder(nodes);
     }
 
-    /**
-     * Get the underlying HTTP client.
-     */
     public HttpAsyncClient getHttpClient() {
         return this.client;
     }
 
-    /**
-     * Replaces the nodes with which the client communicates.
-     */
     public synchronized void setNodes(Collection<Node> nodes) {
         if (nodes == null || nodes.isEmpty()) {
             throw new IllegalArgumentException("nodes must not be null or empty");
@@ -150,39 +148,64 @@ public class RestClient implements Closeable {
         this.blacklist.clear();
     }
 
-    /**
-     * Get the list of nodes that the client knows about. The list is
-     * unmodifiable.
-     */
     public List<Node> getNodes() {
         return nodeTuple.nodes;
     }
-
-
-    /**
-     * check client running status
-     *
-     * @return client running status
-     */
+    
     public boolean isRunning() {
         return client.isRunning();
     }
 
+    public String add(String string, Function<String, String> fn) {
+        return fn.apply(string);
+    }
 
     public Response performRequest(Request request) throws IOException {
         PrintUtils.green(String.format("performRequest %s", request));
         InternalRequest internalRequest = new InternalRequest(request);
+
+        if(internalRequest.httpRequest.getAllHeaders().length == 0) {
+            PrintUtils.green("httpRequest getAllHeaders == 0");
+        }
         return performRequest(nextNodes(), internalRequest, null);
     }
 
+
     private Response performRequest(final NodeTuple<Iterator<Node>> tuple, final InternalRequest request, Exception previousException)
             throws IOException {
+
         RequestContext context = request.createContextForNextAttempt(tuple.nodes.next(), tuple.authCache);
 
+        PrintUtils.red(String.format("context.requestProducer = %s%n context.asyncResponseConsumer %s%n context.node = %s"+
+                context.requestProducer.toString() + " " +
+                context.asyncResponseConsumer.toString()  + " " +
+                context.node.getName()));
+
         HttpResponse httpResponse;
+
+
         try {
-            PrintUtils.green(String.format("           httpResponse = client.execute(context.requestProducer = %s%n, context.asyncResponseConsumer = %s%n, context.context = %s%n", context.requestProducer, context.asyncResponseConsumer, context.context ));
             httpResponse = client.execute(context.requestProducer, context.asyncResponseConsumer, context.context, null).get();
+            PrintUtils.red(String.format("httpResponse.statusLine = %s%n headers = %s",
+                    httpResponse.getStatusLine(),
+                    Arrays.toString(httpResponse.getAllHeaders())
+            ));
+
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            PrintUtils.cyan(String.format("context.requestProduce = %s%n context.asyncResponseConsumer = %s%n context = %s",
+                    context.requestProducer,
+                    context.asyncResponseConsumer,
+                    context.context ));
+            
+            httpResponse = client.execute(context.requestProducer, context.asyncResponseConsumer, context.context, null).get();
+            PrintUtils.red(String.format("httpResponse.statusLine = %s%n headers = %s",
+                    httpResponse.getStatusLine(),
+                    Arrays.toString(httpResponse.getAllHeaders())
+                   ));
 
         } catch (Exception e) {
             RequestLogger.logFailedRequest(logger, request.httpRequest, context.node, e);
@@ -193,15 +216,21 @@ public class RestClient implements Closeable {
                 return performRequest(tuple, request, cause);
             }
             if (cause instanceof IOException) {
+                PrintUtils.green("IO Exception: " );
                 throw (IOException) cause;
             }
             if (cause instanceof RuntimeException) {
+                PrintUtils.green("RuntimeException: ");
                 throw (RuntimeException) cause;
             }
             throw new IllegalStateException("unexpected exception type: must be either RuntimeException or IOException", cause);
         }
         ResponseOrResponseException responseOrResponseException = convertResponse(request, context.node, httpResponse);
         if (responseOrResponseException.responseException == null) {
+            PrintUtils.red(String.format("httpResponse.statusLine = %s%n headers = %s",
+                    httpResponse.getStatusLine(),
+                    Arrays.toString(httpResponse.getAllHeaders())
+            ));
             return responseOrResponseException.response;
         }
         addSuppressedException(previousException, responseOrResponseException.responseException);
@@ -641,16 +670,16 @@ public class RestClient implements Closeable {
             this.ignoreErrorCodes = getIgnoreErrorCodes(ignoreString, request.getMethod());
 
             URI uri = buildUri(pathPrefix, request.getEndpoint(), params);
-
+            PrintUtils.green(String.format("uri =  %s", uri));
 
             this.httpRequest = createHttpRequest(request.getMethod(), uri, request.getEntity(), compressionEnabled);
-            PrintUtils.green(String.format("httpRequest %s", httpRequest));
+            PrintUtils.green(String.format("httpRequest = %s", httpRequest));
 
             this.cancellable = Cancellable.fromRequest(httpRequest);
-            PrintUtils.red(String.format("  this.cancellable = Cancellable.fromRequest(httpRequest) %s", cancellable));
+            PrintUtils.red(String.format("this.cancellable = Cancellable.fromRequest(httpRequest) %s", cancellable));
 
             setHeaders(httpRequest, request.getOptions().getHeaders());
-            PrintUtils.green(String.format(" setHeaders(httpRequest, request.getOptions().getHeaders()); %s", httpRequest));
+            PrintUtils.green(String.format("setHeaders(httpRequest, request.getOptions().getHeaders()); %s", httpRequest));
 
             setRequestConfig(httpRequest, request.getOptions().getRequestConfig());
             PrintUtils.cyan(String.format(" setRequestConfig(httpRequest, request.getOptions().getRequestConfig()) = %s", request.getOptions().getRequestConfig()));
@@ -666,18 +695,22 @@ public class RestClient implements Closeable {
             for (Header requestHeader : requestHeaders) {
                 req.addHeader(requestHeader);
                 requestNames.add(requestHeader.getName());
+                PrintUtils.red(String.format("HttpRequest addHeader: %s%n requestNames .add: %s", requestHeader, requestHeader.getName()));
             }
             for (Header defaultHeader : defaultHeaders) {
-                if (requestNames.contains(defaultHeader.getName()) == false) {
+                if (!requestNames.contains(defaultHeader.getName())) {
                     req.addHeader(defaultHeader);
+                    PrintUtils.red(String.format("HttpRequest adding defaultHeader: %s%n ", defaultHeader));
                 }
             }
             if (compressionEnabled) {
                 req.addHeader("Accept-Encoding", "gzip");
+                PrintUtils.red("compressionEnabled addHeader : %s%n, AcceptEncoding gzip");
             }
             if (metaHeaderEnabled) {
-                if (req.containsHeader(RestClientBuilder.META_HEADER_NAME) == false) {
+                if (!req.containsHeader(RestClientBuilder.META_HEADER_NAME)) {
                     req.setHeader(RestClientBuilder.META_HEADER_NAME, RestClientBuilder.META_HEADER_VALUE);
+                    PrintUtils.red("metaHeaderEnabled addHeader : RestClientBuilder.META_HEADER_NAME");
                 }
             } else {
                 req.removeHeaders(RestClientBuilder.META_HEADER_NAME);
@@ -702,19 +735,7 @@ public class RestClient implements Closeable {
 
     private static class RequestContext {
         private final Node node;
-
-
-        //HttpAsyncRequestProducer is a callback interface whose methods get invoked to generate an HTTP request message and to stream message content to a non-blocking HTTP connection.
-        // Repeatable request producers capable of generating the same request message more than once can be reset to their initial state by calling the resetRequest() method,
-        // at which point request producers are expected to release currently allocated resources that are no longer needed or re-acquire resources needed to repeat the process.
         private final HttpAsyncRequestProducer requestProducer;
-
-
-        //HttpAsyncResponseConsumer is a callback interface whose methods get invoked to process an HTTP response message and to stream message content from a non-blocking HTTP connection on the client side.
-        //Since:
-        //4.2
-        //Type parameters:
-        //<T> – the result type of response processing.
         private final HttpAsyncResponseConsumer<HttpResponse> asyncResponseConsumer;
 
         // Adaptor class that provides convenience type safe setters and getters for common HttpContext attributes used in the course of HTTP request execution.
@@ -722,12 +743,15 @@ public class RestClient implements Closeable {
 
         RequestContext(RestClient.InternalRequest request, Node node, AuthCache authCache) throws HttpException {
             this.node = node;
+            PrintUtils.red(String.format("node = %s", node));
             // we stream the request body if the entity allows for it
             this.requestProducer = HttpAsyncMethods.create(node.getHost(), request.httpRequest);
-            PrintUtils.green(String.format("          Initializing RequestContext %nrequestProducer = HttpAsyncMethods.create(node.getHost()  = %s, request.httpRequest = %s) ", node.getHost(), request.httpRequest));
+            PrintUtils.red(String.format("requestProducer = HttpAsyncMethods.create(node.getHost = %s%n request.httpRquest = %s", node.getHost(), request.httpRequest));
             this.asyncResponseConsumer = request.request.getOptions()
                     .getHttpAsyncResponseConsumerFactory()
                     .createHttpAsyncResponseConsumer();
+            PrintUtils.red(String.format("requestProducer = HttpAsyncMethods.create(node.getHost = %s%n request.httpRquest = %s", node.getHost(), request.httpRequest));
+
             PrintUtils.green(String.format("       asyncResponseConsumer = request.request.getOptions().getHttpAsyncResponseConsumerFactory().createHttpAsyncResponseConsumer() %n%s, request.httpRequest = %s) ", node.getHost(), request.httpRequest));
             this.context = HttpClientContext.create();
 

@@ -4,16 +4,15 @@ import jakarta.json.*;
 import jakarta.json.spi.*;
 import jakarta.json.stream.*;
 
+import java.lang.reflect.*;
 import java.util.*;
-
-
 public class SimpleJsonpMapper extends JsonpMapperBase {
 
     public static SimpleJsonpMapper INSTANCE = new SimpleJsonpMapper(true);
     public static SimpleJsonpMapper INSTANCE_REJECT_UNKNOWN_FIELDS = new SimpleJsonpMapper(false);
 
-    private static final Map<Class<?>, JsonpSerializer<?>> serializers = new HashMap<>();
-    private static final Map<Class<?>, JsonpDeserializer<?>> deserializers = new HashMap<>();
+    private static final Map<Type, JsonpSerializer<?>> serializers = new HashMap<>();
+    private static final Map<Type, JsonpDeserializer<?>> deserializers = new HashMap<>();
 
     static {
         serializers.put(String.class, (JsonpSerializer<String>) (value, generator, mapper) -> generator.write(value));
@@ -92,14 +91,14 @@ public class SimpleJsonpMapper extends JsonpMapperBase {
     }
 
     @Override
-    protected <T> JsonpDeserializer<T> getDefaultDeserializer(Class<T> clazz) {
+    protected <T> JsonpDeserializer<T> getDefaultDeserializer(Type type) {
         @SuppressWarnings("unchecked")
-        JsonpDeserializer<T> deserializer = (JsonpDeserializer<T>) deserializers.get(clazz);
+        JsonpDeserializer<T> deserializer = (JsonpDeserializer<T>) deserializers.get(type);
         if (deserializer != null) {
             return deserializer;
         } else {
             throw new JsonException(
-                    "Cannot find a deserializer for type " + clazz.getName() +
+                    "Cannot find a deserializer for type " + type.getTypeName() +
                             ". Consider using a full-featured JsonpMapper"
             );
         }

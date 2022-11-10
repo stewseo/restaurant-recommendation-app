@@ -12,19 +12,18 @@ import org.example.elasticsearch.client.transport.*;
 import org.example.elasticsearch.client.transport.restclient.*;
 import org.example.elasticsearch.client.util.*;
 import org.example.lowlevel.restclient.*;
-import org.slf4j.*;
 
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.logging.*;
 import java.util.stream.*;
 
 
 public class YelpRestTransport implements YelpFusionTransport {
 
-    private static final Logger logger = LoggerFactory.getLogger(YelpRestTransport.class);
     static final ContentType JsonContentType;
 
     static CloseableHttpAsyncClient client;
@@ -43,11 +42,8 @@ public class YelpRestTransport implements YelpFusionTransport {
         }
     }
 
-
     @Override
-    public void close() throws IOException {
-
-    }
+    public void close() throws IOException {}
 
 
     private static class RequestFuture<T> extends CompletableFuture<T> {
@@ -80,7 +76,6 @@ public class YelpRestTransport implements YelpFusionTransport {
         }
 
         PrintUtils.green(String.format("Initializing YelpRestTransport with: RestClient = %s%n JsonpMapper = %s%n %s", restClient, mapper, optionsString));
-        logger.info("Initializing YelpRestTransport with: RestClient = {}%n JsonpMapper = {}%n {}", restClient, mapper, optionsString);
     }
 
     public YelpRestTransport(RestClient restClient, JsonpMapper mapper) throws IOException {
@@ -125,7 +120,7 @@ public class YelpRestTransport implements YelpFusionTransport {
         if (options != null) {
             for (Header header : options.getHeaders())
                 if (header.getName().contains("Authorization")) {
-                    currentHeader = String.format("-H \"%s: %s\" ",header.getName(),header.getValue());
+                    currentHeader = String.format("-H \"%s: %s\" ", header.getName(), header.getValue());
                 }
         }
         sb.append(currentHeader); //curl -H Authorization: Bearer $YELP_API_KEY

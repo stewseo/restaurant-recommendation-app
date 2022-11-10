@@ -6,7 +6,8 @@ plugins {
 group = 'org.example'
 
 dependencies {
-    api("jakarta.json:jakarta.json-api:${jakartaVersion}")
     api project(":lowlevel-restclient")
+    api('co.elastic.clients:elasticsearch-java:8.4.3')
+    api("jakarta.json:jakarta.json-api:${jakartaVersion}")
 }
 

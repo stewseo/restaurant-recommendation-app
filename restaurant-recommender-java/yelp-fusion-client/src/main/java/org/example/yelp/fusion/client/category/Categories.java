@@ -1,60 +1,137 @@
 package org.example.yelp.fusion.client.category;
 
 
+import jakarta.json.stream.*;
 import org.example.elasticsearch.client.json.*;
+import org.example.elasticsearch.client.util.*;
 
+import java.io.*;
 import java.util.*;
-
+import java.util.function.*;
 @JsonpDeserializable
-public class Categories {
+public class Categories implements JsonpSerializable {
 
-    public String alias, title;
+    private final String alias, title;
 
-    public String[] parents;
+    private final List<String> parents;
 
-    public Object[] country_whitelist, country_blacklist;
+    private final List<String> country_whitelist;
 
-    public String getAlias() {
+    private final List<String> country_blacklist;
+
+
+    private Categories(Builder builder) {
+        this.alias = builder.alias;
+        this.title = builder.title;
+        this.parents = builder.parents;
+        this.country_blacklist = builder.country_blacklist;
+        this.country_whitelist = builder.country_whitelist;
+    }
+    public String alias() {
         return alias;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public String getTitle() {
+    private String title() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String[] getParents() {
+    private List<String> parents() {
         return parents;
     }
 
-    public void setParents(String[] parents) {
-        this.parents = parents;
-    }
-
-    public Object[] getCountry_whitelist() {
+    private List<String> country_whitelist() {
         return country_whitelist;
     }
 
-    public void setCountry_whitelist(Object[] country_whitelist) {
-        this.country_whitelist = country_whitelist;
-    }
-
-    public Object[] getCountry_blacklist() {
+    private List<String> country_blacklist() {
         return country_blacklist;
     }
 
-    public void setCountry_blacklist(Object[] country_blacklist) {
-        this.country_blacklist = country_blacklist;
+    public static Categories of(Function<Builder, ObjectBuilder<Categories>> fn) {
+        return fn.apply(new Builder()).build();
     }
 
-    public Categories() {
+    public void serialize(JsonGenerator generator, JsonpMapper mapper) {
+        generator.writeStartObject();
+        serializeInternal(generator, mapper);
+        generator.writeEnd();
+    }
+
+    protected void serializeInternal(JsonGenerator generator, JsonpMapper mapper) {
+        if (this.alias != null) {
+            generator.writeKey("alias");
+            generator.write(this.alias);
+        }
+
+        if (this.title != null) {
+            generator.writeKey("title");
+            generator.write(this.title);
+        }
+        if (this.parents != null) {
+            generator.writeKey("parents");
+            generator.writeStartArray();
+            for (String item0 : this.parents) {
+                generator.write(item0);
+
+            }
+            generator.writeEnd();
+        }
+    }
+    public static class Builder extends ObjectBuilderBase implements ObjectBuilder<Categories> {
+        private String alias, title;
+
+        private List<String> parents;
+
+        private List<String> country_whitelist;
+        private List<String> country_blacklist;
+
+        public Builder(){}
+
+
+        public final Builder alias(String id) {
+            this.alias = id;
+            return this;
+        }
+        public final Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public final Builder parents(List<String> parents) {
+            this.parents = _listAddAll(this.parents, parents);
+            return this;
+        }
+
+        public final Builder parents(String value, String... values) {
+            this.parents = _listAdd(this.parents, value, values);
+            return this;
+        }
+
+        public final Builder country_whitelist(List<String> parents) {
+            this.country_whitelist = _listAddAll(this.country_whitelist, parents);
+            return this;
+        }
+
+        public final Builder country_whitelist(String value, String... values) {
+            this.country_whitelist = _listAdd(this.country_whitelist, value, values);
+            return this;
+        }
+        public final Builder country_blacklist(List<String> parents) {
+            this.country_blacklist = _listAddAll(this.country_blacklist, parents);
+            return this;
+        }
+
+        public final Builder country_blacklist(String value, String... values) {
+            this.country_blacklist = _listAdd(this.country_blacklist, value, values);
+            return this;
+        }
+
+
+        public Categories build() {
+            _checkSingleUse();
+            return new Categories(this);
+        }
+
     }
 
     @Override
@@ -62,9 +139,19 @@ public class Categories {
         return "Category{" +
                 "alias='" + alias + '\'' +
                 ", title='" + title + '\'' +
-                ", parents=" + Arrays.toString(parents) +
-                ", country_whitelist=" + Arrays.toString(country_whitelist) +
-                ", country_blacklist=" + Arrays.toString(country_blacklist) +
+                ", parents=" + parents +
                 '}';
+    }
+
+    public static final JsonpDeserializer<Categories> _DESERIALIZER =
+            ObjectBuilderDeserializer.lazy(Categories.Builder::new,
+                    Categories::setupCategoriesDeserializer);
+
+    protected static void setupCategoriesDeserializer(ObjectDeserializer<Categories.Builder> op) {
+
+        op.add(Builder::alias, JsonpDeserializer.stringDeserializer(), "alias");
+        op.add(Builder::title, JsonpDeserializer.stringDeserializer(), "title");
+        op.add(Builder::parents, JsonpDeserializer.arrayDeserializer(JsonpDeserializer.stringDeserializer()), "parents");
+
     }
 }

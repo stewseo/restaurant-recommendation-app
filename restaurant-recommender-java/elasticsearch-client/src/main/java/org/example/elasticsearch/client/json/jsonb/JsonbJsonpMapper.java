@@ -8,8 +8,8 @@ import jakarta.json.stream.JsonParser.*;
 import org.example.elasticsearch.client.json.*;
 
 import java.io.*;
+import java.lang.reflect.*;
 import java.util.*;
-
 public class JsonbJsonpMapper extends JsonpMapperBase {
 
     private final JsonProvider jsonProvider;
@@ -34,8 +34,8 @@ public class JsonbJsonpMapper extends JsonpMapperBase {
     }
 
     @Override
-    protected <T> JsonpDeserializer<T> getDefaultDeserializer(Class<T> clazz) {
-        return new Deserializer<>(clazz);
+    protected <T> JsonpDeserializer<T> getDefaultDeserializer(Type type) {
+        return new Deserializer<>(type);
     }
 
     @Override
@@ -60,11 +60,11 @@ public class JsonbJsonpMapper extends JsonpMapperBase {
     }
 
     private class Deserializer<T> extends JsonpDeserializerBase<T> {
-        private final Class<T> clazz;
+        private final Type type;
 
-        Deserializer(Class<T> clazz) {
+        Deserializer(Type type) {
             super(EnumSet.allOf(JsonParser.Event.class));
-            this.clazz = clazz;
+            this.type = type;
         }
 
         @Override
@@ -80,7 +80,7 @@ public class JsonbJsonpMapper extends JsonpMapperBase {
             generator.close();
 
             CharArrayReader car = new CharArrayReader(caw.toCharArray());
-            return jsonb.fromJson(car, clazz);
+            return jsonb.fromJson(car, type);
         }
     }
 
@@ -88,39 +88,54 @@ public class JsonbJsonpMapper extends JsonpMapperBase {
         transferAll(from, from.next(), to);
     }
 
-
+    /**
+     * Pipe a JSON parser to a JSON generator.
+     */
     private void transferAll(JsonParser from, JsonParser.Event event, JsonGenerator to) {
         transferEvent(from, event, to);
-        switch (event) {
-            case START_OBJECT -> {
+        switch(event) {
+            case START_OBJECT: {
                 int depth = 1;
                 do {
                     event = from.next();
                     transferEvent(from, event, to);
                     switch (event) {
-                        case START_OBJECT -> depth++;
-                        case END_OBJECT -> depth--;
+                        case START_OBJECT:
+                            depth++;
+                            break;
+                        case END_OBJECT:
+                            depth--;
+                            break;
                     }
-                } while (!(event == Event.END_OBJECT && depth == 0));
+                } while(!(event == Event.END_OBJECT && depth == 0));
             }
-            case START_ARRAY -> {
+            break;
+
+            case START_ARRAY: {
                 int depth = 1;
                 do {
                     event = from.next();
                     transferEvent(from, event, to);
                     switch (event) {
-                        case START_ARRAY -> depth++;
-                        case END_ARRAY -> depth--;
+                        case START_ARRAY:
+                            depth++;
+                            break;
+                        case END_ARRAY:
+                            depth--;
+                            break;
                     }
-                } while (!(event == Event.END_ARRAY && depth == 0));
+                } while(!(event == Event.END_ARRAY && depth == 0));
             }
-            default -> {
-            }
-            // nothing more
+            break;
+
+            default:
+                // nothing more
         }
     }
 
-
+    /**
+     * Transfer a single event from a parser to a generator
+     */
     private void transferEvent(JsonParser from, JsonParser.Event event, JsonGenerator to) {
         switch (event) {
             case START_OBJECT:

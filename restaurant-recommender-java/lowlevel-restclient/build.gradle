@@ -2,32 +2,28 @@
 plugins {
     id 'java-conventions'
     id 'java-library'
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+ext {
+    
+    commonscodecVersion = '1.11'
+    commonsioVersion = '2.2'
+    commonsloggingVersion = '1.2'
+
+    httpasyncclientVersion = '4.1.5'
+    httpcoreVersion = '4.4.12'
+    httpclientVersion = '4.5.10'
 }
 
 dependencies {
 
-//    api('org.elasticsearch.client:elasticsearch-rest-client:8.4.3')
+    api "org.apache.httpcomponents:httpclient:${httpclientVersion}"
+    api "org.apache.httpcomponents:httpcore:${httpcoreVersion}"
+    api "org.apache.httpcomponents:httpasyncclient:${httpasyncclientVersion}"
+    api "org.apache.httpcomponents:httpcore-nio:${httpcoreVersion}"
+    api "commons-codec:commons-codec:${commonscodecVersion}"
+    api "commons-logging:commons-logging:${commonsloggingVersion}"
 
-    api("io.github.classgraph:classgraph:4.8.149")
-
-    api("org.slf4j:jcl-over-slf4j:${slf4jVersion}")
-
-     api("org.slf4j:jcl-over-slf4j:${slf4jVersion}")
-
-        api "org.apache.httpcomponents:httpclient:${httpclientVersion}"
-        api "org.apache.httpcomponents:httpcore:${httpcoreVersion}"
-        api "org.apache.httpcomponents:httpasyncclient:${httpasyncclientVersion}"
-        api "org.apache.httpcomponents:httpcore-nio:${httpcoreVersion}"
-        api "commons-codec:commons-codec:${commonscodecVersion}"
-        api "commons-logging:commons-logging:${commonsloggingVersion}"
-
-//    shadowJar {
-//        relocate 'org.apache.http', 'hidden.org.apache.http'
-//        relocate 'org.apache.logging', 'hidden.org.apache.logging'
-//        relocate 'org.apache.commons.codec', 'hidden.org.apache.commons.codec'
-//        relocate 'org.apache.commons.logging', 'hidden.org.apache.commons.logging'
-//    }
-    }
+}
 
 

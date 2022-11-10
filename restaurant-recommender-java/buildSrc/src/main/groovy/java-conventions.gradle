@@ -6,26 +6,8 @@ plugins {
 
 
 ext {
-
-    // TODO: migrate from buildSrc to build-conventions with a build-tools plugin that has access to VersionProperties
-
-    logbackVersion = '1.4.0'
-    elasticSearchVersion  = "8.4.3"
-    jUnitVersion = "5.9.0"
-
-    // versions that don't cause conflicts
-    slf4jVersion = '2.0.0'
     jacksonVersion = "2.12.3"
-    jakartaVersion = '2.0.1'
 
-
-    // low level java rest client versions
-    commonscodecVersion = '1.11'
-    commonsioVersion = '2.2'
-    commonsloggingVersion = '1.2'
-    httpasyncclientVersion = '4.1.5'
-    httpcoreVersion = '4.4.12'
-    httpclientVersion = '4.5.10'
 }
 
 
@@ -36,9 +18,8 @@ repositories {
 
 dependencies {
 
-//    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
-//    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
-
+    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
     testImplementation 'org.assertj:assertj-core:3.23.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'

@@ -8,15 +8,16 @@ import java.util.concurrent.*;
 
 public interface Transport extends Closeable {
 
-    <RequestT, ResponseT, ErrorT>   // accept a RequestT(SearchRequest extends RequestBase), return a ResponseT(SearchResponse<TDocument> extends ResponseBody), Build an ErrorT if needed
+    <RequestT, ResponseT, ErrorT>
 
-    ResponseT performRequest( // returns a ResponseT
+    ResponseT performRequest(
             RequestT request,
 
             Endpoint<RequestT, ResponseT, ErrorT> endpoint, // adds id for endpoint /_ingest/pipeline/{pipeline_id}
 
             TransportOptions options
     ) throws IOException, URISyntaxException;
+
 
     <RequestT, ResponseT, ErrorT> CompletableFuture<ResponseT> performRequestAsync(
             RequestT request,

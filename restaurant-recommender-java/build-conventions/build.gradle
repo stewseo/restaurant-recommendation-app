@@ -1,51 +1,47 @@
-plugins {
-    id 'java-gradle-plugin'
-}
-
-gradlePlugin {
-
-//    automatedPublishing = false
-    plugins {
-        publish {
-            id = 'restaurant-recommender-java.publish'
-            implementationClass = 'org.example.gradle.internal.conventions.PublishPlugin'
-        }
-        buildTools {
-            id = 'restaurant-recommender-java.build-tools'
-            implementationClass = 'org.example.gradle.internal.conventions.BuildToolsConventionsPlugin'
-        }
-        versions {
-            id = 'restaurant-recommender-java.versions'
-            implementationClass = 'org.example.gradle.internal.conventions.VersionPropertiesPlugin'
-        }
-        formatting {
-            id = 'restaurant-recommender-java.formatting'
-            implementationClass = 'org.example.gradle.internal.conventions.precommit.FormattingPrecommitPlugin'
-        }
-    }
-}
-
-repositories {
-    mavenCentral()
-    gradlePluginPortal()
-}
-
-dependencies {
-    api buildLibs.maven.model
-    api buildLibs.shadow.plugin
-    api buildLibs.apache.rat
-//    compileOnly buildLibs.checkstyle
-    api(buildLibs.spotless.plugin) {
-        exclude module: "groovy-xml"
-    }
-}
-//project.getPlugins().withType(JavaBasePlugin.class) {
-//    java.getModularity().getInferModulePath().set(false);
-//    idea.getClasspath().getFile().whenMerged { classpath ->
-//        classpath.getEntries().findAll{ s -> s instanceof SourceFolder }.eachWithIndex { s, i ->
-//            s.setOutput("out/idea" + i)
+//plugins {
+//    id 'java-gradle-plugin'
+//}
+//
+//gradlePlugin {
+//
+////    automatedPublishing = false
+//    plugins {
+//        publish {
+//            id = 'restaurant-recommender-java.publish'
+//            implementationClass = 'org.example.gradle.internal.conventions.PublishPlugin'
+//        }
+//        buildTools {
+//            id = 'restaurant-recommender-java.build-tools'
+//            implementationClass = 'org.example.gradle.internal.conventions.BuildToolsConventionsPlugin'
+//        }
+//        versions {
+//            id = 'restaurant-recommender-java.versions'
+//            implementationClass = 'org.example.gradle.internal.conventions.VersionPropertiesPlugin'
+//        }
+//        formatting {
+//            id = 'restaurant-recommender-java.formatting'
+//            implementationClass = 'org.example.gradle.internal.conventions.precommit.FormattingPrecommitPlugin'
 //        }
 //    }
 //}
-
-
+//
+//repositories {
+//    mavenCentral()
+//    gradlePluginPortal()
+//}
+//
+//dependencies {
+//    api buildLibs.maven.model
+//    api buildLibs.shadow.plugin
+//    api buildLibs.apache.rat
+//}
+////project.getPlugins().withType(JavaBasePlugin.class) {
+////    java.getModularity().getInferModulePath().set(false);
+////    idea.getClasspath().getFile().whenMerged { classpath ->
+////        classpath.getEntries().findAll{ s -> s instanceof SourceFolder }.eachWithIndex { s, i ->
+////            s.setOutput("out/idea" + i)
+////        }
+////    }
+////}
+//
+//

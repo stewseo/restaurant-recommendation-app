@@ -1,12 +1,13 @@
 plugins {
     id 'library-conventions'
-    id 'java-library'
+    id 'java'
 }
 
 
 dependencies {
-    api project(":lowlevel-restclient")
     api project(":elasticsearch-client")
+    api project(":lowlevel-restclient")
+
 }
 
 task wrapper(type: Wrapper){

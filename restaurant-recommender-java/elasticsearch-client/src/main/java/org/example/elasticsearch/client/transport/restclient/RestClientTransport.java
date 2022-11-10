@@ -1,26 +1,32 @@
 package org.example.elasticsearch.client.transport.restclient;
 
-
 import jakarta.json.stream.*;
+import org.apache.http.*;
 import org.apache.http.entity.*;
 import org.apache.http.message.*;
+import org.apache.http.util.*;
+import org.example.elasticsearch.client._types.*;
 import org.example.elasticsearch.client.json.*;
 import org.example.elasticsearch.client.transport.*;
+import org.example.elasticsearch.client.transport.MissingRequiredPropertyException;
+import org.example.elasticsearch.client.transport.endpoints.*;
 import org.example.elasticsearch.client.util.*;
 import org.example.lowlevel.restclient.*;
+import org.example.lowlevel.restclient.ResponseException;
 
+
+import javax.annotation.Nullable;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
 
-@SuppressWarnings({"RedundantThrows", "unused"})
+@SuppressWarnings({"unused"})
 public class RestClientTransport implements ElasticsearchTransport {
 
     static final ContentType JsonContentType;
 
     static {
-
 
         if (Version.VERSION == null) {
             JsonContentType = ContentType.APPLICATION_JSON;
@@ -32,6 +38,9 @@ public class RestClientTransport implements ElasticsearchTransport {
         }
     }
 
+
+     // implementation returned by async requests.
+     // It wraps the RestClient's cancellable and progagates cancellation.
     private static class RequestFuture<T> extends CompletableFuture<T> {
         private volatile Cancellable cancellable;
 
@@ -49,7 +58,7 @@ public class RestClientTransport implements ElasticsearchTransport {
     private final JsonpMapper mapper;
     private final RestClientOptions transportOptions;
 
-    public RestClientTransport(RestClient restClient, JsonpMapper mapper, TransportOptions options) {
+    public RestClientTransport(RestClient restClient, JsonpMapper mapper, @Nullable TransportOptions options) {
         this.restClient = restClient;
         this.mapper = mapper;
         this.transportOptions = options == null ? RestClientOptions.initialOptions() : RestClientOptions.of(options);
@@ -63,7 +72,7 @@ public class RestClientTransport implements ElasticsearchTransport {
         return this.restClient;
     }
 
-    public RestClientTransport withRequestOptions(TransportOptions options) {
+    public RestClientTransport withRequestOptions(@Nullable TransportOptions options) {
         return new RestClientTransport(this.restClient, this.mapper, options);
     }
 
@@ -74,7 +83,7 @@ public class RestClientTransport implements ElasticsearchTransport {
 
     @Override
     public TransportOptions options() {
-        return PrintUtils.println("Transport Options: " ,  transportOptions);
+        return transportOptions;
     }
 
     @Override
@@ -90,7 +99,7 @@ public class RestClientTransport implements ElasticsearchTransport {
 
         Request clientReq = prepareLowLevelRequest(request, endpoint, options); // build the client Request
         Response clientResp = performRequest(clientReq); // build the client Response
-        return null; // get the high level response
+        return getHighLevelResponse(clientResp, endpoint); // get the high level response
     }
 
     private Response performRequest(Request clientReq) {
@@ -161,98 +170,101 @@ public class RestClientTransport implements ElasticsearchTransport {
         }
     }
 
-//        private <ResponseT, ErrorT> JsonObject getHighLevelResponse(
-//                Response clientResp,
-//                Endpoint<?, ResponseT, ErrorT> endpoint
-//        ) throws IOException {
-//
-//            try {
-//                int statusCode = clientResp.getStatusLine().getStatusCode();
-//
-//                if (statusCode == 200) {
-//                    checkProductHeader(clientResp, endpoint);
-//                }
-//
-//                if (endpoint.isError(statusCode)) {
-//                    JsonpDeserializer<ErrorT> errorDeserializer = endpoint.errorDeserializer(statusCode);
-//                    if (errorDeserializer == null) {
-//                        throw new TransportException(
-//                                "Request failed with status code '" + statusCode + "'",
-//                                endpoint.id(), new ResponseException(clientResp)
-//                        );
-//                    }
-//
-//                    HttpEntity entity = clientResp.getEntity();
-//                    if (entity == null) {
-//                        throw new TransportException(
-//                                "Expecting a response body, but none was sent",
-//                                endpoint.id(), new ResponseException(clientResp)
-//                        );
-//                    }
-//
-//                    // We may have to replay it.
-//                    entity = new BufferedHttpEntity(entity);
-//
-//                    try {
-//                        InputStream content = entity.getContent();
-//                        try (JsonParser parser = mapper.jsonProvider().createParser(content)) {
-//                            ErrorT error = errorDeserializer.deserialize(parser, mapper);
-//                            // TODO: have the endpoint provide the exception constructor
-//                            throw new _Exception(endpoint.id(), (ErrorResponse) error);
-//                        }
-//                    } catch(MissingRequiredPropertyException errorEx) {
-//                        // Could not decode exception, try the response type
-//                        try {
-//                            ResponseT response = decodeResponse(statusCode, entity, clientResp, endpoint);
-//                            return response;
-//                        } catch(Exception respEx) {
-//                            // No better luck: throw the original error decoding exception
-//                            throw new TransportException("Failed to decode error response", endpoint.id(), new ResponseException(clientResp));
-//                        }
-//                    }
-//                } else {
-//                    return decodeResponse(statusCode, clientResp.getEntity(), clientResp, endpoint);
-//                }
-//            } finally {
-//                EntityUtils.consume(clientResp.getEntity());
-//            }
-//        }
-//
-//        private <ResponseT> ResponseT decodeResponse(
-//        int statusCode,HttpEntity entity, Response clientResp, Endpoint<?, ResponseT, ?> endpoint
-//    ) throws IOException {
-//
-//            if (endpoint instanceof BooleanEndpoint) {
-//                BooleanEndpoint<?> bep = (BooleanEndpoint<?>) endpoint;
-//
-//                @SuppressWarnings("unchecked")
-//                ResponseT response = (ResponseT) new BooleanResponse(bep.getResult(statusCode));
-//                return response;
-//
-//            } else if (endpoint instanceof JsonEndpoint){
-//                @SuppressWarnings("unchecked")
-//                JsonEndpoint<?, ResponseT, ?> jsonEndpoint = (JsonEndpoint<?, ResponseT, ?>)endpoint;
-//                // Successful response
-//                ResponseT response = null;
-//                JsonpDeserializer<ResponseT> responseParser = jsonEndpoint.responseDeserializer();
-//                if (responseParser != null) {
-//                    // Expecting a body
-//                    if (entity == null) {
-//                        throw new TransportException(
-//                                "Expecting a response body, but none was sent",
-//                                endpoint.id(), new ResponseException(clientResp)
-//                        );
-//                    }
-//                    InputStream content = entity.getContent();
-//                    try (JsonParser parser = mapper.jsonProvider().createParser(content)) {
-//                        response = responseParser.deserialize(parser, mapper);
-//                    };
-//                }
-//                return response;
-//            } else {
-//                throw new TransportException("Unhandled endpoint type: '" + endpoint.getClass().getName() + "'", endpoint.id());
-//            }
-//        }
+    private <ResponseT, ErrorT> ResponseT getHighLevelResponse(
+            Response clientResp,
+            Endpoint<?, ResponseT, ErrorT> endpoint
+    ) throws IOException {
+
+        int statusCode = clientResp.getStatusLine().getStatusCode();
+        try {
+
+            if (statusCode == 200) {
+                checkProductHeader(clientResp, endpoint);
+            }
+
+            if (endpoint.isError(statusCode)) {
+                JsonpDeserializer<ErrorT> errorDeserializer = endpoint.errorDeserializer(statusCode);
+                if (errorDeserializer == null) {
+                    throw new TransportException(
+                            "Request failed with status code '" + statusCode + "'",
+                            endpoint.id(), new ResponseException(clientResp)
+                    );
+                }
+
+                HttpEntity entity = clientResp.getEntity();
+                if (entity == null) {
+                    throw new TransportException(
+                            "Expecting a response body, but none was sent",
+                            endpoint.id(), new ResponseException(clientResp)
+                    );
+                }
+
+                // We may have to replay it.
+                entity = new BufferedHttpEntity(entity);
+
+                try {
+                    InputStream content = entity.getContent();
+                    try (JsonParser parser = mapper.jsonProvider().createParser(content)) {
+                        ErrorT error = errorDeserializer.deserialize(parser, mapper);
+
+                    }
+                } catch(MissingRequiredPropertyException errorEx) {
+                    // Could not decode exception, try the response type
+                    try {
+                        ResponseT response = decodeResponse(statusCode, entity, clientResp, endpoint);
+                        return response;
+                    } catch(Exception respEx) {
+                        // No better luck: throw the original error decoding exception
+                        throw new TransportException("Failed to decode error response", endpoint.id(), new ResponseException(clientResp));
+                    }
+                }
+            } else {
+                return decodeResponse(statusCode, clientResp.getEntity(), clientResp, endpoint);
+            }
+        } finally {
+            // Consume the entity unless this is a successful binary endpoint, where the user must consume the entity
+            if (!(endpoint instanceof BinaryEndpoint && !endpoint.isError(statusCode))) {
+                EntityUtils.consume(clientResp.getEntity());
+            }
+        }
+        return null;
+    }
+
+        private <ResponseT> ResponseT decodeResponse(
+        int statusCode,HttpEntity entity, Response clientResp, Endpoint<?, ResponseT, ?> endpoint
+    ) throws IOException {
+
+            if (endpoint instanceof BooleanEndpoint) {
+                BooleanEndpoint<?> bep = (BooleanEndpoint<?>) endpoint;
+
+                @SuppressWarnings("unchecked")
+                ResponseT response = (ResponseT) new BooleanResponse(bep.getResult(statusCode));
+                return response;
+
+            } else if (endpoint instanceof JsonEndpoint){
+                @SuppressWarnings("unchecked")
+                JsonEndpoint<?, ResponseT, ?> jsonEndpoint = (JsonEndpoint<?, ResponseT, ?>)endpoint;
+                // Successful response
+                ResponseT response = null;
+                JsonpDeserializer<ResponseT> responseParser = jsonEndpoint.responseDeserializer();
+                if (responseParser != null) {
+                    // Expecting a body
+                    if (entity == null) {
+                        throw new TransportException(
+                                "Expecting a response body, but none was sent",
+                                endpoint.id(), new ResponseException(clientResp)
+                        );
+                    }
+                    InputStream content = entity.getContent();
+                    try (JsonParser parser = mapper.jsonProvider().createParser(content)) {
+                        response = responseParser.deserialize(parser, mapper);
+                    };
+                }
+                return response;
+            } else {
+                throw new TransportException("Unhandled endpoint type: '" + endpoint.getClass().getName() + "'", endpoint.id());
+            }
+        }
 
     // Endpoints that (incorrectly) do not return the Elastic product header
     private static final Set<String> endpointsMissingProductHeader = new HashSet<>(Arrays.asList(

@@ -1,40 +1,40 @@
-package org.example.elasticsearch.client.transport.endpoints;
+package org.example.elasticsearch.client.transport;
 
+import org.apache.http.client.utils.*;
 import org.example.elasticsearch.client._types.*;
 import org.example.elasticsearch.client.json.*;
-import org.example.elasticsearch.client.transport.*;
-import org.apache.http.client.utils.URLEncodedUtils;
-
+import org.example.elasticsearch.client.transport.endpoints.*;
 
 import java.util.*;
 import java.util.function.*;
 
-
-public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<RequestT, ResponseT, ErrorResponse> {
+public class EndpointBase<RequestT, ResponseT> implements Endpoint<RequestT, ResponseT, ErrorResponse> {
 
     private static final Function<?, Map<String, String>> EMPTY_MAP = x -> Collections.emptyMap();
 
+    /**
+     * Returns a function that always returns an empty String to String map. Useful to avoid creating lots of
+     * duplicate lambdas in endpoints that don't have headers or parameters.
+     */
     @SuppressWarnings("unchecked")
     public static <T> Function<T, Map<String, String>> emptyMap() {
         return (Function<T, Map<String, String>>) EMPTY_MAP;
     }
 
-    private final String id;
-    private final Function<RequestT, String> method;
-    private final Function<RequestT, String> requestUrl;
-    private final Function<RequestT, Map<String, String>> queryParameters;
-    private final Function<RequestT, Map<String, String>> headers;
-    private final boolean hasRequestBody;
-    private final JsonpDeserializer<ResponseT> responseParser;
+    protected final String id;
+    protected final Function<RequestT, String> method;
+    protected final Function<RequestT, String> requestUrl;
+    protected final Function<RequestT, Map<String, String>> queryParameters;
+    protected final Function<RequestT, Map<String, String>> headers;
+    protected final boolean hasRequestBody;
 
-    public SimpleEndpoint(
+    public EndpointBase(
             String id,
             Function<RequestT, String> method,
             Function<RequestT, String> requestUrl,
             Function<RequestT, Map<String, String>> queryParameters,
             Function<RequestT, Map<String, String>> headers,
-            boolean hasRequestBody,
-            JsonpDeserializer<ResponseT> responseParser
+            boolean hasRequestBody
     ) {
         this.id = id;
         this.method = method;
@@ -42,9 +42,7 @@ public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<Request
         this.queryParameters = queryParameters;
         this.headers = headers;
         this.hasRequestBody = hasRequestBody;
-        this.responseParser = responseParser;
     }
-
 
     @Override
     public String id() {
@@ -52,38 +50,28 @@ public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<Request
     }
 
     @Override
-    public String method(RequestT request) { // an instance of GetPipelineRequest's toString method prints it's pipeline-id class field
-
-        return this.method.apply(request); // returns GET, POST, PUT, DELETE
+    public String method(RequestT request) {
+        return this.method.apply(request);
     }
 
     @Override
     public String requestUrl(RequestT request) {
-
-        return this.requestUrl.apply(request); // returns /_ingest/pipeline
+        return this.requestUrl.apply(request);
     }
 
     @Override
     public Map<String, String> queryParameters(RequestT request) {
-
-        return this.queryParameters.apply(request); // returns a Map<String, String> of query parameters, initialized to empty
+        return this.queryParameters.apply(request);
     }
 
     @Override
     public Map<String, String> headers(RequestT request) {
-        Map<String, String> headers = this.headers.apply(request);
-
-        return headers; // returns a Collections.Map.Entry<String, String>> of query parameters, initialized to empty
+        return this.headers.apply(request);
     }
 
     @Override
     public boolean hasRequestBody() {
         return this.hasRequestBody;
-    }
-
-    @Override
-    public JsonpDeserializer<ResponseT> responseDeserializer() {
-        return this.responseParser;
     }
 
     // ES-specific
@@ -94,9 +82,8 @@ public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<Request
 
     @Override
     public JsonpDeserializer<ErrorResponse> errorDeserializer(int statusCode) {
-        return null;
+        return ErrorResponse._DESERIALIZER;
     }
-
 
     public <NewResponseT> SimpleEndpoint<RequestT, NewResponseT> withResponseDeserializer(
             JsonpDeserializer<NewResponseT> newResponseParser
@@ -118,7 +105,7 @@ public class SimpleEndpoint<RequestT, ResponseT> implements JsonEndpoint<Request
     }
 
     public static void pathEncode(String src, StringBuilder dest) {
-        URLEncodedUtils URLEncodedUtils = null;
+        // TODO: avoid dependency on HttpClient here (and use something more efficient)
         dest.append(URLEncodedUtils.formatSegments(src).substring(1));
     }
 }

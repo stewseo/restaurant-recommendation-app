@@ -1,8 +1,7 @@
 package org.example.yelp.fusion.client.businesses;
 
 import org.apache.http.*;
-<<<<<<< HEAD
-=======
+
 import org.apache.http.auth.*;
 import org.apache.http.client.*;
 import org.apache.http.client.methods.*;
@@ -11,7 +10,7 @@ import org.apache.http.impl.client.*;
 import org.apache.http.impl.nio.client.*;
 import org.apache.http.message.*;
 import org.apache.http.nio.protocol.*;
->>>>>>> python
+
 import org.example.elasticsearch.client.json.jackson.*;
 import org.example.elasticsearch.client.transport.*;
 import org.example.lowlevel.restclient.*;
@@ -20,16 +19,12 @@ import org.example.yelp.fusion.client.businesses.search.*;
 import org.example.yelp.fusion.client.transport.*;
 import org.junit.jupiter.api.*;
 
-<<<<<<< HEAD
-import java.io.*;
-import java.net.*;
-=======
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
->>>>>>> python
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,14 +35,10 @@ public class HttpComponentsTest extends AbstractRequestTestCase {
     static {
         RequestOptions.Builder builder = RequestOptions.DEFAULT.toBuilder();
         builder.addHeader("Authorization", "Bearer " + System.getenv("YELP_API_KEY"));
-<<<<<<< HEAD
-        builder.setHttpAsyncResponseConsumerFactory(
-                new HttpAsyncResponseConsumerFactory
-                        .HeapBufferedResponseConsumerFactory(30 * 1024 * 1024 * 1024));
-=======
->>>>>>> python
+
         COMMON_OPTIONS = builder.build();
     }
+
     @Test
     void authenticationBearerTest() throws IOException, URISyntaxException {
         assertThat(yelpClient).isNotNull();
@@ -74,10 +65,7 @@ public class HttpComponentsTest extends AbstractRequestTestCase {
                         .terms("restaurants"),
                 Business.class);
 
-<<<<<<< HEAD
-        
-=======
-    }
+    }  
     @Test
     void asyncTest() throws IOException, ExecutionException, InterruptedException {
         CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
@@ -144,6 +132,5 @@ public class HttpComponentsTest extends AbstractRequestTestCase {
                 return httpResponse;
             }
         }
->>>>>>> python
     }
 }

@@ -5,11 +5,10 @@ module org.example.yelp.fusion.client {
     requires org.apache.httpcomponents.httpclient;
     requires org.slf4j;
     requires jakarta.json;
-    requires org.example.lowlevel.restclient;
-    requires org.example.elasticsearch.client;
     requires java.compiler;
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.databind;
+    requires org.example.elasticsearch.client;
 
     exports org.example.yelp.fusion.client;
     exports org.example.yelp.fusion.client.businesses.search;

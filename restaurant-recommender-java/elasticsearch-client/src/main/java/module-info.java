@@ -1,7 +1,6 @@
 module org.example.elasticsearch.client {
     requires com.fasterxml.jackson.databind;
     requires jakarta.json;
-    requires org.example.lowlevel.restclient;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
     requires org.slf4j;

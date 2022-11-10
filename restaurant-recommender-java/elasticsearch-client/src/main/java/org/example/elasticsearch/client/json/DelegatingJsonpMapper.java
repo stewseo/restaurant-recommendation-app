@@ -4,6 +4,8 @@ package org.example.elasticsearch.client.json;
 import jakarta.json.spi.*;
 import jakarta.json.stream.*;
 
+import java.lang.reflect.*;
+
 public abstract class DelegatingJsonpMapper implements JsonpMapper {
 
     protected final JsonpMapper mapper;
@@ -18,10 +20,9 @@ public abstract class DelegatingJsonpMapper implements JsonpMapper {
     }
 
     @Override
-    public <T> T deserialize(JsonParser parser, Class<T> clazz) {
-        return mapper.deserialize(parser, clazz);
+    public <T> T deserialize(JsonParser parser, Type type) {
+        return mapper.deserialize(parser, type);
     }
-
     @Override
     public <T> void serialize(T value, JsonGenerator generator) {
         mapper.serialize(value, generator);

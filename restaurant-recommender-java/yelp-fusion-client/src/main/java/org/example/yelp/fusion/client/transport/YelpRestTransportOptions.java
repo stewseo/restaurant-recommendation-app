@@ -73,7 +73,7 @@ public class YelpRestTransportOptions implements TransportOptions {
     // class TestYelpRestOptions.Builder implements com.example.client.transport.TransportOptions.Builder
     public static class Builder implements TransportOptions.Builder {
 
-        private RequestOptions.Builder builder; //  RequestOptions
+        private final RequestOptions.Builder builder; //  RequestOptions
 
         // initializes RequestOptions.Builder
         public Builder(RequestOptions.Builder builder) {
@@ -116,9 +116,6 @@ public class YelpRestTransportOptions implements TransportOptions {
             return this;
         }
 
-        // returns an initialized TestYelpRestClientOptions with params:
-        // an RequestOptions.Builder instance
-        // as parameters for addBuiltinHeaders(builder)
         @Override
         public YelpRestTransportOptions build() {
             return new YelpRestTransportOptions(addBuiltinHeaders(builder).build());

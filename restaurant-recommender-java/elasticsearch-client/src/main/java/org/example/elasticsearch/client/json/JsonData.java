@@ -1,16 +1,33 @@
 package org.example.elasticsearch.client.json;
 
-import jakarta.json.*;
-import jakarta.json.spi.*;
-import jakarta.json.stream.*;
+import jakarta.json.JsonValue;
+import jakarta.json.spi.JsonProvider;
+import jakarta.json.stream.JsonParser;
+import org.example.elasticsearch.client.json.*;
 
-import java.io.*;
-import java.util.*;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.util.EnumSet;
 
+/**
+ * A raw JSON value. It can be converted to a JSON node tree or to an arbitrary object using a {@link JsonpMapper}.
+ * <p>
+ * This type is used in API types for values that don't have a statically-defined type or that cannot be represented
+ * as a generic parameter of the enclosing data structure.
+ * <p>
+ * Instances of this class returned by API clients keep a reference to the client's {@link JsonpMapper} and can be
+ * converted to arbitrary types using {@link #to(Class)} without requiring an explicit mapper.
+ */
 @JsonpDeserializable
 public interface JsonData extends JsonpSerializable {
 
-
+    /**
+     * Converts this object to a JSON node tree. A mapper must have been provided at creation time.
+     *
+     * @throws IllegalStateException if no mapper was provided at creation time.
+     */
     JsonValue toJson();
 
     /**
@@ -26,9 +43,21 @@ public interface JsonData extends JsonpSerializable {
     <T> T to(Class<T> clazz);
 
     /**
+     * Converts this object to a target type. A mapper must have been provided at creation time.
+     *
+     * @throws IllegalStateException if no mapper was provided at creation time.
+     */
+    <T> T to(Type type);
+
+    /**
      * Converts this object to a target class.
      */
     <T> T to(Class<T> clazz, JsonpMapper mapper);
+
+    /**
+     * Converts this object to a target type.
+     */
+    <T> T to(Type type, JsonpMapper mapper);
 
     /**
      * Converts this object using a deserializer. A mapper must have been provided at creation time.
@@ -81,6 +110,9 @@ public interface JsonData extends JsonpSerializable {
         }
     }
 
+    /**
+     * Creates a raw JSON value from an input stream.
+     */
     static JsonData from(InputStream json) {
         JsonProvider provider = JsonpUtils.provider();
         try(JsonParser parser = provider.createParser(json)) {
@@ -89,11 +121,21 @@ public interface JsonData extends JsonpSerializable {
         }
     }
 
+    /**
+     * Creates a raw JSON value from a parser. The provider mapper will be used for conversions unless one is
+     * explicitly provided using {@link #to(Class, JsonpMapper)}, {@link #toJson(JsonpMapper)} or
+     * {@link #deserialize(JsonpDeserializer)}.
+     */
     static JsonData from(JsonParser parser, JsonpMapper mapper) {
         parser.next(); // Need to be at the beginning of the value to read
         return of(parser.getValue(), mapper);
     }
 
+    /**
+     * Creates a raw JSON value from a parser. The provider mapper will be used for conversions unless one is
+     * explicitly provided using {@link #to(Class, JsonpMapper)}, {@link #toJson(JsonpMapper)} or
+     * {@link #deserialize(JsonpDeserializer)}.
+     */
     static JsonData from(JsonParser parser, JsonpMapper mapper, JsonParser.Event event) {
         return of(parser.getValue(), mapper);
     }

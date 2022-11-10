@@ -1,13 +1,17 @@
 package org.example.elasticsearch.client.json;
 
-import org.example.elasticsearch.client.util.*;
+import org.example.elasticsearch.client.util.TriFunction;
+import jakarta.json.JsonValue;
+import jakarta.json.stream.JsonParser;
+import jakarta.json.stream.JsonParser.Event;
 
-import jakarta.json.*;
-import jakarta.json.stream.*;
-
-import java.io.*;
-import java.util.*;
-import java.util.function.*;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public interface JsonpDeserializer<V> {
 
@@ -35,12 +39,15 @@ public interface JsonpDeserializer<V> {
     V deserialize(JsonParser parser, JsonpMapper mapper, JsonParser.Event event);
 
     //---------------------------------------------------------------------------------------------
-
-    static <T>JsonpDeserializer<T> of (Class<T> clazz) {
+    /**
+     * Creates a deserializer for a type that delegates to the mapper provided to
+     * {@link #deserialize(JsonParser, JsonpMapper)}.
+     */
+    static <T>JsonpDeserializer<T> of(Type type) {
         return new JsonpDeserializerBase<T>(EnumSet.allOf(JsonParser.Event.class)) {
             @Override
             public T deserialize(JsonParser parser, JsonpMapper mapper) {
-                return mapper.deserialize(parser, clazz);
+                return mapper.deserialize(parser, type);
             }
 
             @Override
@@ -50,8 +57,7 @@ public interface JsonpDeserializer<V> {
         };
     }
 
-
-    static <T> JsonpDeserializer<T> of(EnumSet<JsonParser.Event> acceptedEvents, BiFunction<JsonParser, JsonpMapper, T> fn) {
+    static <T> JsonpDeserializer<T> of(EnumSet<Event> acceptedEvents, BiFunction<JsonParser, JsonpMapper, T> fn) {
         return new JsonpDeserializerBase<T>(acceptedEvents) {
             @Override
             public T deserialize(JsonParser parser, JsonpMapper mapper) {
@@ -59,17 +65,16 @@ public interface JsonpDeserializer<V> {
             }
 
             @Override
-            public T deserialize(JsonParser parser, JsonpMapper mapper, JsonParser.Event event) {
+            public T deserialize(JsonParser parser, JsonpMapper mapper, Event event) {
                 throw new UnsupportedOperationException();
             }
         };
     }
 
-
-    static <T> JsonpDeserializer<T> of(EnumSet<JsonParser.Event> acceptedEvents, TriFunction<JsonParser, JsonpMapper, JsonParser.Event, T> fn) {
+    static <T> JsonpDeserializer<T> of(EnumSet<Event> acceptedEvents, TriFunction<JsonParser, JsonpMapper, JsonParser.Event, T> fn) {
         return new JsonpDeserializerBase<T>(acceptedEvents) {
             @Override
-            public T deserialize(JsonParser parser, JsonpMapper mapper, JsonParser.Event event) {
+            public T deserialize(JsonParser parser, JsonpMapper mapper, Event event) {
                 return fn.apply(parser, mapper, event);
             }
         };

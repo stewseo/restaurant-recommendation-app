@@ -68,9 +68,7 @@ public class JsonpUtils {
         }
     }
 
-    /**
-     * Skip the value at the next position of the parser.
-     */
+
     public static void skipValue(JsonParser parser) {
         skipValue(parser, parser.next());
     }
@@ -203,9 +201,6 @@ public class JsonpUtils {
         return MAX_TO_STRING_LENGTH;
     }
 
-    /**
-     * @deprecated use {@link #maxToStringLength(int)}
-     */
     @Deprecated
     public static int MAX_TO_STRING_LENGTH = 10000;
 
