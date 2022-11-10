@@ -5,9 +5,11 @@ plugins {
 
 
 dependencies {
-    api project(":elasticsearch-client")
-    api project(":lowlevel-restclient")
-
+//    implementation project (":elasticsearch-client")
+//    implementation project (":lowlevel-restclient")
+    implementation files('libs/lowlevel-restclient.jar', 'libs/elasticsearch-client.jar')
+    implementation 'gg.jte:jte:2.2.3'
+    implementation 'co.elastic.clients:elasticsearch-java:8.4.3'
 }
 
 task wrapper(type: Wrapper){

@@ -75,7 +75,6 @@ public class YelpRestTransport implements YelpFusionTransport {
             transportOptions = YelpRestTransportOptions.of(options);
         }
 
-        PrintUtils.green(String.format("Initializing YelpRestTransport with: RestClient = %s%n JsonpMapper = %s%n %s", restClient, mapper, optionsString));
     }
 
     public YelpRestTransport(RestClient restClient, JsonpMapper mapper) throws IOException {

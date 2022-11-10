@@ -10,21 +10,10 @@ ext {
 
 }
 
-
 // All projects will use maven Central for external dependencies
 repositories {
     mavenCentral()
 }
-
-dependencies {
-
-    testImplementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
-    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
-    testImplementation 'org.assertj:assertj-core:3.23.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-}
-
 
 // Enable deprecation messages when compiling Java code
 tasks.withType(JavaCompile).configureEach {

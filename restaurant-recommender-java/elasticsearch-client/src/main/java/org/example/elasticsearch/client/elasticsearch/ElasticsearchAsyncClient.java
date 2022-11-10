@@ -1,7 +1,6 @@
 package org.example.elasticsearch.client.elasticsearch;
 
 import org.example.elasticsearch.client.*;
-import org.example.elasticsearch.client.elasticsearch.enrich.*;
 import org.example.elasticsearch.client.transport.*;
 public class ElasticsearchAsyncClient extends ApiClient<ElasticsearchTransport, ElasticsearchAsyncClient> {
 

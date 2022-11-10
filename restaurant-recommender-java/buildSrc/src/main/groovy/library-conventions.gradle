@@ -3,31 +3,31 @@ plugins {
     id 'maven-publish'
     id 'java-conventions'
 }
-ext {
 
+ext {
     logbackVersion = '1.4.0'
-    elasticSearchVersion  = "8.4.3"
     jUnitVersion = "5.9.0"
 
     // versions that don't cause conflicts
     slf4jVersion = '2.0.0'
     jacksonVersion = "2.12.3"
     jakartaVersion = '2.0.1'
-
+    jakartaJsonBindVersion = '2.0.0'
 }
 
-ext {
-    elasticSearchVersion  = "8.4.3"
-    jakartaVersion = '2.0.1'
-}
+
 
 dependencies {
 
     api("jakarta.json:jakarta.json-api:${jakartaVersion}")
 
-    api("jakarta.json.bind:jakarta.json.bind-api:2.0.0")
+    api("jakarta.json.bind:jakarta.json.bind-api:${jakartaJsonBindVersion}")
 
     api("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
     api("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
 
 }
