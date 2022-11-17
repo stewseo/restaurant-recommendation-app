@@ -31,5 +31,4 @@ BusinessSearchResponse<Business> businessSearchResponse = yelpClient.search(s ->
 if (businessSearchResponse != null && businessSearchResponse.error() == null) {
 ```
 
-
 ### restaurant-recommender-python
