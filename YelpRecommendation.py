@@ -15,6 +15,8 @@ from IPython.display import display, Image
 get_ipython().run_line_magic('matplotlib', 'inline')
 import plotly.express as px
 import plotly.graph_objects as go
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 # ### Connecting to Elasticsearch:
@@ -79,7 +81,7 @@ def data_cleaning(df, city):
     df = df[df['location.city'] == city]
     #  Only get the restaurants that has the zipcode with number(digits) pattern
     df = df[df['location.zip_code'].str.isdigit()]
-    return df
+    return df.reset_index(drop=True)
 
 
 df = data_cleaning(df,'San Francisco')
@@ -175,4 +177,68 @@ rest_by_price = df.groupby('price').name.agg(['count']).reset_index(drop=False).
 fig = px.treemap(rest_by_price, path=['price'], values='count', title = 'Total Restaurants by Price')
 fig.update_traces(root_color="lightgrey")
 fig.show()
+
+
+# ### Building the Recommendation Engine:
+
+# This function returns the updated dataframe with the name of restaurants and the final content
+# that is the combination of many conditions that we want the recommendation system to consider
+#Final content column is cleaned properly for the pre-prosessing step before building the recommendation
+def create_final_content(similar_conditions):
+    data = df.copy()
+    # New mapping for price
+    data['price'] = data['price'].map({'$':'$','$$':'2$','$$$':'3$','$$$$':'4$','Unknown':'unknown'})
+    # Update transaction to exclude special character & space (only _ in this case)
+    # Then join them together into 1 big string
+    data['transactions']= data['transactions'].apply(lambda x: ' '.join([i.replace('_','') for i in x]))
+    # Update review_count with new group bucket by review count bins
+    group_bin = [1, 100, 200, 400, 600, 800, 1000, 2000, np.inf]
+    group_name = ['group1','group2','group3','group4','group5','group6','group7','group8']
+    data['review_count'] = pd.cut(data.review_count, bins = group_bin, labels = group_name, include_lowest = True)
+    # Update ratings with new rating group bin
+    data['rating'] = pd.cut(data['rating'], bins = [1,2,3,4,5,np.inf], labels = ['r1','r2','r3','r4','r5'], include_lowest = True,right=False)
+    # Update categories to be all lower cases and remove space
+    # Then join them together into 1 big string
+    data['categories'] = data['categories'].apply(lambda x: ' '.join([i.lower().replace(' ','') for i in x]))
+    # Create a new column by combining the values for categories, review count, rating, transactions, price
+    #Different conditions based on whether the we have 1 single condition (string format) or multiple conditions (list)
+    data['final_content'] = data[similar_conditions].apply(lambda x: ' '.join(x.astype(str)), axis=1) if isinstance(similar_conditions,list) else data[similar_conditions]
+    # Drop duplicates for restaurants based on name and contents that we want to compare the restaurant with
+    data = data[['name','final_content']].drop_duplicates().reset_index(drop=True)
+    return data
+
+
+def build_Yelp_recommendation_system(similar_conditions, restaurant_name, top_n):
+    # Create the update df with the final content column based on similar conditions
+    data = create_final_content(similar_conditions)
+    #  Create the count sparse matrix for the content column and remove stop words in case there are extra unnecessary strings
+    cnt_matrix = CountVectorizer(stop_words='english').fit_transform(data['final_content'])
+    # Calculate cosine similarity score
+    cosine_sim = cosine_similarity(cnt_matrix)
+    # Get the chosen restaurant's index based on name
+    restaurant_ind = data[data.name == restaurant_name].index[0]
+    # Get the list of restaurant index and its cosine similarity score as tuple 
+    similar_list = list(enumerate(cosine_sim[restaurant_ind]))
+    # Sort this  list based on cosine similarity score from high to low 
+    highest_similar_list = sorted(similar_list,key=lambda x:x[1],reverse=True)
+    # There are cases where there are extremely good matches that the recommended restaurant has same cosine similarity score with the chosen restaurant (=1)
+    # Because the list is sorted based on the cosine similarities score and not restaurant name, it could have different index instead of being the first index
+    # Therefore we will exclude that restaurant name  out of the list and get the top n recommended restaurant
+    #highest_similar_list.remove((restaurant_ind, 1.0))
+    highest_similar_list = [item for item in highest_similar_list if item[0]!= restaurant_ind]
+    
+    print('If the restaurant name shows up in the recommended list more than once, it means that while the restaurant has the same name, it has different conditions listed compared to the other location.')
+    print('Below is a list of top',top_n, 'recommended restaurants based on',', '.join(similar_conditions) if isinstance(similar_conditions,list) else similar_conditions, 'compared to',restaurant_name+':')
+    [print(data.name.loc[i[0]]) for i in highest_similar_list[:top_n]]
+    
+
+
+# #### Build recommendation system to return the list of recommended restaurants based on your chosen restaurant name and one or more restaurants fields and the size of the top recommended list:
+# #### Please choose one or more of these fields: price, categories, rating, review_count, transactions
+# 
+
+build_Yelp_recommendation_system(['price','categories','rating','review_count'], 'San Tung',10)
+
+
+build_Yelp_recommendation_system('categories','Arsicault',10)
 
