@@ -1,17 +1,17 @@
 ### Site metadata ###
 
 title: Restaurant Recommender
-description: "Restaurant Recommender"
+author: Stew Seo, Dannie Vo
+description: > # this means to ignore newlines until "show_exerpts:"
+  Restaurant Recommender
+
+url: "https://stewseo.github.io/restaurant-recommendation-system"
+baseurl:
 
 github_username: stewseo
 
-### Build settings ###
-
-url: "https://stewseo.github.io/restaurant-recommendation-system"
-
-
 # Build settings
-remote_theme: abhinav/moonwalk
+theme: just-the-docs
 
 plugins:
   - jekyll-feed
