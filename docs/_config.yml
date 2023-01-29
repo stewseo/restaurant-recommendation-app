@@ -1,17 +1,16 @@
 
-title: title
+title: Restaurant Recommender
 email: email@example.com
-description: ...description...
+description: Restaurant Recommender
 
 url: "https://stewseo.github.io"
 baseurl: "/restaurant-recommender"
-github_username:  stewseo
+github_username:  stewseo, dvo0723
 
 remote_theme: just-the-docs/just-the-docs
 
-color_scheme: "dark"
+color_scheme: dark
 
 plugins:
   - github-pages
   - jekyll-remote-theme
-  - jekyll-feed
