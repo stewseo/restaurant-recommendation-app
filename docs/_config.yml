@@ -7,7 +7,7 @@ url: "https://stewseo.github.io"
 baseurl: "/restaurant-recommender"
 github_username:  stewseo, dvo0723
 
-remote_theme: just-the-docs/just-the-docs
+remote_theme: pmarsceill/just-the-docs
 
 color_scheme: dark
 
