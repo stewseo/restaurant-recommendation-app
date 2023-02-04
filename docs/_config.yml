@@ -1,10 +1,11 @@
 
 title: Restaurant Recommender
-email: email@example.com
+email: Stewart.S.Seo@gmail.com
 description: Restaurant Recommender
 
-url: "https://stewseo.github.io"
 baseurl: "/restaurant-recommender"
+url: "https://stewseo.github.io"
+
 github_username:  stewseo, dvo0723
 
 remote_theme: pmarsceill/just-the-docs
